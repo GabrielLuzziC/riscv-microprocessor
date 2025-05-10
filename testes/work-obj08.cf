@@ -1,0 +1,7 @@
+v 4
+file / "c:\Users\gabri\Documents\Faculdade\Arq. Comp\VHDL\teste.vhd" "b4ca420f8df6105943a95baad8749a1d962bdb80" "20250425191442.588":
+  entity teste at 1( 0) + 0 on 25;
+  architecture rtl of teste at 11( 153) + 0 on 26;
+file / "c:\Users\gabri\Documents\Faculdade\Arq. Comp\VHDL\teste_tb.vhd" "284a66bea0fd9b1286cd5ce1342e6ae8959b1a1e" "20250425191541.910":
+  entity teste_tb at 1( 0) + 0 on 27;
+  architecture rtl of teste_tb at 8( 111) + 0 on 28;

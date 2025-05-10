@@ -1,0 +1,13 @@
+v 4
+file . "soma_e_subtrai_tb.vhd" "61f211ebd45fa0a44dcf151a12cb93b06932ec16" "20250509184119.303":
+  entity soma_e_subtrai_tb at 1( 0) + 0 on 23;
+  architecture a_soma_e_subtrai_tb of soma_e_subtrai_tb at 8( 119) + 0 on 24;
+file . "mux8x1.vhd" "7b9d8f39a69ceab11823161df57a9a76db1f5395" "20250509182400.325":
+  entity mux8x1 at 1( 0) + 0 on 17;
+  architecture a_mux8x1 of mux8x1 at 12( 216) + 0 on 18;
+file . "mux8x1_tb.vhd" "8d8a4a1e1c3fbaf6409f80edf6b1059a7e55b2d0" "20250509182404.062":
+  entity mux8x1_tb at 1( 0) + 0 on 19;
+  architecture a_mux8x1_tb of mux8x1_tb at 7( 83) + 0 on 20;
+file . "soma_e_subtrai.vhd" "b61ca789af98d74347f443eeb99a7c2a3807c72a" "20250509184101.812":
+  entity soma_e_subtrai at 1( 0) + 0 on 21;
+  architecture a_soma_e_subrtrai of soma_e_subtrai at 11( 218) + 0 on 22;

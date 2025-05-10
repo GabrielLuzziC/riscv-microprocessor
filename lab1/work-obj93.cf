@@ -1,0 +1,19 @@
+v 4
+file . "det_par.vhd" "df44fa30b73bed9a41a14f301974816fba101b5c" "20250508232934.907":
+  entity det_par at 1( 0) + 0 on 19;
+  architecture a_det_par of det_par at 12( 227) + 0 on 20;
+file . "decoder.vhd" "201b6a12a62626db1eec532cb136c2875548874a" "20250508231201.642":
+  entity decoder at 1( 0) + 0 on 15;
+  architecture a_decoder of decoder at 14( 297) + 0 on 16;
+file . "porta.vhd" "f8f2c50f58d8be6f962a0f8a2bb370389942657e" "20250508223651.308":
+  entity porta at 1( 0) + 0 on 11;
+  architecture a_porta of porta at 11( 189) + 0 on 12;
+file . "porta_tb.vhd" "23ab60bdaf18326df0b30a8f72e0d8ae255eb9c8" "20250508224814.703":
+  entity porta_tb at 1( 0) + 0 on 13;
+  architecture a_porta_tb of porta_tb at 8( 117) + 0 on 14;
+file . "decoder_tb.vhd" "c3011f75eb1cd2369099479a002c3e61d5165005" "20250508231225.912":
+  entity decoder_tb at 1( 0) + 0 on 17;
+  architecture a_decoder_tb of decoder_tb at 7( 77) + 0 on 18;
+file . "det_par_tb.vhd" "2a19150ea91c9542f09b0187c8ef551ab1670c2d" "20250508234250.965":
+  entity det_par_tb at 1( 0) + 0 on 23;
+  architecture a_det_par_tb of det_par_tb at 7( 78) + 0 on 24;

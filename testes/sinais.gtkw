@@ -1,0 +1,51 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Thu Sep 30 20:07:04 2021
+[*]
+[dumpfile] "/home/juliano/VHDPlus/Projects/teste/Generated/teste_tb.vcd"
+[dumpfile_mtime] "Thu Sep 30 19:59:18 2021"
+[dumpfile_size] 5811
+[savefile] "/home/juliano/VHDPlus/Projects/teste/sinais.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-28.606030 298000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] teste_tb.
+[treeopen] teste_tb.uut.
+[sst_width] 198
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 151
+@28
+teste_tb.uut.clk
+teste_tb.uut.rst
+@200
+-
+@22
+[color] 3
+teste_tb.uut.counter[3:0]
+@24
+[color] 3
+teste_tb.uut.counter[3:0]
+@420
+[color] 3
+teste_tb.uut.counter[3:0]
+@200
+-
+@22
+[color] 5
+teste_tb.uut.negativo[3:0]
+@28
+[color] 5
+teste_tb.uut.negativo[3:0]
+@420
+[color] 5
+teste_tb.uut.negativo[3:0]
+@200
+-
+-Fim contagem
+@28
+[color] 7
+teste_tb.uut.pulso
+[pattern_trace] 1
+[pattern_trace] 0
