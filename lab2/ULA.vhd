@@ -7,6 +7,7 @@ entity ULA is
            in_1, in_2 : in unsigned (15 downto 0);
            boolean_flag : out std_logic;
            carry_flag : out std_logic;
+           zero_flag : out std_logic;
            output : out unsigned (15 downto 0)
     );
 end entity;
@@ -29,4 +30,6 @@ begin
     out_temp <= in_1_temp + in_2_temp;
     carry_flag <= '1' when (out_temp(16) = '1') else
                   '0';
+    zero_flag <= '1' when (output = "0000000000000000") else
+                 '0';
 end architecture;
