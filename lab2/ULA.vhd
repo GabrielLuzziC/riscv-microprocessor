@@ -2,6 +2,14 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+-- OPERAÇÕES
+-- 000 -> soma
+-- 001 -> subtração
+-- 010 -> maior que
+-- 011 -> menor que
+-- 100 -> diferente
+
+
 entity ULA is 
     port ( selec_op : in unsigned (2 downto 0);
            in_1, in_2 : in unsigned (15 downto 0);
