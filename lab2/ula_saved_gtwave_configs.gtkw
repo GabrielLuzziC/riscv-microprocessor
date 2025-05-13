@@ -1,0 +1,31 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Tue May 13 00:24:43 2025
+[*]
+[dumpfile] "/home/gefgu/repos/riscv-microprocessor/lab2/ULA_tb.ghw"
+[dumpfile_mtime] "Tue May 13 00:24:11 2025"
+[dumpfile_size] 2932
+[savefile] "/home/gefgu/repos/riscv-microprocessor/lab2/ula_saved_gtwave_configs.gtkw"
+[timestart] 27400000
+[size] 1920 1016
+[pos] -51 -51
+*-26.948454 667800000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.ula_tb.
+[treeopen] top.ula_tb.uut.
+[sst_width] 233
+[signals_width] 275
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+top.ula_tb.uut.zero_flag
+top.ula_tb.uut.carry_flag
+top.ula_tb.uut.boolean_flag
+@22
+#{top.ula_tb.output[15:0]} top.ula_tb.output[15] top.ula_tb.output[14] top.ula_tb.output[13] top.ula_tb.output[12] top.ula_tb.output[11] top.ula_tb.output[10] top.ula_tb.output[9] top.ula_tb.output[8] top.ula_tb.output[7] top.ula_tb.output[6] top.ula_tb.output[5] top.ula_tb.output[4] top.ula_tb.output[3] top.ula_tb.output[2] top.ula_tb.output[1] top.ula_tb.output[0]
+#{top.ula_tb.in_2[15:0]} top.ula_tb.in_2[15] top.ula_tb.in_2[14] top.ula_tb.in_2[13] top.ula_tb.in_2[12] top.ula_tb.in_2[11] top.ula_tb.in_2[10] top.ula_tb.in_2[9] top.ula_tb.in_2[8] top.ula_tb.in_2[7] top.ula_tb.in_2[6] top.ula_tb.in_2[5] top.ula_tb.in_2[4] top.ula_tb.in_2[3] top.ula_tb.in_2[2] top.ula_tb.in_2[1] top.ula_tb.in_2[0]
+#{top.ula_tb.in_1[15:0]} top.ula_tb.in_1[15] top.ula_tb.in_1[14] top.ula_tb.in_1[13] top.ula_tb.in_1[12] top.ula_tb.in_1[11] top.ula_tb.in_1[10] top.ula_tb.in_1[9] top.ula_tb.in_1[8] top.ula_tb.in_1[7] top.ula_tb.in_1[6] top.ula_tb.in_1[5] top.ula_tb.in_1[4] top.ula_tb.in_1[3] top.ula_tb.in_1[2] top.ula_tb.in_1[1] top.ula_tb.in_1[0]
+@28
+#{top.ula_tb.select_op[2:0]} top.ula_tb.select_op[2] top.ula_tb.select_op[1] top.ula_tb.select_op[0]
+[pattern_trace] 1
+[pattern_trace] 0
