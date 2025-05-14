@@ -8,7 +8,7 @@ entity soma_e_subtrai is
     );
 end entity;
 
-architecture a_soma_e_subrtrai of soma_e_subtrai is
+architecture a_soma_e_subtrai of soma_e_subtrai is
 begin
     soma <= x+y;
     sub <= x-y;

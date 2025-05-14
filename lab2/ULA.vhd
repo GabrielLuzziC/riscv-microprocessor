@@ -10,18 +10,18 @@ USE ieee.numeric_std.ALL;
 -- 100 -> diferente
 ENTITY ULA IS
     PORT (
-        selec_op : IN unsigned (2 DOWNTO 0);
-        in_1, in_2 : IN unsigned (15 DOWNTO 0);
+        selec_op : IN signed (2 DOWNTO 0);
+        in_1, in_2 : IN signed (15 DOWNTO 0);
         boolean_flag : OUT STD_LOGIC;
         carry_flag : OUT STD_LOGIC;
         zero_flag : OUT STD_LOGIC; -- Talvez usar a zero_flag como boolean_flag??? 0 = false, 1 = true
-        output : OUT unsigned (15 DOWNTO 0)
+        output : OUT signed (15 DOWNTO 0)
     );
 END ENTITY;
 
 ARCHITECTURE a_ULA OF ULA IS
-    SIGNAL in_1_temp, in_2_temp, out_temp : unsigned (16 DOWNTO 0);
-    SIGNAL result : unsigned (15 DOWNTO 0);
+    SIGNAL in_1_temp, in_2_temp, out_temp : signed (16 DOWNTO 0);
+    SIGNAL result : signed (15 DOWNTO 0);
 
 BEGIN
     result <= in_1 + in_2 WHEN (selec_op = "000") ELSE

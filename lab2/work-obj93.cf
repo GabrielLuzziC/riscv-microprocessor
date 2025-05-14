@@ -1,7 +1,7 @@
 v 4
-file . "ULA.vhd" "acfd5d679b75f048ad6d07a69ea2f2d0a4ad2c4b" "20250513002406.978":
-  entity ula at 1( 0) + 0 on 47;
-  architecture a_ula of ula at 22( 541) + 0 on 48;
+file . "ULA.vhd" "6d9c0d8b363f7597c66ccf8d361682024758d953" "20250514162247.967":
+  entity ula at 1( 0) + 0 on 59;
+  architecture a_ula of ula at 22( 556) + 0 on 60;
 file . "soma_e_subtrai.vhd" "b61ca789af98d74347f443eeb99a7c2a3807c72a" "20250509184101.812":
   entity soma_e_subtrai at 1( 0) + 0 on 21;
   architecture a_soma_e_subrtrai of soma_e_subtrai at 11( 218) + 0 on 22;
@@ -14,6 +14,6 @@ file . "mux8x1.vhd" "7b9d8f39a69ceab11823161df57a9a76db1f5395" "20250509182400.3
 file . "soma_e_subtrai_tb.vhd" "61f211ebd45fa0a44dcf151a12cb93b06932ec16" "20250509184119.303":
   entity soma_e_subtrai_tb at 1( 0) + 0 on 23;
   architecture a_soma_e_subtrai_tb of soma_e_subtrai_tb at 8( 119) + 0 on 24;
-file . "ULA_tb.vhd" "727451d9bb3884491f563d1bfc281fc09d1b9f94" "20250513002409.651":
-  entity ula_tb at 1( 0) + 0 on 49;
-  architecture a_ula_tb of ula_tb at 8( 100) + 0 on 50;
+file . "ULA_tb.vhd" "cb2e682d5d7c8cdb6acf54cdc6b14e31cfbed1b2" "20250514162254.605":
+  entity ula_tb at 1( 0) + 0 on 61;
+  architecture a_ula_tb of ula_tb at 8( 107) + 0 on 62;
