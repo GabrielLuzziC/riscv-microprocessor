@@ -1,29 +1,30 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
 
-entity reg16bits is 
-    port ( clk : in STD_LOGIC;
-            rst : in STD_LOGIC;
-            wr_en : in STD_LOGIC;
-            data_in : in UNSIGNED(15 downto 0);
-            data_out : out UNSIGNED(15 downto 0)
+ENTITY reg16bits IS
+    PORT (
+        clk : IN STD_LOGIC;
+        rst : IN STD_LOGIC;
+        wr_en : IN STD_LOGIC;
+        data_in : IN UNSIGNED(15 DOWNTO 0);
+        data_out : OUT UNSIGNED(15 DOWNTO 0)
     );
-end entity;
+END ENTITY;
 
-architecture a_reg16bits of reg16bits is
-    signal registro : UNSIGNED(15 downto 0);
-begin
-    process (clk, rst, wr_en)
-    begin
-        if rst = '1' then
-            registro <= (others => '0');
-        elsif wr_en = '1' then
-            if (rising_edge(clk)) then
+ARCHITECTURE a_reg16bits OF reg16bits IS
+    SIGNAL registro : UNSIGNED(15 DOWNTO 0);
+BEGIN
+    PROCESS (clk, rst, wr_en)
+    BEGIN
+        IF rst = '1' THEN
+            registro <= (OTHERS => '0');
+        ELSIF wr_en = '1' THEN
+            IF (rising_edge(clk)) THEN
                 registro <= data_in;
-            end if;
-        end if;
-    end process;
+            END IF;
+        END IF;
+    END PROCESS;
 
     data_out <= registro;
-end architecture;
+END ARCHITECTURE;

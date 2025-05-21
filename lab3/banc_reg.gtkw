@@ -1,0 +1,29 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Wed May 21 00:17:51 2025
+[*]
+[dumpfile] "/home/gefgu/repos/riscv-microprocessor/lab3/banc_reg.ghw"
+[dumpfile_mtime] "Wed May 21 00:16:45 2025"
+[dumpfile_size] 4192
+[savefile] "/home/gefgu/repos/riscv-microprocessor/lab3/banc_reg.gtkw"
+[timestart] 0
+[size] 1920 1016
+[pos] -51 -51
+*-28.365740 1451000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.banco_reg_tb.
+[sst_width] 233
+[signals_width] 174
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+top.banco_reg_tb.uut.clk
+top.banco_reg_tb.uut.rst
+#{top.banco_reg_tb.selec_reg_out[2:0]} top.banco_reg_tb.selec_reg_out[2] top.banco_reg_tb.selec_reg_out[1] top.banco_reg_tb.selec_reg_out[0]
+#{top.banco_reg_tb.selec_reg_in[2:0]} top.banco_reg_tb.selec_reg_in[2] top.banco_reg_tb.selec_reg_in[1] top.banco_reg_tb.selec_reg_in[0]
+@22
+#{top.banco_reg_tb.data_out[15:0]} top.banco_reg_tb.data_out[15] top.banco_reg_tb.data_out[14] top.banco_reg_tb.data_out[13] top.banco_reg_tb.data_out[12] top.banco_reg_tb.data_out[11] top.banco_reg_tb.data_out[10] top.banco_reg_tb.data_out[9] top.banco_reg_tb.data_out[8] top.banco_reg_tb.data_out[7] top.banco_reg_tb.data_out[6] top.banco_reg_tb.data_out[5] top.banco_reg_tb.data_out[4] top.banco_reg_tb.data_out[3] top.banco_reg_tb.data_out[2] top.banco_reg_tb.data_out[1] top.banco_reg_tb.data_out[0]
+@23
+#{top.banco_reg_tb.data_in[15:0]} top.banco_reg_tb.data_in[15] top.banco_reg_tb.data_in[14] top.banco_reg_tb.data_in[13] top.banco_reg_tb.data_in[12] top.banco_reg_tb.data_in[11] top.banco_reg_tb.data_in[10] top.banco_reg_tb.data_in[9] top.banco_reg_tb.data_in[8] top.banco_reg_tb.data_in[7] top.banco_reg_tb.data_in[6] top.banco_reg_tb.data_in[5] top.banco_reg_tb.data_in[4] top.banco_reg_tb.data_in[3] top.banco_reg_tb.data_in[2] top.banco_reg_tb.data_in[1] top.banco_reg_tb.data_in[0]
+[pattern_trace] 1
+[pattern_trace] 0

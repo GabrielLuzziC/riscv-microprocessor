@@ -2,6 +2,12 @@ v 4
 file . "reg16bits_tb.vhd" "3e7a0a6fbb21cc744c3254f35570a829f653f558" "20250516181224.621":
   entity reg16bits_tb at 1( 0) + 0 on 13;
   architecture a_reg16bits_tb of reg16bits_tb at 8( 113) + 0 on 14;
-file . "reg16bits.vhd" "b05b412cb79bad45abc1a39d11627dfb22b5ec6e" "20250516181215.405":
-  entity reg16bits at 1( 0) + 0 on 11;
-  architecture a_reg16bits of reg16bits at 14( 318) + 0 on 12;
+file . "reg16bits.vhd" "c7d71b59bd72f41b2428eab0499df1ce900095c1" "20250521001320.837":
+  entity reg16bits at 1( 0) + 0 on 17;
+  architecture a_reg16bits of reg16bits at 15( 296) + 0 on 18;
+file . "banco_reg.vhd" "6e566c50f2d92efe63cd13e80f47c797150d0586" "20250521001316.306":
+  entity banco_reg at 1( 0) + 0 on 15;
+  architecture a_banco_reg of banco_reg at 17( 393) + 0 on 16;
+file . "banco_reg_tb.vhd" "97d93efb78099d3f8a1689888a44fc71fa378cbd" "20250521001643.141":
+  entity banco_reg_tb at 1( 0) + 0 on 21;
+  architecture a_banco_reg_tb of banco_reg_tb at 8( 106) + 0 on 22;
