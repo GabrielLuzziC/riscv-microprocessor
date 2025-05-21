@@ -3,7 +3,7 @@ USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
 ENTITY acumulador IS
-    PORT(
+    PORT (
         clk : IN STD_LOGIC;
         rst : IN STD_LOGIC;
         data_in : IN UNSIGNED(15 DOWNTO 0);
@@ -23,12 +23,12 @@ ARCHITECTURE a_acumulador OF acumulador IS
         );
     END COMPONENT;
 BEGIN
-    uut: reg16bits
-        PORT map (
-            clk => clk,
-            rst => rst,
-            wr_en => wr_en,
-            data_in => data_in,
-            data_out => data_out
-        );
+    uut : reg16bits
+    PORT MAP(
+        clk => clk,
+        rst => rst,
+        wr_en => wr_en,
+        data_in => data_in,
+        data_out => data_out
+    );
 END ARCHITECTURE;
