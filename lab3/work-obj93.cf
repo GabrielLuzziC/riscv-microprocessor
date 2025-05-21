@@ -1,4 +1,5 @@
 v 4
+<<<<<<< HEAD
 file . "acumulador.vhd" "a340652fc033bb784e17ff99606949364ff46a34" "20250521003543.115":
   entity acumulador at 1( 0) + 0 on 39;
   architecture a_acumulador of acumulador at 14( 278) + 0 on 40;
@@ -20,3 +21,47 @@ file . "reg_ULA_tb.vhd" "a678b1edf47214220c3c596ffffc3a5c7fa37113" "202505212316
 file . "../lab2/ULA.vhd" "0a6027765c609db612fc9a4ca3d4bf121472743a" "20250521230251.557":
   entity ula at 1( 0) + 0 on 45;
   architecture a_ula of ula at 22( 473) + 0 on 46;
+=======
+<<<<<<< HEAD
+file . "../lab2/ULA.vhd" "0a6027765c609db612fc9a4ca3d4bf121472743a" "20250521003545.179":
+  entity ula at 1( 0) + 0 on 41;
+  architecture a_ula of ula at 22( 473) + 0 on 42;
+file . "reg_ULA_tb.vhd" "acce6573b98a64c909c028f7715f9243187268a9" "20250521003403.201":
+  entity reg_ula_tb at 1( 0) + 0 on 37;
+  architecture a_reg_ula_tb of reg_ula_tb at 8( 104) + 0 on 38;
+file . "banco_reg.vhd" "6e566c50f2d92efe63cd13e80f47c797150d0586" "20250521001316.306":
+  entity banco_reg at 1( 0) + 0 on 15;
+  architecture a_banco_reg of banco_reg at 17( 393) + 0 on 16;
+file . "reg16bits.vhd" "c7d71b59bd72f41b2428eab0499df1ce900095c1" "20250521001320.837":
+  entity reg16bits at 1( 0) + 0 on 17;
+  architecture a_reg16bits of reg16bits at 15( 296) + 0 on 18;
+file . "reg16bits_tb.vhd" "3e7a0a6fbb21cc744c3254f35570a829f653f558" "20250516181224.621":
+  entity reg16bits_tb at 1( 0) + 0 on 13;
+  architecture a_reg16bits_tb of reg16bits_tb at 8( 113) + 0 on 14;
+file . "reg_ULA.vhd" "529f045a4dbf2cfef655b1d3e752266a41eeb857" "20250521003731.408":
+  entity reg_ula at 1( 0) + 0 on 43;
+  architecture a_reg_ula of reg_ula at 20( 500) + 0 on 44;
+file . "acumulador.vhd" "a340652fc033bb784e17ff99606949364ff46a34" "20250521003543.115":
+  entity acumulador at 1( 0) + 0 on 39;
+  architecture a_acumulador of acumulador at 14( 278) + 0 on 40;
+=======
+file . "reg_ULA_tb.vhd" "8d62d73561de60ec810d788f0decd61ae1d99a60" "20250521185604.940":
+  entity reg_ula_tb at 1( 0) + 0 on 55;
+  architecture a_reg_ula_tb of reg_ula_tb at 8( 111) + 0 on 56;
+file . "acumulador.vhd" "6ab92a6cde7f41770f415916d1cc71ac7461a8a0" "20250521182247.468":
+  entity acumulador at 1( 0) + 0 on 25;
+  architecture a_acumulador of acumulador at 14( 290) + 0 on 26;
+file . "..\lab2\ULA.vhd" "2ae38d55374f5088ab64c0899db4bdaf95de39da" "20250521182247.505":
+  entity ula at 1( 0) + 0 on 27;
+  architecture a_ula of ula at 22( 562) + 0 on 28;
+file . "banco_reg.vhd" "91f1cef18cb58d8b1a5d20580f078fa996d65a6a" "20250521182247.420":
+  entity banco_reg at 1( 0) + 0 on 23;
+  architecture a_banco_reg of banco_reg at 17( 409) + 0 on 24;
+file . "reg_ULA.vhd" "2a0eae224d0e693097c89d59b155915f1eb56955" "20250521182247.544":
+  entity reg_ula at 1( 0) + 0 on 29;
+  architecture a_reg_ula of reg_ula at 21( 568) + 0 on 30;
+file . "reg16bits.vhd" "6b03f1e96825f556a67a7bb2c546a8d61ecca5a0" "20250521182247.352":
+  entity reg16bits at 1( 0) + 0 on 21;
+  architecture a_reg16bits of reg16bits at 15( 310) + 0 on 22;
+>>>>>>> ffe825efb38274754c43543ab2fc2663d7a21884
+>>>>>>> main

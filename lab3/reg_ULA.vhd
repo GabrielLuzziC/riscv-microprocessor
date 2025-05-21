@@ -7,6 +7,7 @@ ENTITY reg_ULA IS
         clk : IN STD_LOGIC;
         rst : IN STD_LOGIC;
         wr_en : IN STD_LOGIC;
+        selec_op : IN UNSIGNED(2 DOWNTO 0);
         boolean_flag : OUT STD_LOGIC;
         carry_flag : OUT STD_LOGIC;
         zero_flag : OUT STD_LOGIC;
@@ -47,7 +48,8 @@ ARCHITECTURE a_reg_ULA OF reg_ULA IS
             output : OUT UNSIGNED (15 DOWNTO 0)
         );
     END COMPONENT;
-    SIGNAL data_out_reg, data_out_acc, data_out_ula : UNSIGNED(15 DOWNTO 0);
+    SIGNAL data_out_reg, data_out_acc, data_out_ula : UNSIGNED(15 DOWNTO 0) := (OTHERS => '0');
+
 BEGIN
     breg : banco_reg
     PORT MAP(
@@ -69,7 +71,7 @@ BEGIN
     );
     a_ula : ULA
     PORT MAP(
-        selec_op => "000", -- Adição
+        selec_op => selec_op,
         in_1 => data_out_reg,
         in_2 => data_out_acc,
         boolean_flag => boolean_flag,

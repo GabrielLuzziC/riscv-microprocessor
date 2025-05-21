@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Wed May 21 17:32:09 2025
+[*]
+[dumpfile] "c:\Users\gabri\Documents\Faculdade\Arq. Comp\VHDL\lab3\reg_ULA_tb.ghw"
+[dumpfile_mtime] "Wed May 21 17:31:20 2025"
+[dumpfile_size] 5185
+[savefile] "C:\Users\gabri\Documents\Faculdade\Arq. Comp\VHDL\lab3\reg_ULA.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-29.608366 126000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.reg_ula_tb.
+[sst_width] 197
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 153
+@28
+top.reg_ula_tb.uut.clk
+top.reg_ula_tb.uut.rst
+top.reg_ula_tb.uut.wr_en
+@22
+#{top.reg_ula_tb.data_in[15:0]} top.reg_ula_tb.data_in[15] top.reg_ula_tb.data_in[14] top.reg_ula_tb.data_in[13] top.reg_ula_tb.data_in[12] top.reg_ula_tb.data_in[11] top.reg_ula_tb.data_in[10] top.reg_ula_tb.data_in[9] top.reg_ula_tb.data_in[8] top.reg_ula_tb.data_in[7] top.reg_ula_tb.data_in[6] top.reg_ula_tb.data_in[5] top.reg_ula_tb.data_in[4] top.reg_ula_tb.data_in[3] top.reg_ula_tb.data_in[2] top.reg_ula_tb.data_in[1] top.reg_ula_tb.data_in[0]
+@23
+#{top.reg_ula_tb.data_out[15:0]} top.reg_ula_tb.data_out[15] top.reg_ula_tb.data_out[14] top.reg_ula_tb.data_out[13] top.reg_ula_tb.data_out[12] top.reg_ula_tb.data_out[11] top.reg_ula_tb.data_out[10] top.reg_ula_tb.data_out[9] top.reg_ula_tb.data_out[8] top.reg_ula_tb.data_out[7] top.reg_ula_tb.data_out[6] top.reg_ula_tb.data_out[5] top.reg_ula_tb.data_out[4] top.reg_ula_tb.data_out[3] top.reg_ula_tb.data_out[2] top.reg_ula_tb.data_out[1] top.reg_ula_tb.data_out[0]
+[pattern_trace] 1
+[pattern_trace] 0
