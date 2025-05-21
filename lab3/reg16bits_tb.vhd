@@ -15,9 +15,9 @@ ARCHITECTURE a_reg16bits_tb OF reg16bits_tb IS
             data_out : OUT UNSIGNED(15 DOWNTO 0)
         );
     END COMPONENT;
-    SIGNAL data_in, data_out : UNSIGNED(15 DOWNTO 0);
-    SIGNAL clk, rst, wr_en : STD_LOGIC;
-    SIGNAL finished : STD_LOGIC := '0';
+    SIGNAL data_in, data_out : UNSIGNED(15 DOWNTO 0) := (others => '0');
+    SIGNAL clk : STD_LOGIC;
+    SIGNAL finished, rst, wr_en : STD_LOGIC := '0';
     CONSTANT period_time : TIME := 100 ns;
 BEGIN
     uut : reg16bits

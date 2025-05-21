@@ -1,34 +1,34 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
 
-entity acumulador is
-    port(
-        clk : in std_logic;
-        rst : in std_logic;
-        data_in : in std_logic_vector(15 downto 0);
-        data_out : out std_logic_vector(15 downto 0)
+ENTITY acumulador IS
+    PORT(
+        clk : IN STD_LOGIC;
+        rst : IN STD_LOGIC;
+        data_in : IN UNSIGNED(15 DOWNTO 0);
+        data_out : OUT UNSIGNED(15 DOWNTO 0)
     );
-end entity acumulador;
+END ENTITY acumulador;
 
-architecture a_acumulador of acumulador is
-    signal wr_en : std_logic := '1'; --sempre escreve nele
-    component reg16bits
-        port (
-            clk : in std_logic;
-            rst : in std_logic;
-            wr_en : in std_logic;
-            data_in : in std_logic_vector(15 downto 0);
-            data_out : out std_logic_vector(15 downto 0)
+ARCHITECTURE a_acumulador OF acumulador IS
+    SIGNAL wr_en : STD_LOGIC := '1'; --sempre escreve nele
+    COMPONENT reg16bits
+        PORT (
+            clk : IN STD_LOGIC;
+            rst : IN STD_LOGIC;
+            wr_en : IN STD_LOGIC;
+            data_in : IN UNSIGNED(15 DOWNTO 0);
+            data_out : OUT UNSIGNED(15 DOWNTO 0)
         );
-    end component;
-begin
+    END COMPONENT;
+BEGIN
     uut: reg16bits
-        port map (
+        PORT map (
             clk => clk,
             rst => rst,
             wr_en => wr_en,
             data_in => data_in,
             data_out => data_out
         );
-end architecture;
+END ARCHITECTURE;
