@@ -1,0 +1,33 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Wed May 21 23:14:49 2025
+[*]
+[dumpfile] "/home/gefgu/repos/riscv-microprocessor/lab3/reg_ULA_tb.ghw"
+[dumpfile_mtime] "Wed May 21 23:14:30 2025"
+[dumpfile_size] 9000
+[savefile] "/home/gefgu/repos/riscv-microprocessor/lab3/reg_ULA.gtkw"
+[timestart] 0
+[size] 1920 1016
+[pos] -38 -38
+*-27.365740 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.reg_ula_tb.
+[treeopen] top.reg_ula_tb.uut.
+[sst_width] 233
+[signals_width] 311
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+top.reg_ula_tb.clk
+top.reg_ula_tb.rst
+top.reg_ula_tb.wr_en
+#{top.reg_ula_tb.selec_reg_out[2:0]} top.reg_ula_tb.selec_reg_out[2] top.reg_ula_tb.selec_reg_out[1] top.reg_ula_tb.selec_reg_out[0]
+#{top.reg_ula_tb.selec_reg_in[2:0]} top.reg_ula_tb.selec_reg_in[2] top.reg_ula_tb.selec_reg_in[1] top.reg_ula_tb.selec_reg_in[0]
+@22
+#{top.reg_ula_tb.data_out[15:0]} top.reg_ula_tb.data_out[15] top.reg_ula_tb.data_out[14] top.reg_ula_tb.data_out[13] top.reg_ula_tb.data_out[12] top.reg_ula_tb.data_out[11] top.reg_ula_tb.data_out[10] top.reg_ula_tb.data_out[9] top.reg_ula_tb.data_out[8] top.reg_ula_tb.data_out[7] top.reg_ula_tb.data_out[6] top.reg_ula_tb.data_out[5] top.reg_ula_tb.data_out[4] top.reg_ula_tb.data_out[3] top.reg_ula_tb.data_out[2] top.reg_ula_tb.data_out[1] top.reg_ula_tb.data_out[0]
+@23
+#{top.reg_ula_tb.uut.data_out_acc[15:0]} top.reg_ula_tb.uut.data_out_acc[15] top.reg_ula_tb.uut.data_out_acc[14] top.reg_ula_tb.uut.data_out_acc[13] top.reg_ula_tb.uut.data_out_acc[12] top.reg_ula_tb.uut.data_out_acc[11] top.reg_ula_tb.uut.data_out_acc[10] top.reg_ula_tb.uut.data_out_acc[9] top.reg_ula_tb.uut.data_out_acc[8] top.reg_ula_tb.uut.data_out_acc[7] top.reg_ula_tb.uut.data_out_acc[6] top.reg_ula_tb.uut.data_out_acc[5] top.reg_ula_tb.uut.data_out_acc[4] top.reg_ula_tb.uut.data_out_acc[3] top.reg_ula_tb.uut.data_out_acc[2] top.reg_ula_tb.uut.data_out_acc[1] top.reg_ula_tb.uut.data_out_acc[0]
+@22
+#{top.reg_ula_tb.data_in[15:0]} top.reg_ula_tb.data_in[15] top.reg_ula_tb.data_in[14] top.reg_ula_tb.data_in[13] top.reg_ula_tb.data_in[12] top.reg_ula_tb.data_in[11] top.reg_ula_tb.data_in[10] top.reg_ula_tb.data_in[9] top.reg_ula_tb.data_in[8] top.reg_ula_tb.data_in[7] top.reg_ula_tb.data_in[6] top.reg_ula_tb.data_in[5] top.reg_ula_tb.data_in[4] top.reg_ula_tb.data_in[3] top.reg_ula_tb.data_in[2] top.reg_ula_tb.data_in[1] top.reg_ula_tb.data_in[0]
+[pattern_trace] 1
+[pattern_trace] 0

@@ -68,6 +68,8 @@ BEGIN
 
   PROCESS
   BEGIN
+    WAIT FOR 10 * period_time;
+
     -- RESETA todo mundo em 0
     -- COLOCA 1, 2 e 3 nos registradores 1, 2 e 3
     -- SOMA 1 com o acumulador
@@ -81,25 +83,28 @@ BEGIN
     data_in <= "0000000000000001"; -- 1
     WAIT FOR period_time;
 
-    selec_reg_in <= "010"; -- REG1
+    selec_reg_in <= "010"; -- REG2
     data_in <= "0000000000000010"; -- 2
     WAIT FOR period_time;
 
-    selec_reg_in <= "011"; -- REG1
+    selec_reg_in <= "011"; -- REG3
     data_in <= "0000000000000011"; -- 3
     WAIT FOR period_time;
 
     wr_en <= '0';
+    data_in <= "0000000000000000"; -- 0
+    selec_reg_in <= "000"; -- REG0
     WAIT FOR period_time;
     -- SOMA 1 com o acumulador
     selec_reg_out <= "001"; -- REG1
     WAIT FOR period_time;
-    -- SOMA 1 com o acumulador
+    -- SOMA 2 com o acumulador
     selec_reg_out <= "010"; -- REG2
     WAIT FOR period_time;
-    -- SOMA 1 com o acumulador
+    -- SOMA 3 com o acumulador
     selec_reg_out <= "011"; -- REG3
     WAIT FOR period_time;
+    selec_reg_out <= "000"; -- REG0
 
     WAIT;
   END PROCESS;
