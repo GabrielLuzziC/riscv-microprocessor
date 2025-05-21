@@ -18,10 +18,9 @@ ARCHITECTURE a_banco_reg_tb OF banco_reg_tb IS
     );
   END COMPONENT;
 
-  SIGNAL data_in, data_out : UNSIGNED(15 DOWNTO 0);
-  SIGNAL clk, rst, wr_en : STD_LOGIC;
-  SIGNAL selec_reg_in, selec_reg_out : UNSIGNED(2 DOWNTO 0);
-  SIGNAL finished : STD_LOGIC := '0';
+  SIGNAL data_in, data_out : UNSIGNED(15 DOWNTO 0) := (others => '0');
+  SIGNAL selec_reg_in, selec_reg_out : UNSIGNED(2 DOWNTO 0) := (others => '0');
+  SIGNAL finished, clk, rst, wr_en : STD_LOGIC := '0';
   CONSTANT period_time : TIME := 100 ns;
 BEGIN
   uut : banco_reg
