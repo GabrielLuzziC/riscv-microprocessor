@@ -11,7 +11,8 @@ ENTITY PC_ROM IS
 END ENTITY;
 
 ARCHITECTURE a_PC_ROM OF PC_ROM IS
-    SIGNAL data_temp, data_temp_out, rom_temp_out : UNSIGNED(15 DOWNTO 0);
+    SIGNAL data_temp, data_temp_out : UNSIGNED(15 DOWNTO 0);
+    SIGNAL rom_temp_out : UNSIGNED(14 DOWNTO 0);
     SIGNAL instrucao : UNSIGNED(14 DOWNTO 0);
     SIGNAL endereco : UNSIGNED(6 DOWNTO 0);
     COMPONENT PC_soma IS
@@ -23,15 +24,15 @@ ARCHITECTURE a_PC_ROM OF PC_ROM IS
             data_out : OUT UNSIGNED(15 DOWNTO 0)
         );
     END COMPONENT;
-    COMPONENT ROM IS 
+    COMPONENT ROM IS
         PORT (
             clk : IN STD_LOGIC;
-            addr : IN UNSIGNED(6 DOWNTO 0);
-            data_out : OUT UNSIGNED(14 DOWNTO 0)
+            endereco : IN UNSIGNED(6 DOWNTO 0);
+            dado : OUT UNSIGNED(14 DOWNTO 0)
         );
     END COMPONENT;
 BEGIN
-    uut : PC_soma 
+    uut : PC_soma
     PORT MAP(
         clk => clk,
         rst => rst,
@@ -40,14 +41,13 @@ BEGIN
         data_out => data_temp_out
     );
 
-    uut_rom : ROM 
+    uut_rom : ROM
     PORT MAP(
         clk => clk,
-        addr => endereco,
-        data_out => rom_temp_out
+        endereco => endereco,
+        dado => instrucao
     );
 
     data_out <= data_temp_out;
-    endereco <= data_temp_out(6 DOWNTO 0); 
-    instrucao <= rom_temp_out(14 DOWNTO 0);
+    endereco <= data_temp_out(6 DOWNTO 0);
 END ARCHITECTURE;

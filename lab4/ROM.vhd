@@ -21,13 +21,13 @@ ARCHITECTURE a_ROM OF ROM IS
         "000000000000101", -- 5
         "000000000001110", -- 6
         "111111111111111",
-        others => "000000000000000" -- 7 a 127
+        OTHERS => "000000000000000" -- 7 a 127
     );
+BEGIN
+    PROCESS (clk)
     BEGIN
-        PROCESS (clk)
-        BEGIN
-            IF rising_edge(clk) THEN
-                dado <= conteudo_rom(to_integer(endereco));
-            END IF;
-        END PROCESS;
+        IF rising_edge(clk) THEN
+            dado <= conteudo_rom(to_integer(endereco));
+        END IF;
+    END PROCESS;
 END ARCHITECTURE;
