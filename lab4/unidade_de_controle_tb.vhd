@@ -2,16 +2,16 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY PC_ROM_tb IS
+ENTITY unidade_de_controle_tb IS
 END ENTITY;
 
-ARCHITECTURE a_PC_ROM_tb OF PC_ROM_tb IS
+ARCHITECTURE a_unidade_de_controle_tb OF unidade_de_controle_tb IS
   SIGNAL clk, finished : STD_LOGIC := '0';
   SIGNAL rst : STD_LOGIC := '0';
   SIGNAL data_out : UNSIGNED(15 DOWNTO 0);
 
   CONSTANT period_time : TIME := 100 ns;
-  COMPONENT PC_ROM IS
+  COMPONENT unidade_de_controle IS
     PORT (
       clk : IN STD_LOGIC;
       rst : IN STD_LOGIC;
@@ -19,12 +19,10 @@ ARCHITECTURE a_PC_ROM_tb OF PC_ROM_tb IS
     );
   END COMPONENT;
 BEGIN
-  uut : PC_ROM
+  uut : unidade_de_controle
   PORT MAP(
     clk => clk,
     rst => rst,
-    data_in => (OTHERS => '0'), -- Assuming no input data for this test
-    wr_en => '0', -- Assuming wr_en is always enabled for this test
     data_out => data_out
   );
 
