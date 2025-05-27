@@ -7,13 +7,13 @@ ENTITY PC IS
         clk : IN STD_LOGIC;
         rst : IN STD_LOGIC;
         wr_en : IN STD_LOGIC;
-        data_in : IN UNSIGNED(15 DOWNTO 0);
-        data_out : OUT UNSIGNED(15 DOWNTO 0)
+        data_in : IN UNSIGNED(6 DOWNTO 0);
+        data_out : OUT UNSIGNED(6 DOWNTO 0)
     );
 END ENTITY;
 
 ARCHITECTURE a_PC OF PC IS
-    SIGNAL registro : UNSIGNED(15 DOWNTO 0);
+    SIGNAL registro : UNSIGNED(6 DOWNTO 0);
 BEGIN
     PROCESS (clk, rst, wr_en)
     BEGIN

@@ -8,14 +8,17 @@ END ENTITY;
 ARCHITECTURE a_PC_ROM_tb OF PC_ROM_tb IS
   SIGNAL clk, finished : STD_LOGIC := '0';
   SIGNAL rst : STD_LOGIC := '0';
-  SIGNAL data_out : UNSIGNED(15 DOWNTO 0);
+  SIGNAL data_out : UNSIGNED(14 DOWNTO 0);
 
   CONSTANT period_time : TIME := 100 ns;
   COMPONENT PC_ROM IS
     PORT (
       clk : IN STD_LOGIC;
       rst : IN STD_LOGIC;
-      data_out : OUT UNSIGNED(15 DOWNTO 0)
+      data_in : IN UNSIGNED(6 DOWNTO 0);
+      wr_en : IN STD_LOGIC;
+      jump_en : IN STD_LOGIC;
+      data_out : OUT UNSIGNED(14 DOWNTO 0)
     );
   END COMPONENT;
 BEGIN
@@ -24,6 +27,7 @@ BEGIN
     clk => clk,
     rst => rst,
     data_in => (OTHERS => '0'), -- Assuming no input data for this test
+    jump_en => '0', -- Assuming jump_en is always disabled for this test
     wr_en => '0', -- Assuming wr_en is always enabled for this test
     data_out => data_out
   );

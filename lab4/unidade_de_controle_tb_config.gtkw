@@ -1,0 +1,33 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Tue May 27 00:24:56 2025
+[*]
+[dumpfile] "/home/gefgu/repos/riscv-microprocessor/lab4/unidade_de_controle_tb.ghw"
+[dumpfile_mtime] "Tue May 27 00:22:25 2025"
+[dumpfile_size] 5020
+[savefile] "/home/gefgu/repos/riscv-microprocessor/lab4/unidade_de_controle_tb_config.gtkw"
+[timestart] 0
+[size] 1920 1016
+[pos] -38 -38
+*-29.556692 1133000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.unidade_de_controle_tb.
+[treeopen] top.unidade_de_controle_tb.u_unidade_de_controle.
+[treeopen] top.unidade_de_controle_tb.u_unidade_de_controle.u_pc_rom.
+[sst_width] 233
+[signals_width] 355
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+top.unidade_de_controle_tb.clk
+top.unidade_de_controle_tb.rst
+top.unidade_de_controle_tb.u_unidade_de_controle.write_on_pc
+top.unidade_de_controle_tb.u_unidade_de_controle.jump_en
+top.unidade_de_controle_tb.u_unidade_de_controle.estado
+@22
+#{top.unidade_de_controle_tb.u_unidade_de_controle.opcode[3:0]} top.unidade_de_controle_tb.u_unidade_de_controle.opcode[3] top.unidade_de_controle_tb.u_unidade_de_controle.opcode[2] top.unidade_de_controle_tb.u_unidade_de_controle.opcode[1] top.unidade_de_controle_tb.u_unidade_de_controle.opcode[0]
+#{top.unidade_de_controle_tb.u_unidade_de_controle.constante[6:0]} top.unidade_de_controle_tb.u_unidade_de_controle.constante[6] top.unidade_de_controle_tb.u_unidade_de_controle.constante[5] top.unidade_de_controle_tb.u_unidade_de_controle.constante[4] top.unidade_de_controle_tb.u_unidade_de_controle.constante[3] top.unidade_de_controle_tb.u_unidade_de_controle.constante[2] top.unidade_de_controle_tb.u_unidade_de_controle.constante[1] top.unidade_de_controle_tb.u_unidade_de_controle.constante[0]
+#{top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[14:0]} top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[14] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[13] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[12] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[11] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[10] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[9] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[8] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[7] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[6] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[5] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[4] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[3] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[2] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[1] top.unidade_de_controle_tb.u_unidade_de_controle.instrucao[0]
+#{top.unidade_de_controle_tb.u_unidade_de_controle.u_pc_rom.endereco[6:0]} top.unidade_de_controle_tb.u_unidade_de_controle.u_pc_rom.endereco[6] top.unidade_de_controle_tb.u_unidade_de_controle.u_pc_rom.endereco[5] top.unidade_de_controle_tb.u_unidade_de_controle.u_pc_rom.endereco[4] top.unidade_de_controle_tb.u_unidade_de_controle.u_pc_rom.endereco[3] top.unidade_de_controle_tb.u_unidade_de_controle.u_pc_rom.endereco[2] top.unidade_de_controle_tb.u_unidade_de_controle.u_pc_rom.endereco[1] top.unidade_de_controle_tb.u_unidade_de_controle.u_pc_rom.endereco[0]
+[pattern_trace] 1
+[pattern_trace] 0

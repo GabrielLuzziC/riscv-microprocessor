@@ -14,16 +14,14 @@ ARCHITECTURE a_unidade_de_controle_tb OF unidade_de_controle_tb IS
   COMPONENT unidade_de_controle IS
     PORT (
       clk : IN STD_LOGIC;
-      rst : IN STD_LOGIC;
-      data_out : OUT UNSIGNED(15 DOWNTO 0)
+      rst : IN STD_LOGIC
     );
   END COMPONENT;
 BEGIN
-  uut : unidade_de_controle
+  u_unidade_de_controle : unidade_de_controle
   PORT MAP(
     clk => clk,
-    rst => rst,
-    data_out => data_out
+    rst => rst
   );
 
   reset_global : PROCESS

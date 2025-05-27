@@ -1,34 +1,34 @@
 v 4
-file . "unidade_de_controle.vhd" "d1c85eb3cd36a5e8464737267f4b233e8494ab78" "20250526235144.881":
-  entity unidade_de_controle at 1( 0) + 0 on 53;
-  architecture a_unidade_de_controle of unidade_de_controle at 13( 216) + 0 on 54;
+file . "unidade_de_controle.vhd" "ccdd86682f1887d0f8e6bce6da2044013be79ef0" "20250527002512.770":
+  entity unidade_de_controle at 1( 0) + 0 on 89;
+  architecture a_unidade_de_controle of unidade_de_controle at 12( 174) + 0 on 90;
 file . "PC_ROM_tb.vhd" "0d7df58e610c13c8dbab1a7543b7e67513c75894" "20250526222127.525":
   entity pc_rom_tb at 1( 0) + 0 on 33;
   architecture a_pc_rom_tb of pc_rom_tb at 8( 103) + 0 on 34;
 file . "PC_soma_tb.vhd" "09cb28d719d35be5e204ee17e004a8bddaa977f3" "20250523183517.279":
   entity pc_soma_tb at 1( 0) + 0 on 27;
   architecture a_pc_soma_tb of pc_soma_tb at 8( 111) + 0 on 28;
-file . "PC.vhd" "c32cbd3dc49082d07df98aaaaca4d3f0dca2c933" "20250526222311.723":
-  entity pc at 1( 0) + 0 on 39;
-  architecture a_pc of pc at 15( 289) + 0 on 40;
+file . "PC.vhd" "ef23e1b7f6bcfcc8094f5b6dbe98a8fe8c0eeceb" "20250527001237.342":
+  entity pc at 1( 0) + 0 on 67;
+  architecture a_pc of pc at 15( 287) + 0 on 68;
 file . ".\maquina_estados_tb.vhd" "e34a8f97587225b61369f49159789761804f2d96" "20250523181953.199":
   entity maquina_estados_tb at 1( 0) + 0 on 19;
   architecture a_maquina_estados_tb of maquina_estados_tb at 8( 122) + 0 on 20;
 file . "ROM_tb.vhd" "5680ec5fecc7bfe2046ea65f2fe38ea984ef9716" "20250523180945.278":
   entity rom_tb at 1( 0) + 0 on 13;
   architecture a_rom_tb of rom_tb at 8( 107) + 0 on 14;
-file . "ROM.vhd" "6fea59c5a380dd10affd89a4b39e17b51b89b385" "20250526222748.892":
-  entity rom at 1( 0) + 0 on 51;
-  architecture a_rom of rom at 13( 227) + 0 on 52;
-file . "PC_soma.vhd" "693f82a447185c4875b04479a61b1274592fa7c4" "20250526222305.842":
-  entity pc_soma at 1( 0) + 0 on 37;
-  architecture a_pc_soma of pc_soma at 15( 294) + 0 on 38;
-file . "PC_ROM.vhd" "67148979c2c8b677d454753f4a48f8c6fbe8b84c" "20250526235203.159":
-  entity pc_rom at 1( 0) + 0 on 57;
-  architecture a_pc_rom of pc_rom at 15( 293) + 0 on 58;
-file . "unidade_de_controle_tb.vhd" "7a094e2644934790819080787f78b561a17b1fb7" "20250526235148.393":
-  entity unidade_de_controle_tb at 1( 0) + 0 on 55;
-  architecture a_unidade_de_controle_tb of unidade_de_controle_tb at 8( 116) + 0 on 56;
-file . "maquina_estados.vhd" "e81a8876d6be8abe48a646a40410e03d3c911407" "20250526235234.624":
-  entity maquina_estados at 1( 0) + 0 on 61;
-  architecture a_maquina_estados of maquina_estados at 13( 214) + 0 on 62;
+file . "ROM.vhd" "0f84db5000e24a63dc7e7c1e85540feb72dc8533" "20250527001718.700":
+  entity rom at 1( 0) + 0 on 81;
+  architecture a_rom of rom at 13( 227) + 0 on 82;
+file . "PC_soma.vhd" "a63d076ec553b67bb470e11f8f154814b34167c4" "20250527002217.515":
+  entity pc_soma at 1( 0) + 0 on 83;
+  architecture a_pc_soma of pc_soma at 16( 324) + 0 on 84;
+file . "PC_ROM.vhd" "af925571949fd42b217b9c8ae0e99cb04a24033b" "20250527002224.221":
+  entity pc_rom at 1( 0) + 0 on 85;
+  architecture a_pc_rom of pc_rom at 16( 406) + 0 on 86;
+file . "unidade_de_controle_tb.vhd" "17e22e1fada08e2e81cadb8576ddca9c58884cc9" "20250527002505.222":
+  entity unidade_de_controle_tb at 1( 0) + 0 on 87;
+  architecture a_unidade_de_controle_tb of unidade_de_controle_tb at 8( 116) + 0 on 88;
+file . "maquina_estados.vhd" "e81a8876d6be8abe48a646a40410e03d3c911407" "20250527001243.333":
+  entity maquina_estados at 1( 0) + 0 on 69;
+  architecture a_maquina_estados of maquina_estados at 13( 214) + 0 on 70;
