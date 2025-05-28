@@ -37,10 +37,12 @@ BEGIN
 
     in_1_temp <= '0' & in_1;
     in_2_temp <= '0' & in_2;
-    out_temp <= in_1_temp + in_2_temp;
 
-    carry_flag <= '1' WHEN (out_temp(16) = '1') ELSE
-        '0';
+    out_temp <= in_1_temp + in_2_temp WHEN (selec_op = "000") ELSE
+        in_1_temp - in_2_temp WHEN (selec_op = "001") ELSE
+        "0000000000000000";
+
+    carry_flag <= out_temp(16);
 
     zero_flag <= '1' WHEN (result = "0000000000000000") ELSE
         '0';
