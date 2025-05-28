@@ -16,7 +16,7 @@ BEGIN
     PROCESS (clk, rst)
     BEGIN
         IF rst = '1' THEN
-            registro <= '0';    
+            registro <= '0';
         ELSIF (rising_edge(clk)) THEN
             registro <= NOT registro;
         END IF;

@@ -1,0 +1,25 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Mon May 26 22:28:45 2025
+[*]
+[dumpfile] "/home/gefgu/repos/riscv-microprocessor/lab4/PC_ROM_tb.ghw"
+[dumpfile_mtime] "Mon May 26 22:27:50 2025"
+[dumpfile_size] 5118
+[savefile] "/home/gefgu/repos/riscv-microprocessor/lab4/PC_ROM_tb_config.gtkw"
+[timestart] 0
+[size] 1920 1016
+[pos] -51 -51
+*-27.500282 986200000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.pc_rom_tb.
+[sst_width] 233
+[signals_width] 304
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+top.pc_rom_tb.rst
+top.pc_rom_tb.clk
+@23
+#{top.pc_rom_tb.data_out[15:0]} top.pc_rom_tb.data_out[15] top.pc_rom_tb.data_out[14] top.pc_rom_tb.data_out[13] top.pc_rom_tb.data_out[12] top.pc_rom_tb.data_out[11] top.pc_rom_tb.data_out[10] top.pc_rom_tb.data_out[9] top.pc_rom_tb.data_out[8] top.pc_rom_tb.data_out[7] top.pc_rom_tb.data_out[6] top.pc_rom_tb.data_out[5] top.pc_rom_tb.data_out[4] top.pc_rom_tb.data_out[3] top.pc_rom_tb.data_out[2] top.pc_rom_tb.data_out[1] top.pc_rom_tb.data_out[0]
+[pattern_trace] 1
+[pattern_trace] 0
