@@ -10,7 +10,6 @@ ARCHITECTURE a_PC_soma_tb OF PC_soma_tb IS
     SIGNAL rst : STD_LOGIC := '0';
     SIGNAL wr_en : STD_LOGIC := '1';
     SIGNAL data_in : UNSIGNED(6 DOWNTO 0);
-    ;
     SIGNAL data_out : UNSIGNED(6 DOWNTO 0);
 
     CONSTANT period_time : TIME := 100 ns;

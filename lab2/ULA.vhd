@@ -24,6 +24,7 @@ ARCHITECTURE a_ULA OF ULA IS
     SIGNAL result : UNSIGNED (15 DOWNTO 0);
 
 BEGIN
+    -- soma & sub --
     result <= in_1 + in_2 WHEN (selec_op = "000") ELSE
         in_1 - in_2 WHEN (selec_op = "001") ELSE
         "0000000000000000";
@@ -35,6 +36,7 @@ BEGIN
         '1' WHEN (selec_op = "100" AND in_1 /= in_2) ELSE
         '0';
 
+    -- carry flag --
     in_1_temp <= '0' & in_1;
     in_2_temp <= '0' & in_2;
 
@@ -44,6 +46,7 @@ BEGIN
 
     carry_flag <= out_temp(16);
 
+    -- zero flag --
     zero_flag <= '1' WHEN (result = "0000000000000000") ELSE
         '0';
 END ARCHITECTURE;
