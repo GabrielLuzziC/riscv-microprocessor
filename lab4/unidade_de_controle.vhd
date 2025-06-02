@@ -11,7 +11,7 @@ END ENTITY;
 
 ARCHITECTURE a_unidade_de_controle OF unidade_de_controle IS
   SIGNAL rom_temp_out : UNSIGNED(14 DOWNTO 0);
-  SIGNAL estado : STD_LOGIC;
+  SIGNAL estado : unsigned(1 DOWNTO 0);
   SIGNAL write_on_pc : STD_LOGIC;
   SIGNAL jump_en : STD_LOGIC;
   SIGNAL instrucao : UNSIGNED(14 DOWNTO 0);
@@ -33,7 +33,7 @@ ARCHITECTURE a_unidade_de_controle OF unidade_de_controle IS
     PORT (
       clk : IN STD_LOGIC;
       rst : IN STD_LOGIC;
-      estado : OUT STD_LOGIC
+      estado : OUT unsigned(1 DOWNTO 0)
     );
   END COMPONENT;
 BEGIN
@@ -55,7 +55,7 @@ BEGIN
   );
 
   opcode <= instrucao(14 DOWNTO 11); -- 4 MSB
-  write_on_pc <= '1' WHEN estado = '1' ELSE
+  write_on_pc <= '1' WHEN estado = "01" ELSE
     '0';
 
   jump_en <= '1' WHEN opcode = "1111" ELSE
