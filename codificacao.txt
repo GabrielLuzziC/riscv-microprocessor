@@ -5,12 +5,12 @@ NOP:    0000_000_000_00000
 ADD:    1000_ddd_sss_xxxxx
 SUB:    1001_ddd_sss_xxxxx
 SUBI:   0001_ddd_ccc_ccccc
-MOV:    1010_ddd_sss_xxxxx
-LI:     0010_ddd_ccc_ccccc
+MOV:    1101_ddd_sss_xxxxx
+LI:     0101_ddd_ccc_ccccc
 JUMP:   0111_xxx_ccc_ccccc
 
-- abaixo ainda não precisa para o lab5 (refletir)
-AND:    1101_ddd_sss_xxxxx
+- abaixo ainda não precisa para o lab5 (refletir) (Talvez usar algo nos sss das constantes para ser um funct3?)
+AND:    1111_ddd_sss_xxxxx
 OR:     1110_ddd_sss_xxxxx
 CMPI
 BNE:    0100
@@ -25,7 +25,7 @@ xxxx é irrelevante
 
 
 
-OPCODE
+OPCODE (INICIALMENTE)
 MSB 1 -> operações entre registradores
 MSB 0 -> operações com constantes/imediato
 Outros 3 -> opcode da ULA / ou outra coisa

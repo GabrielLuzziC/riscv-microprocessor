@@ -12,7 +12,6 @@ ARCHITECTURE a_reg_ULA_tb OF reg_ULA_tb IS
       rst : IN STD_LOGIC;
       wr_en : IN STD_LOGIC;
       selec_op : IN UNSIGNED(2 DOWNTO 0);
-      boolean_flag : OUT STD_LOGIC;
       carry_flag : OUT STD_LOGIC;
       zero_flag : OUT STD_LOGIC;
       selec_reg_in : IN UNSIGNED(2 DOWNTO 0);
@@ -33,7 +32,6 @@ BEGIN
     rst => rst,
     wr_en => wr_en,
     selec_op => "000", -- Testando a ULA + Banco de Reg com a operação de soma
-    boolean_flag => OPEN,
     carry_flag => OPEN,
     zero_flag => OPEN,
     selec_reg_in => selec_reg_in,

@@ -5,7 +5,8 @@ C. LI A, 0
    ADD A, R3
    ADD A, R4
    MOV R5, A
-D. SUBI R5, 1
+D. SUBI A, 1 -- A já está com o valor de R5
+   MOV R5, A
 E. JUMP 20
 
 F. MOV A, R5

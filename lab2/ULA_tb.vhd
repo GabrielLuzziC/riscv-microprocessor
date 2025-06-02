@@ -10,7 +10,6 @@ ARCHITECTURE a_ULA_tb OF ULA_tb IS
     PORT (
       selec_op : IN signed (2 DOWNTO 0);
       in_1, in_2 : IN signed (15 DOWNTO 0);
-      boolean_flag : OUT STD_LOGIC;
       carry_flag : OUT STD_LOGIC;
       zero_flag : OUT STD_LOGIC;
       output : OUT signed (15 DOWNTO 0)
@@ -27,7 +26,6 @@ BEGIN
     selec_op => select_op,
     in_1 => in_1,
     in_2 => in_2,
-    boolean_flag => boolean_flag,
     carry_flag => carry_flag,
     zero_flag => zero_flag,
     output => output
@@ -159,7 +157,7 @@ BEGIN
     -- ###########  MAIOR QUE ###########
 
     -- TESTES DE MAIOR QUE COM NÚMEROS Positivos
-    
+
     -- Teste de Maior Que - zero
     select_op <= "010"; -- MAIOR QUE 
     in_1 <= "0000000000000000"; -- 0

@@ -8,13 +8,14 @@ USE ieee.numeric_std.ALL;
 -- 010 -> maior que
 -- 011 -> menor que
 -- 100 -> diferente
+-- 101 -> operações de carregar valores em registradores
+-- 111 -> operações de jump
 ENTITY ULA IS
     PORT (
         selec_op : IN UNSIGNED (2 DOWNTO 0);
         in_1, in_2 : IN UNSIGNED (15 DOWNTO 0);
-        boolean_flag : OUT STD_LOGIC;
-        carry_flag : OUT STD_LOGIC;
-        zero_flag : OUT STD_LOGIC; -- Talvez usar a zero_flag como boolean_flag??? 0 = false, 1 = true
+        carry_flag : OUT STD_LOGIC; -- carry flag agora é a boolean flag
+        zero_flag : OUT STD_LOGIC;
         output : OUT UNSIGNED (15 DOWNTO 0)
     );
 END ENTITY;
@@ -22,6 +23,7 @@ END ENTITY;
 ARCHITECTURE a_ULA OF ULA IS
     SIGNAL in_1_temp, in_2_temp, out_temp : UNSIGNED (16 DOWNTO 0);
     SIGNAL result : UNSIGNED (15 DOWNTO 0);
+    SIGNAL boolean_flag : STD_LOGIC;
 
 BEGIN
     -- soma & sub --
@@ -44,7 +46,7 @@ BEGIN
         in_1_temp - in_2_temp WHEN (selec_op = "001") ELSE
         "0000000000000000";
 
-    carry_flag <= out_temp(16);
+    carry_flag <= out_temp(16) OR boolean_flag;
 
     -- zero flag --
     zero_flag <= '1' WHEN (result = "0000000000000000") ELSE
