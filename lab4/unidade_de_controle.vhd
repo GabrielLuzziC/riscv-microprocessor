@@ -5,7 +5,9 @@ USE ieee.numeric_std.ALL;
 ENTITY unidade_de_controle IS
   PORT (
     clk : IN STD_LOGIC;
-    rst : IN STD_LOGIC
+    rst : IN STD_LOGIC;
+    estado : OUT unsigned(1 DOWNTO 0) -- estado da maquina de estados;
+    instrucao : OUT UNSIGNED(14 DOWNTO 0) -- instrução a ser executada
   );
 END ENTITY;
 

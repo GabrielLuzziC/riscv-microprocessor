@@ -12,7 +12,7 @@ E. JUMP 20
 F. MOV A, R5
    SUB R5, A
 
-20. G. MOV R5, R3
+G. MOV R5, R3 -- Está na linha 20
 H. JUMP (Endereço C)
 I. MOV A, R3
    SUB R3, A
