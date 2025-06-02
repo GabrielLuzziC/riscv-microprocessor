@@ -11,7 +11,7 @@ ARCHITECTURE a_processador_tb OF processador_tb IS
   COMPONENT processador
     PORT (
       clk : IN STD_LOGIC;
-      rst : IN STD_LOGIC;
+      rst : IN STD_LOGIC
     );
   END COMPONENT;
 
@@ -19,7 +19,7 @@ ARCHITECTURE a_processador_tb OF processador_tb IS
   SIGNAL rst : STD_LOGIC := '0';
   CONSTANT period_time : TIME := 100 ns;
 BEGIN
-  uut : ROM
+  uut : processador
   PORT MAP(
     clk => clk,
     rst => rst

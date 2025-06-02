@@ -12,7 +12,7 @@ USE ieee.numeric_std.ALL;
 ENTITY processador IS
     PORT (
         clk : IN STD_LOGIC;
-        rst : IN STD_LOGIC;
+        rst : IN STD_LOGIC
     );
 END ENTITY;
 
@@ -70,7 +70,7 @@ BEGIN
     PORT MAP(
         clk => clk,
         rst => rst,
-        wr_en => wr_en_reg_ULA
+        wr_en => wr_en_reg_ULA,
         selec_op => reg_instrucao_out(13 DOWNTO 11), -- Bits 13 ao 11 da instrução
         carry_flag => carry_flag,
         zero_flag => zero_flag,
@@ -85,13 +85,15 @@ BEGIN
         clk => clk,
         rst => rst,
         wr_en => wr_en_reg_instrucao,
-        data_in => "0" & uc_instrucao
+        data_in => reg_instrucao_in,
         data_out => reg_instrucao_out
     );
 
+    reg_instrucao_in <= ('0' & uc_instrucao);
+
     wr_en_reg_instrucao <= '1' WHEN uc_estado = "00" ELSE
-    '0'; -- Fetch
+        '0'; -- Fetch
 
     wr_en_reg_ULA <= '1' WHEN uc_estado = "10" ELSE
-    '0'; -- Execute
+        '0'; -- Execute
 END ARCHITECTURE;

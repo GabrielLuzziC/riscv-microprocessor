@@ -44,7 +44,7 @@ BEGIN
 
     out_temp <= in_1_temp + in_2_temp WHEN (selec_op = "000") ELSE
         in_1_temp - in_2_temp WHEN (selec_op = "001") ELSE
-        "0000000000000000";
+        "00000000000000000"; -- FIXED: Now 17 bits (added one more '0')
 
     carry_flag <= out_temp(16) OR boolean_flag;
 
