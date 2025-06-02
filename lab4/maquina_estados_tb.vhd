@@ -1,6 +1,6 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL;   
+USE ieee.numeric_std.ALL;
 
 ENTITY maquina_estados_tb IS
 END ENTITY;
@@ -10,12 +10,13 @@ ARCHITECTURE a_maquina_estados_tb OF maquina_estados_tb IS
         PORT (
             clk : IN STD_LOGIC;
             rst : IN STD_LOGIC;
-            estado : OUT STD_LOGIC
+            estado : OUT unsigned(1 DOWNTO 0)
         );
     END COMPONENT;
 
     -- define e inicializa os sinais
-    SIGNAL clk, rst, wr_en, estado : STD_LOGIC := '0';
+    SIGNAL clk, rst, wr_en : STD_LOGIC := '0';
+    SIGNAL estado : unsigned(1 DOWNTO 0);
     SIGNAL finished : STD_LOGIC := '0';
     CONSTANT period_time : TIME := 100 ns;
 
@@ -34,7 +35,7 @@ BEGIN
         rst <= '0';
         WAIT;
     END PROCESS;
-    
+
     sim_time_proc : PROCESS
     BEGIN
         WAIT FOR 10 us;
@@ -45,10 +46,10 @@ BEGIN
     clk_proc : PROCESS
     BEGIN
         WHILE finished /= '1' LOOP
-        clk <= '0';
-        WAIT FOR period_time/2;
-        clk <= '1';
-        WAIT FOR period_time/2;
+            clk <= '0';
+            WAIT FOR period_time/2;
+            clk <= '1';
+            WAIT FOR period_time/2;
         END LOOP;
         WAIT;
     END PROCESS clk_proc;
