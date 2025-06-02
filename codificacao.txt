@@ -1,0 +1,49 @@
+MSB b14                 LSB b0
+        |             |
+
+NOP:    0000_000_000_00000
+ADD:    1000_ddd_sss_xxxxx
+SUB:    1001_ddd_sss_xxxxx
+SUBI:   0001_ddd_ccc_ccccc
+MOV:    1010_ddd_sss_xxxxx
+LI:     0010_ddd_ccc_ccccc
+JUMP:   0111_xxx_ccc_ccccc
+
+- abaixo ainda não precisa para o lab5 (refletir)
+AND:    1101_ddd_sss_xxxxx
+OR:     1110_ddd_sss_xxxxx
+CMPI
+BNE:    0100
+BCC:    0111
+
+onde
+ddd identifica o registrador destino
+sss identifica o registrador fonte
+ccccc identifica a constante de 5 bits em complemento de 2
+ccc_ccccc identifica a constante de 8 bits em complemento de 2
+xxxx é irrelevante
+
+
+
+OPCODE
+MSB 1 -> operações entre registradores
+MSB 0 -> operações com constantes/imediato
+Outros 3 -> opcode da ULA / ou outra coisa
+
+
+
+Auxiliar:
+{'Acumulador ou não': 'ULA com acumulador',
+ 'Largura da ROM / instrução em bits': [15],
+ 'Número de registradores no banco': [7], -> 111 representa acumulador (A)
+ 'ADD ops': 'ADD com dois operandos apenas',
+ 'Carga de constantes': 'Carrega diretamente com LD sem somar',
+ 'SUB ops': 'Subtração com dois operandos apenas',
+ 'ADD ctes': 'ADD apenas entre registradores, nunca com constantes',
+ 'SUB ctes': 'Há instrução que subtrai uma constante',
+ 'Subtração': 'Subtração com SUB sem borrow',
+ 'Comparações': 'Comparação apenas com CMPI', -> Comparação com constante
+ 'Saltos condicionais': ['BNE', 'BCC'],
+ 'Saltos': 'Incondicional é absoluto e condicional é relativo',
+ 'Validação -- final do loop': 'Detecção do MSB setado usando AND',
+ 'Validação -- complicações': 'Exceção endereço inválido RAM'}
