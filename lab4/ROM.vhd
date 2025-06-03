@@ -14,10 +14,10 @@ ARCHITECTURE a_ROM OF ROM IS
     TYPE mem IS ARRAY (0 TO 127) OF UNSIGNED (14 DOWNTO 0);
     CONSTANT conteudo_rom : mem := (
         B"0101_011_000_00101", -- LI R3, 5
-        "000000000000000",
-        "000000000000000",
-        "000000000000000",
-        "000000000000000",
+        B"0101_100_000_01000", -- LI R4, 8
+        B"0101_111_000_00000", -- LI A, 0 -> Testar outro valor para ver funcionando
+        B"1000_111_011_01000", -- ADD A, R3
+        B"1000_111_100_01000", -- ADD A, R4
         "000000000000000",
         "000000000000000",
         "000000000000000",

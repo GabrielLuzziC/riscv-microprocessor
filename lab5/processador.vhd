@@ -94,8 +94,8 @@ BEGIN
 
     reg_instrucao_in <= ('0' & uc_instrucao);
 
-    wr_en_reg_instrucao <= '1' WHEN uc_estado = "00" ELSE
-        '0'; -- Fetch
+    wr_en_reg_instrucao <= '1' WHEN uc_estado = "01" ELSE
+        '0'; -- Decode
 
     wr_en_reg_ULA <= '1' WHEN uc_estado = "10" ELSE
         '0'; -- Execute

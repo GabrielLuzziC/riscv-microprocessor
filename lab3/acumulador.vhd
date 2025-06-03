@@ -6,13 +6,13 @@ ENTITY acumulador IS
     PORT (
         clk : IN STD_LOGIC;
         rst : IN STD_LOGIC;
+        wr_en : IN STD_LOGIC; -- Sinal de escrita, sempre ativo
         data_in : IN UNSIGNED(15 DOWNTO 0);
         data_out : OUT UNSIGNED(15 DOWNTO 0)
     );
 END ENTITY acumulador;
 
 ARCHITECTURE a_acumulador OF acumulador IS
-    SIGNAL wr_en : STD_LOGIC := '1'; --sempre escreve nele
     COMPONENT reg16bits
         PORT (
             clk : IN STD_LOGIC;

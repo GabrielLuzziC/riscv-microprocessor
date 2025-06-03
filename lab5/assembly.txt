@@ -1,7 +1,7 @@
 
 A. LI R3, 5
 B. LI R4, 8
-C. LI A, 0
+C. LI A, 0 -- Como o loop volta para cá, tem que resetar o acumulador
    ADD A, R3
    ADD A, R4
    MOV R5, A
@@ -31,5 +31,5 @@ D. Subtrai 1 de R5
 E. Salta para o endereço 20
 F. Zera R5 (nunca será executada)
 G. No endereço 20, copia R5 para R3
-H. Salta para o passo C desta lista (R5 <= R3+R4)
+H. Salta para o passo C desta lista (R5 <= R3+R4) -> Não é condicional, apenas indicação
 I. Zera R3 (nunca será executada)
