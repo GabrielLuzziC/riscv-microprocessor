@@ -9,13 +9,11 @@ D. SUBI A, 1 -- A já está com o valor de R5
    MOV R5, A
 E. JUMP 20
 
-F. MOV A, R5
-   SUB R5, A
+F. LI R5, 0
 
 G. MOV R5, R3 -- Está na linha 20
 H. JUMP (Endereço C)
-I. MOV A, R3
-   SUB R3, A
+I. LI R3, 0
 
 
 
