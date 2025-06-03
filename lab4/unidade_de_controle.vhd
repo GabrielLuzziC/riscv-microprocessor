@@ -57,10 +57,10 @@ BEGIN
   );
 
   opcode <= instrucao_int(14 DOWNTO 11); -- 4 MSB
-  write_on_pc <= '1' WHEN estado_int = "01" ELSE
+  write_on_pc <= '1' WHEN estado_int = "10" ELSE
     '0';
 
-  jump_en <= '1' WHEN opcode = "1111" ELSE
+  jump_en <= '1' WHEN opcode = "0111" ELSE
     '0';
 
   constante <= instrucao_int(6 DOWNTO 0); -- 7 LSB

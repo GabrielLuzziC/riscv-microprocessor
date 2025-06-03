@@ -56,6 +56,9 @@ ARCHITECTURE a_processador OF processador IS
     SIGNAL uc_instrucao : UNSIGNED(14 DOWNTO 0); -- Instrução a ser executada
     SIGNAL wr_en_reg_instrucao, wr_en_reg_ULA : STD_LOGIC;
     SIGNAL carry_flag, zero_flag : STD_LOGIC;
+    SIGNAL opcode : UNSIGNED(3 DOWNTO 0); -- 4 MSB da instrução
+    SIGNAL imediato : UNSIGNED(15 DOWNTO 0);
+    SIGNAL is_operation_with_immediate : STD_LOGIC;
 
 BEGIN
     uc : unidade_de_controle
@@ -96,4 +99,15 @@ BEGIN
 
     wr_en_reg_ULA <= '1' WHEN uc_estado = "10" ELSE
         '0'; -- Execute
+
+    opcode <= reg_instrucao_out(14 DOWNTO 11); -- 4 MSB da instrução
+
+    is_operation_with_immediate <= '1' WHEN (opcode = "0101") ELSE
+        '0'; -- MOV
+
+    imediato <= (15 DOWNTO 5 => reg_instrucao_out(4)) & reg_instrucao_out(4 DOWNTO 0); -- Extensão de sinal 5 LSB da instrução 
+
+    reg_ULA_data_in <= imediato WHEN (is_operation_with_immediate = '1') ELSE
+        (OTHERS => '0'); -- Dados de entrada para ULA
+
 END ARCHITECTURE;
