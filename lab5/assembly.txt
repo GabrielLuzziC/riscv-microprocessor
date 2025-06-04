@@ -1,4 +1,3 @@
-
 A. LI R3, 5
 B. LI R4, 8
 C. LI A, 0 -- Como o loop volta para cá, tem que resetar o acumulador
@@ -14,7 +13,6 @@ F. LI R5, 0
 G. MOV R5, R3 -- Está na linha 20
 H. JUMP (Endereço C)
 I. LI R3, 0
-
 
 
 

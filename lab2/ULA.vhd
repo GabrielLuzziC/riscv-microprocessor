@@ -5,7 +5,8 @@ USE ieee.numeric_std.ALL;
 -- OPERAÇÕES
 -- 000 -> soma
 -- 001 -> subtração
--- 010 -> maior que
+-- 010 -> subtração com cte
+-- 010 -> maior que -- talvez retirar 
 -- 011 -> menor que
 -- 100 -> diferente
 -- 101 -> operações de carregar valores em registradores
@@ -28,7 +29,7 @@ ARCHITECTURE a_ULA OF ULA IS
 BEGIN
     -- soma & sub --
     result <= in_1 + in_2 WHEN (selec_op = "000") ELSE
-        in_1 - in_2 WHEN (selec_op = "001") ELSE
+        in_1 - in_2 WHEN (selec_op = "001" OR selec_op = "010") ELSE
         "0000000000000000";
 
     output <= result;
