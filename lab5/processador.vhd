@@ -37,8 +37,7 @@ ARCHITECTURE a_processador OF processador IS
             selec_reg_in : IN UNSIGNED(2 DOWNTO 0);
             selec_reg_out : IN UNSIGNED(2 DOWNTO 0);
             data_in : IN UNSIGNED(15 DOWNTO 0);
-            data_out : OUT UNSIGNED(15 DOWNTO 0);
-            is_mov : IN STD_LOGIC
+            data_out : OUT UNSIGNED(15 DOWNTO 0)
         );
     END COMPONENT;
 
@@ -81,8 +80,7 @@ BEGIN
         selec_reg_in => reg_instrucao_out(10 DOWNTO 8), -- Bits 10 ao 8 da instrução
         selec_reg_out => reg_instrucao_out(7 DOWNTO 5), -- Bits 7 ao 5 da instrução
         data_in => reg_ULA_data_in, -- Dados de entrada
-        data_out => reg_ULA_data_out, -- Dados de saída
-        is_mov => is_operation_with_immediate
+        data_out => reg_ULA_data_out -- Dados de saída
     );
 
     c_instrucao : reg16bits

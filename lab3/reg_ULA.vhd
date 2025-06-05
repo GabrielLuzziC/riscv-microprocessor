@@ -13,8 +13,7 @@ ENTITY reg_ULA IS
         selec_reg_in : IN UNSIGNED(2 DOWNTO 0);
         selec_reg_out : IN UNSIGNED(2 DOWNTO 0);
         data_in : IN UNSIGNED(15 DOWNTO 0);
-        data_out : OUT UNSIGNED(15 DOWNTO 0);
-        is_mov : IN STD_LOGIC -- Sinal para indicar se a operação é MOV
+        data_out : OUT UNSIGNED(15 DOWNTO 0)
     );
 END ENTITY;
 
@@ -54,7 +53,7 @@ ARCHITECTURE a_reg_ULA OF reg_ULA IS
     SIGNAL load_reg_acc : STD_LOGIC; -- Sinal para carregar o registrador acumulador
     SIGNAL load_acc : STD_LOGIC; -- Sinal para carregar ou não o acumulador
     SIGNAL data_in_acc : UNSIGNED(15 DOWNTO 0); -- Sinal de entrada do acumulador
-    SIGNAL data_in_imediato : UNSIGNED(15 DOWNTO 0) := (OTHERS => '0'); -- Sinal de entrada do imediato
+    SIGNAL wr_en_acc : STD_LOGIC;
 
 BEGIN
     breg : banco_reg
@@ -72,7 +71,7 @@ BEGIN
     PORT MAP(
         clk => clk,
         rst => rst,
-        wr_en => wr_en,
+        wr_en => wr_en_acc,
         data_in => data_in_acc,
         data_out => data_out_acc
     );
@@ -87,15 +86,18 @@ BEGIN
     );
 
     data_out <= data_out_ula;
-    load_acc <= '1' WHEN (selec_reg_in = "111" AND selec_op = "101" AND is_mov = '0') ELSE
+    load_acc <= '1' WHEN (selec_reg_in = "111" AND selec_op = "101") ELSE
         '0'; -- Carrega o acumulador se o registrador de entrada for o acumulador e a operação for LOAD
     data_in_acc <= data_out_ula WHEN load_acc = '0' ELSE
         data_in;
-    load_reg_acc <= '1' WHEN (selec_reg_out = "111" AND selec_op = "101") ELSE
+    load_reg_acc <= '1' WHEN (selec_reg_out = "111") ELSE
         '0'; -- Carrega o registrador acumulador se o registrador de entrada for o acumulador e a operação não for LOAD
-    mux_acc <= data_out_acc WHEN load_reg_acc = '1' ELSE 
+    mux_acc <= data_out_acc WHEN load_reg_acc = '1' ELSE
         data_in; -- Se o registrador de saída for o acumulador, usa o valor do acumulador, caso contrário, usa a entrada
 
-    mux_reg_imediato <= data_in_imediato WHEN (selec_op = "010") ELSE
+    mux_reg_imediato <= data_in WHEN (selec_op = "010") ELSE
         data_out_reg; -- Se a operação for com imediato, usa o valor do imediato, caso contrário, usa o valor do registrador de saída
+
+    wr_en_acc <= '0' WHEN (selec_reg_out = "111" AND selec_op = "101" AND wr_en = '1') ELSE
+        wr_en; -- Não escreve no acumulador se a operação for LOAD e o registrador de saída for o acumulador
 END ARCHITECTURE;
