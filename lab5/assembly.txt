@@ -10,7 +10,8 @@ E. JUMP 20
 
 F. LI R5, 0
 
-G. MOV R5, R3 -- Está na linha 20
+G. MOV A, R3 -- Está na linha 20
+   MOV R5, A
 H. JUMP (Endereço C)
 I. LI R3, 0
 

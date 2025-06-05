@@ -54,6 +54,7 @@ ARCHITECTURE a_reg_ULA OF reg_ULA IS
     SIGNAL load_acc : STD_LOGIC; -- Sinal para carregar ou não o acumulador
     SIGNAL data_in_acc : UNSIGNED(15 DOWNTO 0); -- Sinal de entrada do acumulador
     SIGNAL wr_en_acc : STD_LOGIC;
+    SIGNAL is_mov_op : STD_LOGIC; -- New signal to detect MOV operations
 
 BEGIN
     breg : banco_reg
@@ -85,19 +86,44 @@ BEGIN
         output => data_out_ula
     );
 
+    -- THE FIXED PART - Update these signal assignments
+    -- Detect MOV operation (opcode 101)
+    is_mov_op <= '1' WHEN selec_op = "101" ELSE
+        '0';
+
+    -- Output the ULA result
     data_out <= data_out_ula;
-    load_acc <= '1' WHEN (selec_reg_in = "111" AND selec_op = "101") ELSE
-        '0'; -- Carrega o acumulador se o registrador de entrada for o acumulador e a operação for LOAD
-    data_in_acc <= data_out_ula WHEN load_acc = '0' ELSE
-        data_in;
+
+    -- Logic for writing to accumulator in MOV operation
+    -- If it's a MOV operation and the destination is accumulator (111)
+    load_acc <= '1' WHEN (selec_reg_in = "111" AND is_mov_op = '1') ELSE
+        '0';
+
+    -- Data input for accumulator comes from:
+    -- 1. If it's a MOV to accumulator: use data_out_reg (from register bank)
+    -- 2. Otherwise: use ULA output
+    data_in_acc <= data_out_reg WHEN (load_acc = '1') ELSE
+        data_out_ula;
+
+    -- Logic for using accumulator as source in MOV operation
+    -- If the source register is accumulator (111), use accumulator value
     load_reg_acc <= '1' WHEN (selec_reg_out = "111") ELSE
-        '0'; -- Carrega o registrador acumulador se o registrador de entrada for o acumulador e a operação não for LOAD
+        '0';
+
+    -- Data input for register bank:
+    -- If source is accumulator, use accumulator value
     mux_acc <= data_out_acc WHEN load_reg_acc = '1' ELSE
-        data_in; -- Se o registrador de saída for o acumulador, usa o valor do acumulador, caso contrário, usa a entrada
+        data_in;
 
+    -- Select register bank or immediate value for ULA
     mux_reg_imediato <= data_in WHEN (selec_op = "010") ELSE
-        data_out_reg; -- Se a operação for com imediato, usa o valor do imediato, caso contrário, usa o valor do registrador de saída
+        data_out_reg;
 
-    wr_en_acc <= '0' WHEN (selec_reg_out = "111" AND selec_op = "101" AND wr_en = '1') ELSE
-        wr_en; -- Não escreve no acumulador se a operação for LOAD e o registrador de saída for o acumulador
+    -- Enable writing to accumulator:
+    -- 1. Enable when destination is accumulator and it's a MOV operation
+    -- 2. Enable when it's a regular operation (non-MOV)
+    -- 3. Disable when it's a MOV from accumulator to register
+    wr_en_acc <= '1' WHEN (selec_reg_in = "111" AND is_mov_op = '1' AND wr_en = '1') ELSE -- Enable for MOV TO accumulator
+        '0' WHEN (selec_reg_out = "111" AND is_mov_op = '1' AND wr_en = '1') ELSE -- Disable for MOV FROM accumulator
+        wr_en; -- Normal operations
 END ARCHITECTURE;
