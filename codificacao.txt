@@ -4,17 +4,20 @@ MSB b14                 LSB b0
 NOP:    0000_000_000_00000
 ADD:    1000_ddd_sss_xxxxx
 SUB:    1001_ddd_sss_xxxxx
-SUBI:   0010_ddd_xxx_ccccc
+SUBI:   0001_ddd_xxx_ccccc //alterar na ULA
 MOV:    1101_ddd_sss_xxxxx
 LI:     0101_ddd_xxx_ccccc
-JUMP:   0111_xxx_xxx_ccccc
+JUMP:   0111_xxx_000_ccccc  //agr tem 000 - func3 = 000
+CMPI:   1111_ddd_000_ccccc
+BCC:    0111_ddd_001_ccccc  // func3 = 001
+
 
 - abaixo ainda não precisa para o lab5 (refletir) (Talvez usar algo nos xxx antes das constantes para ser um funct3?)
 AND:    1111_ddd_sss_xxxxx
 OR:     1110_ddd_sss_xxxxx
-CMPI
+
 BNE:    0100
-BCC:    0111
+
 
 onde
 ddd identifica o registrador destino

@@ -28,7 +28,7 @@ BEGIN
   reset_global : PROCESS
   BEGIN
     rst <= '1';
-    WAIT FOR period_time * 2;
+    WAIT FOR period_time / 2;
     rst <= '0';
     WAIT;
   END PROCESS;

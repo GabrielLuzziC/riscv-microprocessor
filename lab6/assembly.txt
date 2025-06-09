@@ -1,0 +1,26 @@
+A. LI R3, 0
+B. LI R4, 0
+C. LI A, 0
+    ADD A, R3
+    ADD A, R4
+    MOV R4, A
+
+D. LI R6, 1
+    LI A, R3
+    ADD A, R6
+    MOV R3, A
+
+E. CMPI A, 30
+    BCC -9    //volta 9 instruções   
+
+F.  MOV A, R4
+    MOV R5, A
+
+---------------------------------------------
+
+A. Carrega R3 (o registrador 3) com o valor 0
+B. Carrega R4 com 0
+C. Soma R3 com R4 e guarda em R4
+D. Soma 1 em R3
+E. Se R3<30 salta para a instrução do passo C *
+F. Copia valor de R4 para R5

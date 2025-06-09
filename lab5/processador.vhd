@@ -107,7 +107,7 @@ BEGIN
 
     imediato <= (15 DOWNTO 5 => reg_instrucao_out(4)) & reg_instrucao_out(4 DOWNTO 0); -- Extensão de sinal 5 LSB da instrução 
 
-    reg_ULA_data_in <= imediato WHEN (is_operation_with_immediate = '1') ELSE
+    reg_ULA_data_in <= imediato WHEN (is_operation_with_immediate = '1' OR (opcode = "1111" AND carry_flag = '1')) ELSE  -- REVER ISSO
         (OTHERS => '0'); -- Dados de entrada para ULA
 
 END ARCHITECTURE;
