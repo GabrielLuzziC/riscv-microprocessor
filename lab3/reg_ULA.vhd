@@ -11,6 +11,7 @@ ENTITY reg_ULA IS
         carry_flag : OUT STD_LOGIC;
         zero_flag : OUT STD_LOGIC;
         exec_en : IN STD_LOGIC; -- Enable writing to flag registers during execute stage
+        use_immediate : IN STD_LOGIC; -- New signal to indicate if immediate value is used
         selec_reg_in : IN UNSIGNED(2 DOWNTO 0);
         selec_reg_out : IN UNSIGNED(2 DOWNTO 0);
         data_in : IN UNSIGNED(15 DOWNTO 0);
@@ -83,6 +84,7 @@ BEGIN
         selec_op => selec_op,
         in_1 => data_out_acc,
         in_2 => mux_reg_imediato,
+        exec_en => exec_en, -- Enable flag updates during execution
         carry_flag => carry_flag,
         zero_flag => zero_flag,
         output => data_out_ula
@@ -118,7 +120,7 @@ BEGIN
         data_in;
 
     -- Select register bank or immediate value for ULA
-    mux_reg_imediato <= data_in WHEN (selec_op = "010") ELSE
+    mux_reg_imediato <= data_in WHEN (use_immediate = '1') ELSE
         data_out_reg;
 
     -- Enable writing to accumulator:

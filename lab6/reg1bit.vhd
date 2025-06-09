@@ -10,7 +10,7 @@ ENTITY reg1bits IS
     data_out : OUT STD_LOGIC
   );
 END ENTITY;
-Já a arquitetura traz diversas novidades :
+
 ARCHITECTURE a_reg1bits OF reg1bits IS
   SIGNAL registro : STD_LOGIC := '0'; -- sinal interno para armazenar o valor do registro
 BEGIN

@@ -38,7 +38,8 @@ ARCHITECTURE a_processador OF processador IS
             selec_reg_out : IN UNSIGNED(2 DOWNTO 0);
             data_in : IN UNSIGNED(15 DOWNTO 0);
             data_out : OUT UNSIGNED(15 DOWNTO 0);
-            exec_en : IN STD_LOGIC
+            exec_en : IN STD_LOGIC;
+            use_immediate : IN STD_LOGIC -- signal to indicate if immediate value is used
         );
     END COMPONENT;
 
@@ -83,7 +84,8 @@ BEGIN
         selec_reg_out => reg_instrucao_out(7 DOWNTO 5), -- Bits 7 ao 5 da instrução
         data_in => reg_ULA_data_in, -- Dados de entrada
         data_out => reg_ULA_data_out, -- Dados de saída
-        exec_en => exec_en -- Connection to enable flag updates
+        exec_en => exec_en, -- Connection to enable flag updates
+        use_immediate => is_operation_with_immediate -- to handle immediate operations
     );
 
     c_instrucao : reg16bits
@@ -105,8 +107,8 @@ BEGIN
 
     opcode <= reg_instrucao_out(14 DOWNTO 11); -- 4 MSB da instrução
 
-    is_operation_with_immediate <= '1' WHEN (opcode = "0101" OR opcode = "0010") ELSE
-        '0'; -- MOV
+    is_operation_with_immediate <= '1' WHEN (opcode = "0101" OR opcode = "0001") ELSE
+        '0'; -- MOV or SUBI
 
     imediato <= (15 DOWNTO 5 => reg_instrucao_out(4)) & reg_instrucao_out(4 DOWNTO 0); -- Extensão de sinal 5 LSB da instrução 
 

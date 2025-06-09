@@ -2,6 +2,14 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
+-- OPERAÇÕES
+-- 000 -> soma
+-- 001 -> subtração
+-- 010 -> maior que -- talvez retirar 
+-- 011 -> menor que
+-- 100 -> diferente
+-- 101 -> operações de carregar valores em registradores
+-- 111 -> operações de jump
 ENTITY ULA IS
     PORT (
         clk : IN STD_LOGIC;
@@ -35,7 +43,7 @@ ARCHITECTURE a_ULA OF ULA IS
 BEGIN
     -- soma & sub --
     result <= in_1 + in_2 WHEN (selec_op = "000") ELSE
-        in_1 - in_2 WHEN (selec_op = "001" OR selec_op = "010") ELSE
+        in_1 - in_2 WHEN (selec_op = "001") ELSE
         "0000000000000000";
 
     output <= result;

@@ -32,7 +32,7 @@ ARCHITECTURE a_ROM OF ROM IS
         B"1101_101_111_00000", -- 5: MOV R5, A
 
         -- D. SUBI A, 1
-        B"0010_111_000_00001", -- 6: SUBI A, 1
+        B"0001_111_000_00001", -- 6: SUBI A, 1
 
         --    MOV R5, A
         B"1101_101_111_00000", -- 7: MOV R5, A
