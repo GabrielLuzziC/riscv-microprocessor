@@ -37,7 +37,8 @@ ARCHITECTURE a_processador OF processador IS
             selec_reg_in : IN UNSIGNED(2 DOWNTO 0);
             selec_reg_out : IN UNSIGNED(2 DOWNTO 0);
             data_in : IN UNSIGNED(15 DOWNTO 0);
-            data_out : OUT UNSIGNED(15 DOWNTO 0)
+            data_out : OUT UNSIGNED(15 DOWNTO 0);
+            exec_en : IN STD_LOGIC
         );
     END COMPONENT;
 
@@ -59,6 +60,7 @@ ARCHITECTURE a_processador OF processador IS
     SIGNAL opcode : UNSIGNED(3 DOWNTO 0); -- 4 MSB da instrução
     SIGNAL imediato : UNSIGNED(15 DOWNTO 0);
     SIGNAL is_operation_with_immediate : STD_LOGIC;
+    SIGNAL exec_en : STD_LOGIC; -- NEW: to enable flag updates
 
 BEGIN
     uc : unidade_de_controle
@@ -80,7 +82,8 @@ BEGIN
         selec_reg_in => reg_instrucao_out(10 DOWNTO 8), -- Bits 10 ao 8 da instrução
         selec_reg_out => reg_instrucao_out(7 DOWNTO 5), -- Bits 7 ao 5 da instrução
         data_in => reg_ULA_data_in, -- Dados de entrada
-        data_out => reg_ULA_data_out -- Dados de saída
+        data_out => reg_ULA_data_out, -- Dados de saída
+        exec_en => exec_en -- Connection to enable flag updates
     );
 
     c_instrucao : reg16bits
@@ -107,7 +110,17 @@ BEGIN
 
     imediato <= (15 DOWNTO 5 => reg_instrucao_out(4)) & reg_instrucao_out(4 DOWNTO 0); -- Extensão de sinal 5 LSB da instrução 
 
-    reg_ULA_data_in <= imediato WHEN (is_operation_with_immediate = '1' OR (opcode = "1111" AND carry_flag = '1')) ELSE  -- REVER ISSO
+    reg_ULA_data_in <= imediato WHEN (is_operation_with_immediate = '1' OR (opcode = "1111" AND carry_flag = '1')) ELSE -- REVER ISSO
         (OTHERS => '0'); -- Dados de entrada para ULA
+
+    -- Identify which operations should update flags based on opcode
+    -- ADD: 1000, SUB: 1001, SUBI: 0001, CMPI: 1111
+    exec_en <= '1' WHEN (uc_estado = "10" AND -- Only during execute state
+        (opcode = "1000" OR -- ADD
+        opcode = "1001" OR -- SUB
+        opcode = "0001" OR -- SUBI
+        opcode = "1111")) -- CMPI
+        ELSE
+        '0';
 
 END ARCHITECTURE;

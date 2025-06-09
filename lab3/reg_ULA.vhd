@@ -10,6 +10,7 @@ ENTITY reg_ULA IS
         selec_op : IN UNSIGNED(2 DOWNTO 0);
         carry_flag : OUT STD_LOGIC;
         zero_flag : OUT STD_LOGIC;
+        exec_en : IN STD_LOGIC; -- Enable writing to flag registers during execute stage
         selec_reg_in : IN UNSIGNED(2 DOWNTO 0);
         selec_reg_out : IN UNSIGNED(2 DOWNTO 0);
         data_in : IN UNSIGNED(15 DOWNTO 0);
@@ -42,6 +43,7 @@ ARCHITECTURE a_reg_ULA OF reg_ULA IS
         PORT (
             selec_op : IN UNSIGNED (2 DOWNTO 0);
             in_1, in_2 : IN UNSIGNED (15 DOWNTO 0);
+            exec_en : IN STD_LOGIC; -- Enable writing to flag registers during execute stage
             carry_flag : OUT STD_LOGIC;
             zero_flag : OUT STD_LOGIC;
             output : OUT UNSIGNED (15 DOWNTO 0)
