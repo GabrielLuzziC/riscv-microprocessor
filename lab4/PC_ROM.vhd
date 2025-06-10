@@ -8,7 +8,7 @@ ENTITY PC_ROM IS
         rst : IN STD_LOGIC;
         data_in : IN UNSIGNED(6 DOWNTO 0); -- Address to jump to
         wr_en : IN STD_LOGIC; -- Enable PC increment
-        jump_en : IN STD_LOGIC; -- Enable jump
+        jump_en : IN UNSIGNED(1 DOWNTO 0); -- 00=nenhum, 01=absoluto, 10=relativo
         data_out : OUT UNSIGNED(14 DOWNTO 0) -- Instruction output
     );
 END ENTITY;
@@ -23,7 +23,7 @@ ARCHITECTURE a_PC_ROM OF PC_ROM IS
             rst : IN STD_LOGIC;
             wr_en : IN STD_LOGIC;
             data_in : IN UNSIGNED(6 DOWNTO 0);
-            jump_en : IN STD_LOGIC;
+            jump_en : IN UNSIGNED(1 DOWNTO 0); 
             data_out : OUT UNSIGNED(6 DOWNTO 0)
         );
     END COMPONENT;

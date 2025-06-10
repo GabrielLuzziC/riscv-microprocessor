@@ -21,6 +21,7 @@ ARCHITECTURE a_processador OF processador IS
         PORT (
             clk : IN STD_LOGIC;
             rst : IN STD_LOGIC;
+            carry_flag : IN STD_LOGIC; -- Sinal de carry
             estado : OUT UNSIGNED(1 DOWNTO 0); -- Estado da máquina de estados
             instrucao : OUT UNSIGNED(14 DOWNTO 0) -- Instrução a ser executada
         );
@@ -68,6 +69,7 @@ BEGIN
     PORT MAP(
         clk => clk,
         rst => rst,
+        carry_flag => carry_flag, -- Sinal de carry
         estado => uc_estado,
         instrucao => uc_instrucao
     );

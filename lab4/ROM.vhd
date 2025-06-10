@@ -14,9 +14,9 @@ ARCHITECTURE a_ROM OF ROM IS
     TYPE mem IS ARRAY (0 TO 127) OF UNSIGNED (14 DOWNTO 0);
     CONSTANT conteudo_rom : mem := (
         -- A. LI R3, 5
-        B"0101_011_000_00101", -- 0: LI R3, 5
+        B"0101_011_000_00000", -- 0: LI R3, 0
         -- B. LI R4, 8
-        B"0101_100_000_01000", -- 1: LI R4, 8
+        B"0101_100_000_00000", -- 1: LI R4, 0
         -- C. LI A, 0
         B"0101_111_000_00000", -- 2: LI A, 0
         --    ADD A, R3
@@ -27,7 +27,7 @@ ARCHITECTURE a_ROM OF ROM IS
         B"1101_100_111_00000", -- 5: MOV R4, A
         -- D. LI R6, 1
         B"0101_110_000_00001", -- 6: LI R6, 1
-        -- MOV A, R3
+        --    MOV A, R3
         B"1101_111_011_00000", -- 7: MOV A, R3
         --    ADD A, R6
         B"1000_111_110_00000", -- 8: ADD A, R6
@@ -35,11 +35,11 @@ ARCHITECTURE a_ROM OF ROM IS
         B"1101_011_111_00000", -- 9: MOV R3, A
         -- E. CMPI A, 30
         B"1111_111_000_11110", -- 10: CMPI A, 30
-        -- BCC -9
-        B"0110_000_000_11111", -- 11: BCC -9 (endereço 2)
+        --    BCC -9
+        B"0111_001_111_10111", -- 11: BCC -9 (endereço 2)
         -- F. MOV A, R4
         B"1101_111_100_00000", -- 12: MOV A, R4
-        -- MOV R5, A
+        --    MOV R5, A
         B"1101_101_111_00000", -- 13: MOV R5, A
 
         -- Preenche o restante com NOPs

@@ -1,46 +1,46 @@
 v 4
-file . "processador_lab6_tb.vhd" "91c0f53f152f0cf6122671e6054bc708b984eba2" "20250610001427.048":
-  entity processador_lab6_tb at 1( 0) + 0 on 1115;
-  architecture a_processador_lab6_tb of processador_lab6_tb at 10( 133) + 0 on 1116;
-file . "reg1bit.vhd" "7e2a756fb0e201a94ac7a2f017a6fdb2d4c16407" "20250610001427.020":
-  entity reg1bits at 1( 0) + 0 on 1109;
-  architecture a_reg1bits of reg1bits at 14( 246) + 0 on 1110;
-file . "../lab4/unidade_de_controle.vhd" "b4947ab47fb066105225ef3c030cd77d62287d24" "20250610001426.999":
-  entity unidade_de_controle at 1( 0) + 0 on 1105;
-  architecture a_unidade_de_controle of unidade_de_controle at 14( 320) + 0 on 1106;
-file . "../lab4/PC_ROM.vhd" "af925571949fd42b217b9c8ae0e99cb04a24033b" "20250610001426.980":
-  entity pc_rom at 1( 0) + 0 on 1101;
-  architecture a_pc_rom of pc_rom at 16( 406) + 0 on 1102;
-file . "../lab4/PC_soma.vhd" "a63d076ec553b67bb470e11f8f154814b34167c4" "20250610001426.960":
-  entity pc_soma at 1( 0) + 0 on 1097;
-  architecture a_pc_soma of pc_soma at 16( 324) + 0 on 1098;
-file . "../lab3/reg_ULA.vhd" "9e515d4ceb560d3a7b5c9a332b6bdb827fbfcb60" "20250610001426.940":
-  entity reg_ula at 1( 0) + 0 on 1093;
-  architecture a_reg_ula of reg_ula at 22( 686) + 0 on 1094;
-file . "../lab3/banco_reg.vhd" "6e566c50f2d92efe63cd13e80f47c797150d0586" "20250610001426.905":
-  entity banco_reg at 1( 0) + 0 on 1089;
-  architecture a_banco_reg of banco_reg at 17( 393) + 0 on 1090;
-file . "../lab2/ULA.vhd" "8d4cf07b137cc0e4ad398be3154a8dd42b5e0ffa" "20250610001426.839":
-  entity ula at 1( 0) + 0 on 1085;
-  architecture a_ula of ula at 24( 642) + 0 on 1086;
-file . "../lab3/reg16bits.vhd" "c7d71b59bd72f41b2428eab0499df1ce900095c1" "20250610001426.872":
-  entity reg16bits at 1( 0) + 0 on 1087;
-  architecture a_reg16bits of reg16bits at 15( 296) + 0 on 1088;
-file . "../lab3/acumulador.vhd" "a2763a57cf8ac6843b53114253a56c30654fd4d8" "20250610001426.926":
-  entity acumulador at 1( 0) + 0 on 1091;
-  architecture a_acumulador of acumulador at 15( 342) + 0 on 1092;
-file . "../lab4/PC.vhd" "ef23e1b7f6bcfcc8094f5b6dbe98a8fe8c0eeceb" "20250610001426.951":
-  entity pc at 1( 0) + 0 on 1095;
-  architecture a_pc of pc at 15( 287) + 0 on 1096;
-file . "../lab4/ROM.vhd" "34e1e3c2784963822e83dfadab163353d6bbf845" "20250610001426.970":
-  entity rom at 1( 0) + 0 on 1099;
-  architecture a_rom of rom at 13( 227) + 0 on 1100;
-file . "../lab4/maquina_estados.vhd" "6b78380724687ce380e8e5f31f97789c920cf9cf" "20250610001426.990":
-  entity maquina_estados at 1( 0) + 0 on 1103;
-  architecture a_maquina_estados of maquina_estados at 10( 200) + 0 on 1104;
-file . "../lab5/processador.vhd" "eeff0496d898bf57ba9a73e5e1460ad8574194a9" "20250610001427.010":
-  entity processador at 1( 0) + 0 on 1107;
-  architecture a_processador of processador at 19( 343) + 0 on 1108;
-file . "flag_registers.vhd" "750c32bb835ce2bb5b0ca989c1220f060fcd3a29" "20250610001427.029":
-  entity flag_registers at 1( 0) + 0 on 1111;
-  architecture a_flag_registers of flag_registers at 17( 333) + 0 on 1112;
+file . "..\lab5\processador.vhd" "d2f316290e74e7d1e726217c0ff1bb7c66e48c0e" "20250610170456.514":
+  entity processador at 1( 0) + 0 on 1395;
+  architecture a_processador of processador at 19( 361) + 0 on 1396;
+file . "..\lab4\maquina_estados.vhd" "7c582b8701b164865544e45b03f3525b0bfad68a" "20250610170456.451":
+  entity maquina_estados at 1( 0) + 0 on 1391;
+  architecture a_maquina_estados of maquina_estados at 10( 209) + 0 on 1392;
+file . "..\lab4\ROM.vhd" "8f56e55b8896a86d530bcbab9bc4905d4b65374e" "20250610170456.386":
+  entity rom at 1( 0) + 0 on 1387;
+  architecture a_rom of rom at 13( 239) + 0 on 1388;
+file . "..\lab4\PC.vhd" "fb290c2b45a9450bc71c6ccd8ed8c57a3d2036d3" "20250610170456.315":
+  entity pc at 1( 0) + 0 on 1383;
+  architecture a_pc of pc at 15( 301) + 0 on 1384;
+file . "..\lab3\acumulador.vhd" "136471a2723f46bff6560da6ad5a3487df64e773" "20250610170456.246":
+  entity acumulador at 1( 0) + 0 on 1379;
+  architecture a_acumulador of acumulador at 15( 356) + 0 on 1380;
+file . "..\lab3\reg16bits.vhd" "6b03f1e96825f556a67a7bb2c546a8d61ecca5a0" "20250610170456.187":
+  entity reg16bits at 1( 0) + 0 on 1375;
+  architecture a_reg16bits of reg16bits at 15( 310) + 0 on 1376;
+file . "processador_lab6_tb.vhd" "3cadf1df3c5555a79dd70d1d36cc06bde45d4ff0" "20250610170456.649":
+  entity processador_lab6_tb at 1( 0) + 0 on 1403;
+  architecture a_processador_lab6_tb of processador_lab6_tb at 10( 142) + 0 on 1404;
+file . "reg1bit.vhd" "c10b3206641ac240f6ec965e7d0bfcbeddca7211" "20250610170456.551":
+  entity reg1bits at 1( 0) + 0 on 1397;
+  architecture a_reg1bits of reg1bits at 14( 259) + 0 on 1398;
+file . "flag_registers.vhd" "c225ae52b5e174937712b8654517443d9de31468" "20250610170456.580":
+  entity flag_registers at 1( 0) + 0 on 1399;
+  architecture a_flag_registers of flag_registers at 17( 349) + 0 on 1400;
+file . "..\lab2\ULA.vhd" "4885d36cf13c75c0e900845b45f6ac6a253cb9e5" "20250610170456.151":
+  entity ula at 1( 0) + 0 on 1373;
+  architecture a_ula of ula at 24( 665) + 0 on 1374;
+file . "..\lab3\banco_reg.vhd" "91f1cef18cb58d8b1a5d20580f078fa996d65a6a" "20250610170456.218":
+  entity banco_reg at 1( 0) + 0 on 1377;
+  architecture a_banco_reg of banco_reg at 17( 409) + 0 on 1378;
+file . "..\lab3\reg_ULA.vhd" "a6d6adce55334917e3a96f77b657ae782a326a8f" "20250610170456.284":
+  entity reg_ula at 1( 0) + 0 on 1381;
+  architecture a_reg_ula of reg_ula at 22( 707) + 0 on 1382;
+file . "..\lab4\PC_soma.vhd" "cddd4015d3e25a4578eaeffde0291553341c9c07" "20250610170456.345":
+  entity pc_soma at 1( 0) + 0 on 1385;
+  architecture a_pc_soma of pc_soma at 16( 351) + 0 on 1386;
+file . "..\lab4\PC_ROM.vhd" "7b536722ac733ade48493d9e60fcc2de38fc428f" "20250610170456.417":
+  entity pc_rom at 1( 0) + 0 on 1389;
+  architecture a_pc_rom of pc_rom at 16( 456) + 0 on 1390;
+file . "..\lab4\unidade_de_controle.vhd" "b080e0a9efbd47db5b18eb178ac0e23a4a25e14d" "20250610170456.481":
+  entity unidade_de_controle at 1( 0) + 0 on 1393;
+  architecture a_unidade_de_controle of unidade_de_controle at 15( 383) + 0 on 1394;
