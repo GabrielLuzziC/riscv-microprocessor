@@ -1,46 +1,46 @@
 v 4
-file . "flag_registers.vhd" "750c32bb835ce2bb5b0ca989c1220f060fcd3a29" "20250609222451.124":
-  entity flag_registers at 1( 0) + 0 on 249;
-  architecture a_flag_registers of flag_registers at 17( 333) + 0 on 250;
-file . "../lab5/processador.vhd" "a10b99a2facaa730e3f5fa18e8d4eb85e1614ff0" "20250609222451.111":
-  entity processador at 1( 0) + 0 on 245;
-  architecture a_processador of processador at 19( 343) + 0 on 246;
-file . "../lab4/maquina_estados.vhd" "6b78380724687ce380e8e5f31f97789c920cf9cf" "20250609222451.097":
-  entity maquina_estados at 1( 0) + 0 on 241;
-  architecture a_maquina_estados of maquina_estados at 10( 200) + 0 on 242;
-file . "../lab4/ROM.vhd" "e111be1045ce1a6fead720a802b436a22179c826" "20250609222451.083":
-  entity rom at 1( 0) + 0 on 237;
-  architecture a_rom of rom at 13( 227) + 0 on 238;
-file . "../lab4/PC.vhd" "ef23e1b7f6bcfcc8094f5b6dbe98a8fe8c0eeceb" "20250609222451.069":
-  entity pc at 1( 0) + 0 on 233;
-  architecture a_pc of pc at 15( 287) + 0 on 234;
-file . "../lab3/acumulador.vhd" "a2763a57cf8ac6843b53114253a56c30654fd4d8" "20250609222451.051":
-  entity acumulador at 1( 0) + 0 on 229;
-  architecture a_acumulador of acumulador at 15( 342) + 0 on 230;
-file . "../lab3/reg16bits.vhd" "c7d71b59bd72f41b2428eab0499df1ce900095c1" "20250609222451.029":
-  entity reg16bits at 1( 0) + 0 on 225;
-  architecture a_reg16bits of reg16bits at 15( 296) + 0 on 226;
-file . "../lab2/ULA.vhd" "0651c91587ea646b472c79502d86267e70d16165" "20250609222451.014":
-  entity ula at 1( 0) + 0 on 223;
-  architecture a_ula of ula at 26( 688) + 0 on 224;
-file . "../lab3/banco_reg.vhd" "6e566c50f2d92efe63cd13e80f47c797150d0586" "20250609222451.040":
-  entity banco_reg at 1( 0) + 0 on 227;
-  architecture a_banco_reg of banco_reg at 17( 393) + 0 on 228;
-file . "../lab3/reg_ULA.vhd" "8c2dc3d02d2e0742d4c9c76070177826144cade5" "20250609222451.061":
-  entity reg_ula at 1( 0) + 0 on 231;
-  architecture a_reg_ula of reg_ula at 22( 686) + 0 on 232;
-file . "../lab4/PC_soma.vhd" "a63d076ec553b67bb470e11f8f154814b34167c4" "20250609222451.076":
-  entity pc_soma at 1( 0) + 0 on 235;
-  architecture a_pc_soma of pc_soma at 16( 324) + 0 on 236;
-file . "../lab4/PC_ROM.vhd" "af925571949fd42b217b9c8ae0e99cb04a24033b" "20250609222451.090":
-  entity pc_rom at 1( 0) + 0 on 239;
-  architecture a_pc_rom of pc_rom at 16( 406) + 0 on 240;
-file . "../lab4/unidade_de_controle.vhd" "b4947ab47fb066105225ef3c030cd77d62287d24" "20250609222451.104":
-  entity unidade_de_controle at 1( 0) + 0 on 243;
-  architecture a_unidade_de_controle of unidade_de_controle at 14( 320) + 0 on 244;
-file . "reg1bit.vhd" "691bfae95afae33977e16e24ec0eae960b6514b5" "20250609222451.118":
-  entity reg1bits at 1( 0) + 0 on 247;
-  architecture a_reg1bits of reg1bits at 14( 246) + 0 on 248;
-file . "processador_lab6_tb.vhd" "91c0f53f152f0cf6122671e6054bc708b984eba2" "20250609222451.138":
-  entity processador_lab6_tb at 1( 0) + 0 on 253;
-  architecture a_processador_lab6_tb of processador_lab6_tb at 10( 133) + 0 on 254;
+file . "processador_lab6_tb.vhd" "91c0f53f152f0cf6122671e6054bc708b984eba2" "20250610001427.048":
+  entity processador_lab6_tb at 1( 0) + 0 on 1115;
+  architecture a_processador_lab6_tb of processador_lab6_tb at 10( 133) + 0 on 1116;
+file . "reg1bit.vhd" "7e2a756fb0e201a94ac7a2f017a6fdb2d4c16407" "20250610001427.020":
+  entity reg1bits at 1( 0) + 0 on 1109;
+  architecture a_reg1bits of reg1bits at 14( 246) + 0 on 1110;
+file . "../lab4/unidade_de_controle.vhd" "b4947ab47fb066105225ef3c030cd77d62287d24" "20250610001426.999":
+  entity unidade_de_controle at 1( 0) + 0 on 1105;
+  architecture a_unidade_de_controle of unidade_de_controle at 14( 320) + 0 on 1106;
+file . "../lab4/PC_ROM.vhd" "af925571949fd42b217b9c8ae0e99cb04a24033b" "20250610001426.980":
+  entity pc_rom at 1( 0) + 0 on 1101;
+  architecture a_pc_rom of pc_rom at 16( 406) + 0 on 1102;
+file . "../lab4/PC_soma.vhd" "a63d076ec553b67bb470e11f8f154814b34167c4" "20250610001426.960":
+  entity pc_soma at 1( 0) + 0 on 1097;
+  architecture a_pc_soma of pc_soma at 16( 324) + 0 on 1098;
+file . "../lab3/reg_ULA.vhd" "9e515d4ceb560d3a7b5c9a332b6bdb827fbfcb60" "20250610001426.940":
+  entity reg_ula at 1( 0) + 0 on 1093;
+  architecture a_reg_ula of reg_ula at 22( 686) + 0 on 1094;
+file . "../lab3/banco_reg.vhd" "6e566c50f2d92efe63cd13e80f47c797150d0586" "20250610001426.905":
+  entity banco_reg at 1( 0) + 0 on 1089;
+  architecture a_banco_reg of banco_reg at 17( 393) + 0 on 1090;
+file . "../lab2/ULA.vhd" "8d4cf07b137cc0e4ad398be3154a8dd42b5e0ffa" "20250610001426.839":
+  entity ula at 1( 0) + 0 on 1085;
+  architecture a_ula of ula at 24( 642) + 0 on 1086;
+file . "../lab3/reg16bits.vhd" "c7d71b59bd72f41b2428eab0499df1ce900095c1" "20250610001426.872":
+  entity reg16bits at 1( 0) + 0 on 1087;
+  architecture a_reg16bits of reg16bits at 15( 296) + 0 on 1088;
+file . "../lab3/acumulador.vhd" "a2763a57cf8ac6843b53114253a56c30654fd4d8" "20250610001426.926":
+  entity acumulador at 1( 0) + 0 on 1091;
+  architecture a_acumulador of acumulador at 15( 342) + 0 on 1092;
+file . "../lab4/PC.vhd" "ef23e1b7f6bcfcc8094f5b6dbe98a8fe8c0eeceb" "20250610001426.951":
+  entity pc at 1( 0) + 0 on 1095;
+  architecture a_pc of pc at 15( 287) + 0 on 1096;
+file . "../lab4/ROM.vhd" "34e1e3c2784963822e83dfadab163353d6bbf845" "20250610001426.970":
+  entity rom at 1( 0) + 0 on 1099;
+  architecture a_rom of rom at 13( 227) + 0 on 1100;
+file . "../lab4/maquina_estados.vhd" "6b78380724687ce380e8e5f31f97789c920cf9cf" "20250610001426.990":
+  entity maquina_estados at 1( 0) + 0 on 1103;
+  architecture a_maquina_estados of maquina_estados at 10( 200) + 0 on 1104;
+file . "../lab5/processador.vhd" "eeff0496d898bf57ba9a73e5e1460ad8574194a9" "20250610001427.010":
+  entity processador at 1( 0) + 0 on 1107;
+  architecture a_processador of processador at 19( 343) + 0 on 1108;
+file . "flag_registers.vhd" "750c32bb835ce2bb5b0ca989c1220f060fcd3a29" "20250610001427.029":
+  entity flag_registers at 1( 0) + 0 on 1111;
+  architecture a_flag_registers of flag_registers at 17( 333) + 0 on 1112;

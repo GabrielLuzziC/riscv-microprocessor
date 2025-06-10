@@ -4,12 +4,12 @@ MSB b14                 LSB b0
 NOP:    0000_000_000_00000
 ADD:    1000_ddd_sss_xxxxx
 SUB:    1001_ddd_sss_xxxxx
-SUBI:   0001_ddd_xxx_ccccc //alterar na ULA
+SUBI:   0001_ddd_ccc_ccccc
 MOV:    1101_ddd_sss_xxxxx
-LI:     0101_ddd_xxx_ccccc
-JUMP:   0111_xxx_000_ccccc  //agr tem 000 - func3 = 000
-CMPI:   1111_ddd_000_ccccc
-BCC:    0111_ddd_001_ccccc  // func3 = 001
+LI:     0101_ddd_ccc_ccccc
+JUMP:   0111_000_ccc_ccccc  //agr tem 000 - func3 = 000
+CMPI:   1111_xxx_ccc_ccccc
+BCC:    0111_001_ccc_ccccc  // func3 = 001
 
 
 - abaixo ainda não precisa para o lab5 (refletir) (Talvez usar algo nos xxx antes das constantes para ser um funct3?)

@@ -14,12 +14,13 @@ END ENTITY;
 ARCHITECTURE a_reg1bits OF reg1bits IS
   SIGNAL registro : STD_LOGIC := '0'; -- sinal interno para armazenar o valor do registro
 BEGIN
-  PROCESS (clk, rst, wr_en) -- acionado se houver mudança em clk, rst ou wr_en
+  -- Fixed process with proper edge detection for clock and reset precedence
+  PROCESS (clk, rst, wr_en)
   BEGIN
     IF rst = '1' THEN
       registro <= '0';
-    ELSIF wr_en = '1' THEN
-      IF rising_edge(clk) THEN
+      ELSIF rising_edge(clk) THEN
+      IF wr_en = '1' THEN
         registro <= data_in;
       END IF;
     END IF;

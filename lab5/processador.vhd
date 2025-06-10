@@ -100,29 +100,29 @@ BEGIN
     reg_instrucao_in <= ('0' & uc_instrucao);
 
     wr_en_reg_instrucao <= '1' WHEN uc_estado = "01" ELSE
-        '0'; -- Decode
+    '0'; -- Decode
 
     wr_en_reg_ULA <= '1' WHEN uc_estado = "10" ELSE
-        '0'; -- Execute
+    '0'; -- Execute
 
     opcode <= reg_instrucao_out(14 DOWNTO 11); -- 4 MSB da instrução
 
     is_operation_with_immediate <= '1' WHEN (opcode = "0101" OR opcode = "0001") ELSE
-        '0'; -- MOV or SUBI
+    '0'; -- MOV or SUBI
 
-    imediato <= (15 DOWNTO 5 => reg_instrucao_out(4)) & reg_instrucao_out(4 DOWNTO 0); -- Extensão de sinal 5 LSB da instrução 
+    imediato <= (15 DOWNTO 8 => reg_instrucao_out(7)) & reg_instrucao_out(7 DOWNTO 0); -- Extensão de sinal 5 LSB da instrução 
 
     reg_ULA_data_in <= imediato WHEN (is_operation_with_immediate = '1' OR (opcode = "1111" AND carry_flag = '1')) ELSE -- REVER ISSO
-        (OTHERS => '0'); -- Dados de entrada para ULA
+    (OTHERS => '0'); -- Dados de entrada para ULA
 
     -- Identify which operations should update flags based on opcode
     -- ADD: 1000, SUB: 1001, SUBI: 0001, CMPI: 1111
-    exec_en <= '1' WHEN (uc_estado = "10" AND -- Only during execute state
-        (opcode = "1000" OR -- ADD
-        opcode = "1001" OR -- SUB
-        opcode = "0001" OR -- SUBI
-        opcode = "1111")) -- CMPI
-        ELSE
-        '0';
+    exec_en <= '1' WHEN ((uc_estado = "10") AND -- Only during 
+    (opcode = "1000" OR -- ADD
+    opcode = "1001" OR -- SUB
+    opcode = "0001" OR -- SUBI
+    opcode = "1111")) -- CMPI
+    ELSE
+    '0';
 
 END ARCHITECTURE;

@@ -5,11 +5,9 @@ USE ieee.numeric_std.ALL;
 -- OPERAÇÕES
 -- 000 -> soma
 -- 001 -> subtração
--- 010 -> maior que -- talvez retirar 
--- 011 -> menor que
 -- 100 -> diferente
 -- 101 -> operações de carregar valores em registradores
--- 111 -> operações de jump
+-- 111 -> comparação com imediato (CMPI)
 ENTITY ULA IS
     PORT (
         clk : IN STD_LOGIC;
@@ -41,30 +39,33 @@ ARCHITECTURE a_ULA OF ULA IS
         );
     END COMPONENT;
 BEGIN
+    -- Calculate CMPI result
     -- soma & sub --
     result <= in_1 + in_2 WHEN (selec_op = "000") ELSE
-        in_1 - in_2 WHEN (selec_op = "001") ELSE
-        "0000000000000000";
+    in_1 - in_2 WHEN (selec_op = "001" OR selec_op = "111") ELSE
+    "0000000000000000";
 
     output <= result;
 
-    boolean_flag <= '1' WHEN (selec_op = "010" AND in_1 > in_2) ELSE
-        '1' WHEN (selec_op = "011" AND in_1 < in_2) ELSE
-        '1' WHEN (selec_op = "100" AND in_1 /= in_2) ELSE
-        '0';
-
+    -- Simplified boolean_flag logic - removed greater/less than operations
+    boolean_flag <= '1' WHEN (selec_op = "100" AND in_1 /= in_2) ELSE
+    '1' WHEN (selec_op = "111" AND in_1 >= in_2)
+    ELSE
+    '0';
     -- carry flag --
     in_1_temp <= '0' & in_1;
     in_2_temp <= '0' & in_2;
 
     out_temp <= in_1_temp + in_2_temp WHEN (selec_op = "000") ELSE
-        in_1_temp - in_2_temp WHEN (selec_op = "001") ELSE
-        "00000000000000000";
+    in_1_temp - in_2_temp WHEN (selec_op = "001") ELSE
+    "00000000000000000";
 
-    -- Compute flags
     carry_flag_tmp <= out_temp(16) OR boolean_flag;
-    zero_flag_tmp <= '1' WHEN (result = "0000000000000000") ELSE
-        '0';
+
+    -- Zero flag logic - make sure it's correctly set for CMPI
+    zero_flag_tmp <= '1' WHEN ((result = "0000000000000000") OR
+    (selec_op = "111" AND in_1 = in_2)) ELSE
+    '0';
 
     -- Flag register instantiation
     flags : flag_registers

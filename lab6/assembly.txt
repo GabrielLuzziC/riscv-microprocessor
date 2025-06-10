@@ -6,7 +6,7 @@ C. LI A, 0
     MOV R4, A
 
 D. LI R6, 1
-    LI A, R3
+    MOV A, R3
     ADD A, R6
     MOV R3, A
 
