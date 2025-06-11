@@ -9,7 +9,7 @@ MOV:    1101_ddd_sss_xxxxx
 LI:     0101_ddd_ccc_ccccc
 JUMP:   0111_000_ccc_ccccc  //agr tem 000 - func3 = 000
 CMPI:   1111_xxx_ccc_ccccc
-BCC:    0111_001_ccc_ccccc  // func3 = 001
+BCC:    0111_001_ccc_ccccc  // func3 = 001 // pula quando o carry = 0
 
 
 - abaixo ainda não precisa para o lab5 (refletir) (Talvez usar algo nos xxx antes das constantes para ser um funct3?)
@@ -49,3 +49,4 @@ Auxiliar:
  'Saltos': 'Incondicional é absoluto e condicional é relativo',
  'Validação -- final do loop': 'Detecção do MSB setado usando AND',
  'Validação -- complicações': 'Exceção endereço inválido RAM'}
+
