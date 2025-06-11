@@ -13,9 +13,9 @@ END ENTITY;
 ARCHITECTURE a_ROM OF ROM IS
     TYPE mem IS ARRAY (0 TO 127) OF UNSIGNED (14 DOWNTO 0);
     CONSTANT conteudo_rom : mem := (
-        -- A. LI R3, 5
+        -- A. LI R3, 0
         B"0101_011_000_00000", -- 0: LI R3, 0
-        -- B. LI R4, 8
+        -- B. LI R4, 0
         B"0101_100_000_00000", -- 1: LI R4, 0
         -- C. LI A, 0
         B"0101_111_000_00000", -- 2: LI A, 0

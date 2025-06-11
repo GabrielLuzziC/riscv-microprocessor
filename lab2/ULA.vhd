@@ -42,32 +42,32 @@ BEGIN
     -- Calculate CMPI result
     -- soma & sub --
     result <= in_1 + in_2 WHEN (selec_op = "000") ELSE
-    in_1 - in_2 WHEN (selec_op = "001" OR selec_op = "111") ELSE
-    "0000000000000000";
+        in_1 - in_2 WHEN (selec_op = "001" OR selec_op = "111") ELSE
+        "0000000000000000";
 
     output <= result;
 
     -- Simplified boolean_flag logic - removed greater/less than operations
     boolean_flag <= '1' WHEN (selec_op = "100" AND in_1 /= in_2) ELSE
-    '1' WHEN (selec_op = "111" AND in_1 >= in_2)
-    ELSE
-    '0';
+        '1' WHEN (selec_op = "111" AND in_1 < in_2)
+        ELSE
+        '0';
     -- carry flag --
     in_1_temp <= '0' & in_1;
     in_2_temp <= '0' & in_2;
 
     out_temp <= in_1_temp + in_2_temp WHEN (selec_op = "000") ELSE
-    in_1_temp - in_2_temp WHEN (selec_op = "001" OR selec_op = "111") ELSE
-    "00000000000000000";
+        in_1_temp - in_2_temp WHEN (selec_op = "001" OR selec_op = "111") ELSE
+        "00000000000000000";
 
-    carry_flag_tmp <= '1' WHEN ((selec_op = "001" OR selec_op = "111") AND (in_1 >= in_2)) ELSE
-                      out_temp(16) WHEN selec_op = "000" ELSE
-                      '0';
+    carry_flag_tmp <= '1' WHEN ((selec_op = "001" OR selec_op = "111") AND (in_1 <= in_2)) ELSE
+        out_temp(16) WHEN selec_op = "000" ELSE
+        '0';
 
     -- Zero flag logic - make sure it's correctly set for CMPI
     zero_flag_tmp <= '1' WHEN ((result = "0000000000000000") OR
-    (selec_op = "111" AND in_1 = in_2)) ELSE
-    '0';
+        (selec_op = "111" AND in_1 = in_2)) ELSE
+        '0';
 
     -- Flag register instantiation
     flags : flag_registers
