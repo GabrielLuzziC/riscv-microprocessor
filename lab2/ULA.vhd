@@ -24,7 +24,7 @@ END ENTITY;
 ARCHITECTURE a_ULA OF ULA IS
     SIGNAL in_1_temp, in_2_temp, out_temp : UNSIGNED (16 DOWNTO 0);
     SIGNAL result : UNSIGNED (15 DOWNTO 0);
-    SIGNAL boolean_flag : STD_LOGIC;
+    -- SIGNAL boolean_flag : STD_LOGIC;
     SIGNAL carry_flag_tmp, zero_flag_tmp : STD_LOGIC;
 
     COMPONENT flag_registers
@@ -48,10 +48,10 @@ BEGIN
     output <= result;
 
     -- Simplified boolean_flag logic - removed greater/less than operations
-    boolean_flag <= '1' WHEN (selec_op = "100" AND in_1 /= in_2) ELSE
-        '1' WHEN (selec_op = "111" AND in_1 < in_2)
-        ELSE
-        '0';
+    -- boolean_flag <= '1' WHEN (selec_op = "100" AND in_1 /= in_2) ELSE
+    --     '1' WHEN (selec_op = "111" AND in_1 < in_2)
+    --     ELSE
+    --     '0';
     -- carry flag --
     in_1_temp <= '0' & in_1;
     in_2_temp <= '0' & in_2;
@@ -60,8 +60,9 @@ BEGIN
         in_1_temp - in_2_temp WHEN (selec_op = "001" OR selec_op = "111") ELSE
         "00000000000000000";
 
-    carry_flag_tmp <= '1' WHEN ((selec_op = "001" OR selec_op = "111") AND (in_1 <= in_2)) ELSE
-        out_temp(16) WHEN selec_op = "000" ELSE
+    carry_flag_tmp <= '1' WHEN ((selec_op = "001") AND (in_1 < in_2)) ELSE -- For SUB
+        '1' WHEN ((selec_op = "111") AND (in_1 >= in_2)) ELSE -- For CMPI (note the change)
+        out_temp(16) WHEN selec_op = "000" ELSE -- For ADD
         '0';
 
     -- Zero flag logic - make sure it's correctly set for CMPI

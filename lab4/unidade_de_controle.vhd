@@ -16,7 +16,7 @@ ARCHITECTURE a_unidade_de_controle OF unidade_de_controle IS
   SIGNAL rom_temp_out : UNSIGNED(14 DOWNTO 0);
   SIGNAL write_on_pc : STD_LOGIC;
   SIGNAL jump_en : UNSIGNED(1 DOWNTO 0); -- agora 2 bits: 00=nenhum, 01=absoluto, 10=relativo
-  SIGNAL func3 : UNSIGNED(2 DOWNTO 0); 
+  SIGNAL func3 : UNSIGNED(2 DOWNTO 0);
   SIGNAL estado_int : UNSIGNED(1 DOWNTO 0); -- estado da maquina de estado
   SIGNAL instrucao_int : UNSIGNED(14 DOWNTO 0);
   SIGNAL constante : UNSIGNED(6 DOWNTO 0);
@@ -67,8 +67,8 @@ BEGIN
 
   -- jump_en: 00 = nenhum salto, 01 = salto absoluto, 10 = salto relativo
   jump_en <= "01" WHEN (opcode = "0111" AND func3 = "000") ELSE
-             "10" WHEN (opcode = "0111" AND func3 = "001" AND carry_flag = '1' ) ELSE
-             "00";
+    "10" WHEN (opcode = "0111" AND func3 = "001" AND carry_flag = '0') ELSE
+    "00";
 
   constante <= instrucao_int(6 DOWNTO 0); -- 7 LSB
   instrucao <= instrucao_int;
