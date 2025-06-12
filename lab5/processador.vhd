@@ -104,7 +104,8 @@ BEGIN
     wr_en_reg_instrucao <= '1' WHEN uc_estado = "01" ELSE
         '0'; -- Decode
 
-    wr_en_reg_ULA <= '1' WHEN uc_estado = "10" ELSE
+    wr_en_reg_ULA <= '1' WHEN (uc_estado = "10" AND NOT  -- Só escreve nos registradores da ULA quando não é branch
+        (opcode = "0111" AND (reg_instrucao_out(10 DOWNTO 8) = "001" OR reg_instrucao_out(10 DOWNTO 8) = "000"))) ELSE
         '0'; -- Execute
 
     opcode <= reg_instrucao_out(14 DOWNTO 11); -- 4 MSB da instrução
