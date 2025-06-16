@@ -118,7 +118,6 @@ BEGIN
     reg_ULA_data_in <= imediato WHEN (is_operation_with_immediate = '1') ELSE
         (OTHERS => '0'); -- Dados de entrada para ULA
 
-    -- Identify which operations should update flags based on opcode
     -- ADD: 1000, SUB: 1001, SUBI: 0001, CMPI: 1111
     exec_en <= '1' WHEN ((uc_estado = "10") AND -- Only during 
         (opcode = "1000" OR -- ADD

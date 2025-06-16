@@ -1,0 +1,38 @@
+            LI R1, 1
+loop_ini:   SW R1, R1
+            LI A, 1
+            ADD A, R1
+            MOV R1, A
+            CMPI A, 33
+            BCC loop_ini 
+
+            LI R6, 2
+
+loop_exclui:MOV R1, R6
+            MOV A, R6
+            ADD A, R1
+            MOV R1, A
+            SW R1, 0
+            AND A, 32
+            BNE loop_exclui
+            
+loop_primos:LI A, 1
+            ADD A, R6
+            MOV R6, A
+            LW A, R6
+            SUB A, R6
+            CMPI A, 0 //CONFERIR DEPOIS
+            BNE loop_primos
+            MOV A, R6
+            CMPI A, 12
+            BCC loop_exclui
+
+            LI R1, 1
+loop_leitura:LW R4, R1
+            LI A, 1
+            ADD A, R1
+            MOV R1, A
+            AND A, 32
+            BNE loop_leitura
+
+//BOTAR RAM NO ENDEREÇO 256

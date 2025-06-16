@@ -10,13 +10,15 @@ LI:     0101_ddd_ccc_ccccc
 JUMP:   0111_000_ccc_ccccc  //agr tem 000 - func3 = 000
 CMPI:   1111_xxx_ccc_ccccc
 BCC:    0111_001_ccc_ccccc  // func3 = 001 // pula quando o carry = 0
-
+BNE:    0100_010_ccc_ccccc
+LW:     1110_ddd_sss_xxxxx  
+SW:     0010_ddd_sss_xxxxx
+AND:    0011_ddd_sss_xxxxx
 
 - abaixo ainda não precisa para o lab5 (refletir) (Talvez usar algo nos xxx antes das constantes para ser um funct3?)
-AND:    1111_ddd_sss_xxxxx
 OR:     1110_ddd_sss_xxxxx
 
-BNE:    0100
+
 
 
 onde
