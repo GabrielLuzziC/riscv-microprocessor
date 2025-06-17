@@ -40,7 +40,9 @@ ARCHITECTURE a_processador OF processador IS
             data_in : IN UNSIGNED(15 DOWNTO 0);
             data_out : OUT UNSIGNED(15 DOWNTO 0);
             exec_en : IN STD_LOGIC;
-            use_immediate : IN STD_LOGIC -- signal to indicate if immediate value is used
+            use_immediate : IN STD_LOGIC; -- signal to indicate if immediate value is used
+            data_out_acc : OUT UNSIGNED(15 DOWNTO 0); -- Output for accumulator data
+            data_out_reg : OUT UNSIGNED(15 DOWNTO 0) -- Output for register bank data
         );
     END COMPONENT;
 
@@ -53,6 +55,17 @@ ARCHITECTURE a_processador OF processador IS
             data_out : OUT UNSIGNED(15 DOWNTO 0)
         );
     END COMPONENT;
+
+    COMPONENT RAM
+        PORT (
+            clk : IN STD_LOGIC;
+            endereco : IN unsigned(6 DOWNTO 0);
+            wr_en : IN STD_LOGIC;
+            dado_in : IN unsigned(15 DOWNTO 0);
+            dado_out : OUT unsigned(15 DOWNTO 0)
+        );
+    END COMPONENT;
+
     SIGNAL reg_instrucao_out, reg_instrucao_in : UNSIGNED(15 DOWNTO 0);
     SIGNAL reg_ULA_data_in, reg_ULA_data_out : UNSIGNED(15 DOWNTO 0);
     SIGNAL uc_estado : UNSIGNED(1 DOWNTO 0); -- Estado da máquina de estados
@@ -63,6 +76,14 @@ ARCHITECTURE a_processador OF processador IS
     SIGNAL imediato : UNSIGNED(15 DOWNTO 0);
     SIGNAL is_operation_with_immediate : STD_LOGIC;
     SIGNAL exec_en : STD_LOGIC; -- NEW: to enable flag updates
+
+    SIGNAL ram_endereco : UNSIGNED(6 DOWNTO 0);
+    SIGNAL ram_wr_en : STD_LOGIC;
+    SIGNAL ram_data_in : UNSIGNED(15 DOWNTO 0);
+    SIGNAL ram_data_out : UNSIGNED(15 DOWNTO 0);
+    SIGNAL is_ram_operation : STD_LOGIC;
+
+    SIGNAL data_out_acc, data_out_reg : UNSIGNED(15 DOWNTO 0); -- Outputs for accumulator and register bank data
 
 BEGIN
     uc : unidade_de_controle
@@ -87,7 +108,9 @@ BEGIN
         data_in => reg_ULA_data_in, -- Dados de entrada
         data_out => reg_ULA_data_out, -- Dados de saída
         exec_en => exec_en, -- Connection to enable flag updates
-        use_immediate => is_operation_with_immediate -- to handle immediate operations
+        use_immediate => is_operation_with_immediate, -- to handle immediate operations
+        data_out_acc => data_out_acc, -- Connect accumulator output
+        data_out_reg => data_out_reg -- Connect register bank output
     );
 
     c_instrucao : reg16bits
@@ -99,32 +122,55 @@ BEGIN
         data_out => reg_instrucao_out
     );
 
+    c_ram : ram
+    PORT MAP(
+        clk => clk,
+        endereco => ram_endereco,
+        wr_en => ram_wr_en,
+        dado_in => ram_data_in,
+        dado_out => ram_data_out
+    );
+
     reg_instrucao_in <= ('0' & uc_instrucao);
 
     wr_en_reg_instrucao <= '1' WHEN uc_estado = "01" ELSE
         '0'; -- Decode
 
-    wr_en_reg_ULA <= '1' WHEN (uc_estado = "10" AND NOT  -- Só escreve nos registradores da ULA quando não é branch
+    wr_en_reg_ULA <= '1' WHEN (uc_estado = "10" AND NOT -- Só escreve nos registradores da ULA quando não é branch
         (opcode = "0111" AND (reg_instrucao_out(10 DOWNTO 8) = "001" OR reg_instrucao_out(10 DOWNTO 8) = "000"))) ELSE
         '0'; -- Execute
 
     opcode <= reg_instrucao_out(14 DOWNTO 11); -- 4 MSB da instrução
 
     is_operation_with_immediate <= '1' WHEN (opcode = "0101" OR opcode = "0001" OR opcode = "1111") ELSE
-        '0'; -- MOV or SUBI
+        '0'; -- LI or SUBI or CMPI
 
-    imediato <= (15 DOWNTO 8 => reg_instrucao_out(7)) & reg_instrucao_out(7 DOWNTO 0); -- Extensão de sinal 5 LSB da instrução 
+    imediato <= (15 DOWNTO 8 => reg_instrucao_out(7)) & reg_instrucao_out(7 DOWNTO 0); -- Extensão de sinal 8 LSB da instrução 
 
     reg_ULA_data_in <= imediato WHEN (is_operation_with_immediate = '1') ELSE
+        ram_data_out WHEN (is_ram_operation = '1' AND opcode = "1110") ELSE -- LW operation
         (OTHERS => '0'); -- Dados de entrada para ULA
 
     -- ADD: 1000, SUB: 1001, SUBI: 0001, CMPI: 1111
-    exec_en <= '1' WHEN ((uc_estado = "10") AND -- Only during 
+    exec_en <= '1' WHEN ((uc_estado = "10") AND -- Only during execute stage
         (opcode = "1000" OR -- ADD
         opcode = "1001" OR -- SUB
         opcode = "0001" OR -- SUBI
         opcode = "1111")) -- CMPI
         ELSE
         '0';
+
+    -- RAM control logic
+    is_ram_operation <= '1' WHEN (opcode = "1110" OR opcode = "0010") ELSE
+        '0'; -- LW or SW
+
+    ram_endereco <= data_out_acc(6 DOWNTO 0); -- Always the 7 LSB of accumulator
+
+    -- RAM data input for SW operations
+    ram_data_in <= data_out_reg; -- Data from register bank for SW operations
+
+    -- RAM write enable for SW operations
+    ram_wr_en <= '1' WHEN (opcode = "0010" AND uc_estado = "10") ELSE
+        '0'; -- SW in execute stage
 
 END ARCHITECTURE;

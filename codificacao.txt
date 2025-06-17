@@ -15,10 +15,10 @@ LW:     1110_ddd_sss_xxxxx
 SW:     0010_ddd_sss_xxxxx
 AND:    0011_ddd_sss_xxxxx
 
-- abaixo ainda não precisa para o lab5 (refletir) (Talvez usar algo nos xxx antes das constantes para ser um funct3?)
+- ???
 OR:     1110_ddd_sss_xxxxx
 
-
+-- LW e SW - é sempre o acumulador que guarda o endereço
 
 
 onde

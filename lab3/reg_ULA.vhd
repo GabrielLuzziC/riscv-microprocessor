@@ -15,7 +15,9 @@ ENTITY reg_ULA IS
         selec_reg_in : IN UNSIGNED(2 DOWNTO 0);
         selec_reg_out : IN UNSIGNED(2 DOWNTO 0);
         data_in : IN UNSIGNED(15 DOWNTO 0);
-        data_out : OUT UNSIGNED(15 DOWNTO 0)
+        data_out : OUT UNSIGNED(15 DOWNTO 0);
+        data_out_acc : OUT UNSIGNED(15 DOWNTO 0); -- Output for accumulator data
+        data_out_reg : OUT UNSIGNED(15 DOWNTO 0) -- Output for register bank data
     );
 END ENTITY;
 
@@ -52,7 +54,9 @@ ARCHITECTURE a_reg_ULA OF reg_ULA IS
             output : OUT UNSIGNED (15 DOWNTO 0)
         );
     END COMPONENT;
-    SIGNAL data_out_reg, data_out_acc, data_out_ula : UNSIGNED(15 DOWNTO 0) := (OTHERS => '0');
+
+    -- Internal signals with different names to avoid conflicts
+    SIGNAL reg_bank_out, acc_out, ula_out : UNSIGNED(15 DOWNTO 0) := (OTHERS => '0');
     SIGNAL mux_reg_imediato : UNSIGNED(15 DOWNTO 0) := (OTHERS => '0'); -- Sinal para o mux do acumulador com valor constante
     SIGNAL mux_acc : UNSIGNED(15 DOWNTO 0); -- Sinal para o mux do acumulador
     SIGNAL load_reg_acc : STD_LOGIC; -- Sinal para carregar o registrador acumulador
@@ -70,7 +74,7 @@ BEGIN
         selec_reg_in => selec_reg_in,
         selec_reg_out => selec_reg_out,
         data_in => mux_acc,
-        data_out => data_out_reg
+        data_out => reg_bank_out
     );
 
     acc : acumulador
@@ -79,59 +83,64 @@ BEGIN
         rst => rst,
         wr_en => wr_en_acc,
         data_in => data_in_acc,
-        data_out => data_out_acc
+        data_out => acc_out
     );
+
     a_ula : ULA
     PORT MAP(
         clk => clk,
         rst => rst,
         selec_op => selec_op,
-        in_1 => data_out_acc,
+        in_1 => acc_out,
         in_2 => mux_reg_imediato,
         exec_en => exec_en, -- Enable flag updates during execution
         carry_flag => carry_flag,
         zero_flag => zero_flag,
-        output => data_out_ula
+        output => ula_out
     );
 
     -- THE FIXED PART - Update these signal assignments
     -- Detect MOV operation (opcode 101)
     is_mov_op <= '1' WHEN selec_op = "101" ELSE
-    '0';
+        '0';
 
     -- Output the ULA result
-    data_out <= data_out_ula;
+    data_out <= ula_out;
+
+    -- Connect internal signals to output ports
+    data_out_acc <= acc_out;
+    data_out_reg <= reg_bank_out;
 
     -- Logic for writing to accumulator in MOV operation
     -- If it's a MOV operation and the destination is accumulator (111)
     load_acc <= '1' WHEN (selec_reg_in = "111" AND is_mov_op = '1') ELSE
-    '0';
+        '0';
 
     -- Data input for accumulator comes from:
-    -- 1. If it's a MOV to accumulator: use data_out_reg (from register bank)
+    -- 1. If it's a MOV to accumulator: use reg_bank_out (from register bank)
     -- 2. Otherwise: use ULA output
-    data_in_acc <= data_out_reg WHEN (load_acc = '1') ELSE
-    data_out_ula;
+    data_in_acc <= reg_bank_out WHEN (load_acc = '1') ELSE
+        ula_out;
 
     -- Logic for using accumulator as source in MOV operation
     -- If the source register is accumulator (111), use accumulator value
     load_reg_acc <= '1' WHEN (selec_reg_out = "111") ELSE
-    '0';
+        '0';
 
     -- Data input for register bank:
     -- If source is accumulator, use accumulator value
-    mux_acc <= data_out_acc WHEN load_reg_acc = '1' ELSE
-    data_in;
+    mux_acc <= acc_out WHEN load_reg_acc = '1' ELSE
+        data_in;
 
     -- Select register bank or immediate value for ULA
     mux_reg_imediato <= data_in WHEN (use_immediate = '1') ELSE
-    data_out_reg;
+        reg_bank_out;
 
     -- Enable writing to accumulator:
     -- 1. Enable when destination is accumulator and it's a MOV operation
     -- 2. Enable when it's a regular operation (non-MOV)
     -- 3. Disable when it's a MOV from accumulator to register
     wr_en_acc <= '1' WHEN (selec_reg_in = "111" AND is_mov_op = '1' AND wr_en = '1') ELSE -- Enable for MOV TO accumulator
-    '0' WHEN (selec_reg_out = "111" AND is_mov_op = '1' AND wr_en = '1') ELSE -- Disable for MOV FROM accumulator
-    wr_en; -- Normal operations
+        '0' WHEN (selec_reg_out = "111" AND is_mov_op = '1' AND wr_en = '1') ELSE -- Disable for MOV FROM accumulator
+        wr_en; -- Normal operations
 END ARCHITECTURE;
