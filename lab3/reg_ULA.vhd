@@ -118,8 +118,11 @@ BEGIN
 
     -- Data input for accumulator comes from:
     -- 1. If it's a MOV to accumulator: use reg_bank_out (from register bank)
-    -- 2. Otherwise: use ULA output
-    data_in_acc <= reg_bank_out WHEN (load_acc = '1') ELSE
+    -- 2. Usar immediato se LI
+    -- 3. Otherwise: use ULA output
+    data_in_acc <= data_in WHEN (use_immediate = '1' AND selec_reg_in = "111") ELSE
+        reg_bank_out WHEN (load_acc = '1') ELSE
+
         ula_out;
 
     -- Logic for using accumulator as source in MOV operation
@@ -138,9 +141,7 @@ BEGIN
 
     -- Enable writing to accumulator:
     -- 1. Enable when destination is accumulator and it's a MOV operation
-    -- 2. Enable when it's a regular operation (non-MOV)
-    -- 3. Disable when it's a MOV from accumulator to register
-    wr_en_acc <= '1' WHEN (selec_reg_in = "111" AND is_mov_op = '1' AND wr_en = '1') ELSE -- Enable for MOV TO accumulator
-        '0' WHEN (selec_reg_out = "111" AND is_mov_op = '1' AND wr_en = '1') ELSE -- Disable for MOV FROM accumulator
+    -- 2. Disable when it's a MOV from accumulator to register
+    wr_en_acc <= '1' WHEN (selec_reg_in = "111" AND is_mov_op = '1' AND wr_en = '1') ELSE -- Disable for MOV FROM accumulator
         wr_en; -- Normal operations
 END ARCHITECTURE;

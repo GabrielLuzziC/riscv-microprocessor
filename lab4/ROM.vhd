@@ -22,7 +22,7 @@ ARCHITECTURE a_ROM OF ROM IS
 
         -- Store values at different memory addresses
         B"0101_111_000_01010", -- 3: LI A, 10     (address 10)
-        B"0010_001_111_00000", -- 4: SW R1, A     (store 37 at address 10)
+        B"0010_111_001_00000", -- 4: SW A, R1     (store 37 at address 10)
 
         B"0101_111_000_10101", -- 5: LI A, 21     (address 21)
         B"0010_010_111_00000", -- 6: SW R2, A     (store 75 at address 21)
