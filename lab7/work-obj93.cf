@@ -1,49 +1,49 @@
 v 4
-file . "..\lab6\reg1bit.vhd" "c10b3206641ac240f6ec965e7d0bfcbeddca7211" "20250618205606.647":
-  entity reg1bits at 1( 0) + 0 on 1367;
-  architecture a_reg1bits of reg1bits at 14( 259) + 0 on 1368;
-file . "..\lab4\unidade_de_controle.vhd" "82e6a7169efcae601093cfd50e180e41601efd99" "20250618205606.575":
-  entity unidade_de_controle at 1( 0) + 0 on 1363;
-  architecture a_unidade_de_controle of unidade_de_controle at 15( 383) + 0 on 1364;
-file . "..\lab4\PC_ROM.vhd" "7b536722ac733ade48493d9e60fcc2de38fc428f" "20250618205606.511":
-  entity pc_rom at 1( 0) + 0 on 1359;
-  architecture a_pc_rom of pc_rom at 16( 456) + 0 on 1360;
-file . "..\lab4\PC_soma.vhd" "cddd4015d3e25a4578eaeffde0291553341c9c07" "20250618205606.447":
-  entity pc_soma at 1( 0) + 0 on 1355;
-  architecture a_pc_soma of pc_soma at 16( 351) + 0 on 1356;
-file . "..\lab3\reg_ULA.vhd" "1da808e0af44890be0e1a2ac855f89a6ddade730" "20250618205606.380":
-  entity reg_ula at 1( 0) + 0 on 1351;
-  architecture a_reg_ula of reg_ula at 24( 873) + 0 on 1352;
-file . "..\lab3\banco_reg.vhd" "91f1cef18cb58d8b1a5d20580f078fa996d65a6a" "20250618205606.315":
-  entity banco_reg at 1( 0) + 0 on 1347;
-  architecture a_banco_reg of banco_reg at 17( 409) + 0 on 1348;
-file . "..\lab2\ULA.vhd" "ce65adb1c88338e93ccc57030e6902070e721273" "20250618205606.248":
-  entity ula at 1( 0) + 0 on 1343;
-  architecture a_ula of ula at 25( 680) + 0 on 1344;
-file . "RAM.vhd" "97d3d379078a0a9297449c7028b35720d8ef37c8" "20250618205606.699":
-  entity ram at 1( 0) + 0 on 1371;
-  architecture a_ram of ram at 15( 296) + 0 on 1372;
-file . "processador_lab7_tb.vhd" "1bf1c5cad6bb46a5e1ce79b77c73315f788b0010" "20250618205606.731":
-  entity processador_lab7_tb at 1( 0) + 0 on 1373;
-  architecture a_processador_lab7_tb of processador_lab7_tb at 10( 142) + 0 on 1374;
-file . "..\lab3\reg16bits.vhd" "6b03f1e96825f556a67a7bb2c546a8d61ecca5a0" "20250618205606.280":
-  entity reg16bits at 1( 0) + 0 on 1345;
-  architecture a_reg16bits of reg16bits at 15( 310) + 0 on 1346;
-file . "..\lab3\acumulador.vhd" "136471a2723f46bff6560da6ad5a3487df64e773" "20250618205606.340":
-  entity acumulador at 1( 0) + 0 on 1349;
-  architecture a_acumulador of acumulador at 15( 356) + 0 on 1350;
-file . "..\lab4\PC.vhd" "fb290c2b45a9450bc71c6ccd8ed8c57a3d2036d3" "20250618205606.412":
-  entity pc at 1( 0) + 0 on 1353;
-  architecture a_pc of pc at 15( 301) + 0 on 1354;
-file . "..\lab4\ROM.vhd" "57aa9349b2f9ebb794dcc54f703f5fba5b900c26" "20250618205606.472":
-  entity rom at 1( 0) + 0 on 1357;
-  architecture a_rom of rom at 13( 239) + 0 on 1358;
-file . "..\lab4\maquina_estados.vhd" "7c582b8701b164865544e45b03f3525b0bfad68a" "20250618205606.543":
-  entity maquina_estados at 1( 0) + 0 on 1361;
-  architecture a_maquina_estados of maquina_estados at 10( 209) + 0 on 1362;
-file . "..\lab5\processador.vhd" "65f24055044dc74e299b6228b2cabde4ed6a4619" "20250618205606.613":
-  entity processador at 1( 0) + 0 on 1365;
-  architecture a_processador of processador at 19( 361) + 0 on 1366;
-file . "..\lab6\flag_registers.vhd" "c225ae52b5e174937712b8654517443d9de31468" "20250618205606.672":
-  entity flag_registers at 1( 0) + 0 on 1369;
-  architecture a_flag_registers of flag_registers at 17( 349) + 0 on 1370;
+file . "..\lab6\reg1bit.vhd" "c10b3206641ac240f6ec965e7d0bfcbeddca7211" "20250618210654.415":
+  entity reg1bits at 1( 0) + 0 on 1399;
+  architecture a_reg1bits of reg1bits at 14( 259) + 0 on 1400;
+file . "..\lab4\unidade_de_controle.vhd" "82e6a7169efcae601093cfd50e180e41601efd99" "20250618210654.350":
+  entity unidade_de_controle at 1( 0) + 0 on 1395;
+  architecture a_unidade_de_controle of unidade_de_controle at 15( 383) + 0 on 1396;
+file . "..\lab4\PC_ROM.vhd" "7b536722ac733ade48493d9e60fcc2de38fc428f" "20250618210654.280":
+  entity pc_rom at 1( 0) + 0 on 1391;
+  architecture a_pc_rom of pc_rom at 16( 456) + 0 on 1392;
+file . "..\lab4\PC_soma.vhd" "cddd4015d3e25a4578eaeffde0291553341c9c07" "20250618210654.207":
+  entity pc_soma at 1( 0) + 0 on 1387;
+  architecture a_pc_soma of pc_soma at 16( 351) + 0 on 1388;
+file . "..\lab3\reg_ULA.vhd" "1da808e0af44890be0e1a2ac855f89a6ddade730" "20250618210654.141":
+  entity reg_ula at 1( 0) + 0 on 1383;
+  architecture a_reg_ula of reg_ula at 24( 873) + 0 on 1384;
+file . "..\lab3\banco_reg.vhd" "91f1cef18cb58d8b1a5d20580f078fa996d65a6a" "20250618210654.090":
+  entity banco_reg at 1( 0) + 0 on 1379;
+  architecture a_banco_reg of banco_reg at 17( 409) + 0 on 1380;
+file . "..\lab2\ULA.vhd" "ce65adb1c88338e93ccc57030e6902070e721273" "20250618210654.020":
+  entity ula at 1( 0) + 0 on 1375;
+  architecture a_ula of ula at 25( 680) + 0 on 1376;
+file . "RAM.vhd" "97d3d379078a0a9297449c7028b35720d8ef37c8" "20250618210654.483":
+  entity ram at 1( 0) + 0 on 1403;
+  architecture a_ram of ram at 15( 296) + 0 on 1404;
+file . "processador_lab7_tb.vhd" "1bf1c5cad6bb46a5e1ce79b77c73315f788b0010" "20250618210654.512":
+  entity processador_lab7_tb at 1( 0) + 0 on 1405;
+  architecture a_processador_lab7_tb of processador_lab7_tb at 10( 142) + 0 on 1406;
+file . "..\lab3\reg16bits.vhd" "6b03f1e96825f556a67a7bb2c546a8d61ecca5a0" "20250618210654.058":
+  entity reg16bits at 1( 0) + 0 on 1377;
+  architecture a_reg16bits of reg16bits at 15( 310) + 0 on 1378;
+file . "..\lab3\acumulador.vhd" "136471a2723f46bff6560da6ad5a3487df64e773" "20250618210654.115":
+  entity acumulador at 1( 0) + 0 on 1381;
+  architecture a_acumulador of acumulador at 15( 356) + 0 on 1382;
+file . "..\lab4\PC.vhd" "fb290c2b45a9450bc71c6ccd8ed8c57a3d2036d3" "20250618210654.170":
+  entity pc at 1( 0) + 0 on 1385;
+  architecture a_pc of pc at 15( 301) + 0 on 1386;
+file . "..\lab4\ROM.vhd" "589f4247fb96d6a0f58d6bc2e380932b77a3f4d0" "20250618210654.244":
+  entity rom at 1( 0) + 0 on 1389;
+  architecture a_rom of rom at 13( 239) + 0 on 1390;
+file . "..\lab4\maquina_estados.vhd" "7c582b8701b164865544e45b03f3525b0bfad68a" "20250618210654.314":
+  entity maquina_estados at 1( 0) + 0 on 1393;
+  architecture a_maquina_estados of maquina_estados at 10( 209) + 0 on 1394;
+file . "..\lab5\processador.vhd" "65f24055044dc74e299b6228b2cabde4ed6a4619" "20250618210654.386":
+  entity processador at 1( 0) + 0 on 1397;
+  architecture a_processador of processador at 19( 361) + 0 on 1398;
+file . "..\lab6\flag_registers.vhd" "c225ae52b5e174937712b8654517443d9de31468" "20250618210654.456":
+  entity flag_registers at 1( 0) + 0 on 1401;
+  architecture a_flag_registers of flag_registers at 17( 349) + 0 on 1402;

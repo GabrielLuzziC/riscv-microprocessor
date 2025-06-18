@@ -46,4 +46,4 @@ ADD A, R3         ; 30: A = A + R3 (A = 191)
 SW R3, A          ; 31: RAM[191] = R3 (acesso inválido)
 LW R4, A          ; 32: R4 = RAM[191] (acesso inválido)
 
-; Restante da ROM preenchida com NOPs
+; Em caso de acesso inválido interrompe a simulação
