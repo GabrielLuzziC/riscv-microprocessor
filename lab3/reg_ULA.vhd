@@ -161,8 +161,11 @@ BEGIN
     -- 1. Enable when destination is accumulator and it's a MOV operation
     -- 2. Disable when it's a MOV from accumulator to register
     wr_en_acc <= '0' WHEN is_lw_op = '1' AND selec_reg_in /= "111" ELSE -- Don't write to acc for LW to registers
+        '0' WHEN is_sw_op = '1' ELSE -- Don't write to acc for SW operations
         '1' WHEN (selec_reg_in = "111" AND is_mov_op = '1' AND wr_en = '1') ELSE -- Enable for MOV TO accumulator
         '1' WHEN (selec_reg_in = "111" AND use_immediate = '1' AND wr_en = '1') ELSE -- Enable for LI TO accumulator
         '0' WHEN (selec_reg_out = "111" AND is_mov_op = '1' AND wr_en = '1') ELSE -- Disable for MOV FROM accumulator
-        wr_en WHEN (selec_reg_in /= "111"); -- Normal operations to other registers
+        wr_en WHEN (selec_reg_in = "111") ELSE -- Enable for normal operations TO accumulator
+        '0'; -- Default: don't write to accumulator for operations not targeting it
+
 END ARCHITECTURE;
