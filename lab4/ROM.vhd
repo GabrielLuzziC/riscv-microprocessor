@@ -14,6 +14,12 @@ ARCHITECTURE a_ROM OF ROM IS
     TYPE mem IS ARRAY (0 TO 127) OF UNSIGNED (14 DOWNTO 0);
     CONSTANT conteudo_rom : mem := (
         -- SHORT RAM TEST - Updated for LW Rd, A and SW Rs, A format
+        -- Teste endereço inválido --
+        B"0101_011_101_11111", -- 5: LI R3, 191 -- Endereço inválido
+        B"0101_111_000_00000", -- 6: LI A, 0
+        B"1000_111_011_00000", -- 7: ADD A, R3
+        B"0010_011_111_00000", -- 8: SW R3, A   -- R3 no endereço A
+        B"1110_100_111_00000", -- 9: LW R4, A
 
         -- Initialize with interesting values
         B"0101_001_001_00101", -- 0: LI R1, 37    (prime number)

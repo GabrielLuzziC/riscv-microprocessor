@@ -6,6 +6,7 @@ USE ieee.numeric_std.ALL;
 -- 000 -> soma
 -- 001 -> subtração
 -- 100 -> diferente
+-- 011 -> AND
 -- 101 -> operações de carregar valores em registradores
 -- 111 -> comparação com imediato (CMPI)
 ENTITY ULA IS
@@ -41,8 +42,9 @@ ARCHITECTURE a_ULA OF ULA IS
 BEGIN
     -- Calculate CMPI result
     -- soma & sub --
-    result <= in_1 + in_2 WHEN (selec_op = "000") ELSE
-        in_1 - in_2 WHEN (selec_op = "001" OR selec_op = "111") ELSE
+    result <= (in_1 + in_2) WHEN (selec_op = "000") ELSE                -- soma
+        (in_1 - in_2) WHEN (selec_op = "001" OR selec_op = "111") ELSE  -- subtração e comparação
+        (in_1 AND in_2) WHEN (selec_op = "011") ELSE                    -- and
         "0000000000000000";
 
     output <= result;

@@ -59,7 +59,7 @@ ARCHITECTURE a_processador OF processador IS
     COMPONENT RAM
         PORT (
             clk : IN STD_LOGIC;
-            endereco : IN unsigned(6 DOWNTO 0);
+            endereco : IN unsigned(7 DOWNTO 0);
             wr_en : IN STD_LOGIC;
             dado_in : IN unsigned(15 DOWNTO 0);
             dado_out : OUT unsigned(15 DOWNTO 0)
@@ -77,7 +77,7 @@ ARCHITECTURE a_processador OF processador IS
     SIGNAL is_operation_with_immediate : STD_LOGIC;
     SIGNAL exec_en : STD_LOGIC; -- NEW: to enable flag updates
 
-    SIGNAL ram_endereco : UNSIGNED(6 DOWNTO 0);
+    SIGNAL ram_endereco : UNSIGNED(7 DOWNTO 0);
     SIGNAL ram_wr_en : STD_LOGIC;
     SIGNAL ram_data_in : UNSIGNED(15 DOWNTO 0);
     SIGNAL ram_data_out : UNSIGNED(15 DOWNTO 0);
@@ -164,7 +164,7 @@ BEGIN
     is_ram_operation <= '1' WHEN (opcode = "1110" OR opcode = "0010") ELSE
         '0'; -- LW or SW
 
-    ram_endereco <= data_out_acc(6 DOWNTO 0); -- Always the 7 LSB of accumulator
+    ram_endereco <= data_out_acc(7 DOWNTO 0); -- Always the 7 LSB of accumulator
 
     -- RAM data input for SW operations
     ram_data_in <= data_out_reg; -- Data from register bank for SW operations

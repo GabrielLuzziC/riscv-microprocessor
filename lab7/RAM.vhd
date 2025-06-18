@@ -5,7 +5,7 @@ USE ieee.numeric_std.ALL;
 ENTITY ram IS
   PORT (
     clk : IN STD_LOGIC;
-    endereco : IN unsigned(6 DOWNTO 0);
+    endereco : IN unsigned(7 DOWNTO 0);
     wr_en : IN STD_LOGIC;
     dado_in : IN unsigned(15 DOWNTO 0);
     dado_out : OUT unsigned(15 DOWNTO 0)
@@ -19,10 +19,14 @@ BEGIN
   PROCESS (clk, wr_en)
   BEGIN
     IF rising_edge(clk) THEN
-      IF wr_en = '1' THEN
-        conteudo_ram(to_integer(endereco)) <= dado_in;
+      IF to_integer(endereco) >= 0 AND to_integer(endereco) <= 127 THEN
+        IF wr_en = '1' THEN
+          conteudo_ram(to_integer(endereco)) <= dado_in;
+        END IF;
+      ELSE 
+        REPORT "ERRO: Endereco de RAM invalido: " & integer'image(to_integer(endereco)) SEVERITY ERROR;
       END IF;
     END IF;
   END PROCESS;
-  dado_out <= conteudo_ram(to_integer(endereco));
+  dado_out <= conteudo_ram(to_integer(endereco)) when (to_integer(endereco) >= 0 and to_integer(endereco) <= 127) else (others => 'U');
 END ARCHITECTURE;

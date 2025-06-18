@@ -1,0 +1,57 @@
+; SHORT RAM TEST - Teste endereço inválido
+LI R3, 191         ; 5: Carrega 191 em R3 (endereço inválido para RAM)
+LI A, 0            ; 6: Zera o acumulador (A)
+ADD A, R3          ; 7: Soma R3 em A (A = 191)
+SW R3, A           ; 8: Armazena R3 no endereço A (A=191, endereço inválido)
+LW R4, A           ; 9: Carrega da RAM endereço A (A=191) para R4
+
+; Inicializa registradores com valores interessantes
+LI R1, 37          ; 0: Carrega 37 em R1
+LI R2, 75          ; 1: Carrega 75 em R2
+LI R3, 13          ; 2: Carrega 13 em R3
+
+; Armazena valores em diferentes endereços de memória
+LI A, 10           ; 3: A = 10
+SW R1, A           ; 4: RAM[10] = R1
+
+LI A, 21           ; 5: A = 21
+SW R2, A           ; 6: RAM[21] = R2
+
+; Carrega valores de volta e faz operações aritméticas
+LI A, 10           ; 7: A = 10
+LW R4, A           ; 8: R4 = RAM[10]
+
+LI A, 21           ; 9: A = 21
+LW R5, A           ; 10: R5 = RAM[21]
+
+; Soma os valores carregados (37 + 75 = 112)
+LI A, 0            ; 11: A = 0
+ADD A, R4          ; 12: A = A + R4 (A = 37)
+ADD A, R5          ; 13: A = A + R5 (A = 112)
+
+; Armazena o resultado
+MOV R6, A          ; 14: R6 = A (backup)
+LI A, 31           ; 15: A = 31
+SW R6, A           ; 16: RAM[31] = R6
+
+; Verifica resultado carregando de volta
+LW R3, A           ; 17: R3 = RAM[31]
+
+; Teste simples de troca de memória (swap)
+LI A, 10           ; 18: A = 10
+LW R1, A           ; 19: R1 = RAM[10]
+LI A, 21           ; 20: A = 21
+LW R2, A           ; 21: R2 = RAM[21]
+
+; Troca os valores
+LI A, 10           ; 22: A = 10
+SW R2, A           ; 23: RAM[10] = R2
+LI A, 21           ; 24: A = 21
+SW R1, A           ; 25: RAM[21] = R1
+
+; Verifica se a troca funcionou
+LI A, 10           ; 26: A = 10
+LW R4, A           ; 27: R4 = RAM[10] (deve ser 75)
+
+; Loop infinito
+JUMP 27            ; 28: Salta para a instrução 27 (loop)
