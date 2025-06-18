@@ -58,22 +58,26 @@ ARCHITECTURE a_reg_ULA OF reg_ULA IS
     -- Internal signals with different names to avoid conflicts
     SIGNAL reg_bank_out, acc_out, ula_out : UNSIGNED(15 DOWNTO 0) := (OTHERS => '0');
     SIGNAL mux_reg_imediato : UNSIGNED(15 DOWNTO 0) := (OTHERS => '0'); -- Sinal para o mux do acumulador com valor constante
-    SIGNAL mux_acc : UNSIGNED(15 DOWNTO 0); -- Sinal para o mux do acumulador
+    SIGNAL mux_in_breg : UNSIGNED(15 DOWNTO 0); -- Sinal para o mux do acumulador
     SIGNAL load_reg_acc : STD_LOGIC; -- Sinal para carregar o registrador acumulador
     SIGNAL load_acc : STD_LOGIC; -- Sinal para carregar ou não o acumulador
     SIGNAL data_in_acc : UNSIGNED(15 DOWNTO 0); -- Sinal de entrada do acumulador
     SIGNAL wr_en_acc : STD_LOGIC;
     SIGNAL is_mov_op : STD_LOGIC; -- New signal to detect MOV operations
+    SIGNAL is_sw_op : STD_LOGIC; -- New signal to detect SW operations
+    SIGNAL wr_en_breg : STD_LOGIC;
+    SIGNAL is_lw_op : STD_LOGIC;
+    SIGNAL mux_reg_out : UNSIGNED(2 DOWNTO 0);
 
 BEGIN
     breg : banco_reg
     PORT MAP(
         clk => clk,
         rst => rst,
-        wr_en => wr_en,
+        wr_en => wr_en_breg,
         selec_reg_in => selec_reg_in,
-        selec_reg_out => selec_reg_out,
-        data_in => mux_acc,
+        selec_reg_out => mux_reg_out,
+        data_in => mux_in_breg,
         data_out => reg_bank_out
     );
 
@@ -104,8 +108,21 @@ BEGIN
     is_mov_op <= '1' WHEN selec_op = "101" ELSE
         '0';
 
+    is_sw_op <= '1' WHEN selec_op = "010" ELSE
+        '0';
+
+    is_lw_op <= '1' WHEN selec_op = "110" ELSE
+        '0';
+
+    wr_en_breg <= '0' WHEN is_sw_op = '1' ELSE
+        '1' WHEN is_lw_op = '1' AND wr_en = '1' ELSE -- Enable for LW operations
+        wr_en; -- Use the original wr_en for other operations
+
     -- Output the ULA result
     data_out <= ula_out;
+
+    mux_reg_out <= selec_reg_in WHEN is_sw_op = '1' ELSE
+        selec_reg_out; -- Use input register selection for LW, otherwise use output selection
 
     -- Connect internal signals to output ports
     data_out_acc <= acc_out;
@@ -132,7 +149,8 @@ BEGIN
 
     -- Data input for register bank:
     -- If source is accumulator, use accumulator value
-    mux_acc <= acc_out WHEN load_reg_acc = '1' ELSE
+    mux_in_breg <= data_in WHEN is_lw_op = '1' ELSE -- Use RAM data for LW
+        acc_out WHEN load_reg_acc = '1' ELSE
         data_in;
 
     -- Select register bank or immediate value for ULA
@@ -142,6 +160,9 @@ BEGIN
     -- Enable writing to accumulator:
     -- 1. Enable when destination is accumulator and it's a MOV operation
     -- 2. Disable when it's a MOV from accumulator to register
-    wr_en_acc <= '1' WHEN (selec_reg_in = "111" AND is_mov_op = '1' AND wr_en = '1') ELSE -- Disable for MOV FROM accumulator
-        wr_en; -- Normal operations
+    wr_en_acc <= '0' WHEN is_lw_op = '1' AND selec_reg_in /= "111" ELSE -- Don't write to acc for LW to registers
+        '1' WHEN (selec_reg_in = "111" AND is_mov_op = '1' AND wr_en = '1') ELSE -- Enable for MOV TO accumulator
+        '1' WHEN (selec_reg_in = "111" AND use_immediate = '1' AND wr_en = '1') ELSE -- Enable for LI TO accumulator
+        '0' WHEN (selec_reg_out = "111" AND is_mov_op = '1' AND wr_en = '1') ELSE -- Disable for MOV FROM accumulator
+        wr_en WHEN (selec_reg_in /= "111"); -- Normal operations to other registers
 END ARCHITECTURE;

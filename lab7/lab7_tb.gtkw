@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
-[*] Tue Jun 17 22:08:05 2025
+[*] Tue Jun 17 23:56:45 2025
 [*]
 [dumpfile] "/home/gefgu/repos/riscv-microprocessor/lab7/processador_lab7_tb.ghw"
-[dumpfile_mtime] "Tue Jun 17 22:07:56 2025"
-[dumpfile_size] 111155
+[dumpfile_mtime] "Tue Jun 17 23:56:03 2025"
+[dumpfile_size] 126688
 [savefile] "/home/gefgu/repos/riscv-microprocessor/lab7/lab7_tb.gtkw"
-[timestart] 0
-[size] 1920 1016
-[pos] -101 -101
-*-28.874760 1267000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[timestart] 2451000000
+[size] 960 1016
+[pos] 859 -101
+*-28.874760 2918000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] top.
 [treeopen] top.processador_lab7_tb.
 [treeopen] top.processador_lab7_tb.uut.
@@ -17,9 +17,9 @@
 [treeopen] top.processador_lab7_tb.uut.c_ram.conteudo_ram.
 [treeopen] top.processador_lab7_tb.uut.uc.
 [treeopen] top.processador_lab7_tb.uut.uc.u_pc_rom.
-[sst_width] 233
+[sst_width] 48
 [signals_width] 310
-[sst_expanded] 1
+[sst_expanded] 0
 [sst_vpaned_height] 609
 @28
 top.processador_lab7_tb.rst
