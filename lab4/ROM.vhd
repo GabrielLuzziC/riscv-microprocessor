@@ -14,13 +14,6 @@ ARCHITECTURE a_ROM OF ROM IS
     TYPE mem IS ARRAY (0 TO 127) OF UNSIGNED (14 DOWNTO 0);
     CONSTANT conteudo_rom : mem := (
         -- SHORT RAM TEST - Updated for LW Rd, A and SW Rs, A format
-        -- Teste endereço inválido --
-        B"0101_011_101_11111", -- 5: LI R3, 191 -- Endereço inválido
-        B"0101_111_000_00000", -- 6: LI A, 0
-        B"1000_111_011_00000", -- 7: ADD A, R3
-        B"0010_011_111_00000", -- 8: SW R3, A   -- R3 no endereço A
-        B"1110_100_111_00000", -- 9: LW R4, A
-
         -- Initialize with interesting values
         B"0101_001_001_00101", -- 0: LI R1, 37    (prime number)
         B"0101_010_001_01011", -- 1: LI R2, 75    (3 * 5^2)
@@ -69,8 +62,12 @@ ARCHITECTURE a_ROM OF ROM IS
         B"0101_111_000_01010", -- 26: LI A, 10    (address 10)
         B"1110_100_111_00000", -- 27: LW R4, A    (should now be 75)
 
-        -- End with infinite loop
-        B"0111_000_000_11011", -- 28: JUMP 27     (infinite loop)
+        -- Teste endereço inválido --
+        B"0101_011_101_11111", -- 5: LI R3, 191 -- Endereço inválido
+        B"0101_111_000_00000", -- 6: LI A, 0
+        B"1000_111_011_00000", -- 7: ADD A, R3
+        B"0010_011_111_00000", -- 8: SW R3, A   -- R3 no endereço A
+        B"1110_100_111_00000", -- 9: LW R4, A
 
         -- Fill remaining with NOPs
         OTHERS => "000000000000000"

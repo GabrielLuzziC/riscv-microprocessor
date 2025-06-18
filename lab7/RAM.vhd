@@ -24,7 +24,7 @@ BEGIN
           conteudo_ram(to_integer(endereco)) <= dado_in;
         END IF;
       ELSE 
-        REPORT "ERRO: Endereco de RAM invalido: " & integer'image(to_integer(endereco)) SEVERITY ERROR;
+        REPORT "ERRO: Endereco de RAM invalido: " & integer'image(to_integer(endereco)) SEVERITY FAILURE;
       END IF;
     END IF;
   END PROCESS;
