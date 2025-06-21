@@ -22,6 +22,7 @@ ARCHITECTURE a_processador OF processador IS
             clk : IN STD_LOGIC;
             rst : IN STD_LOGIC;
             carry_flag : IN STD_LOGIC; -- Sinal de carry
+            zero_flag : IN STD_LOGIC;
             estado : OUT UNSIGNED(1 DOWNTO 0); -- Estado da máquina de estados
             instrucao : OUT UNSIGNED(14 DOWNTO 0) -- Instrução a ser executada
         );
@@ -91,6 +92,7 @@ BEGIN
         clk => clk,
         rst => rst,
         carry_flag => carry_flag, -- Sinal de carry
+        zero_flag => zero_flag, -- Sinal de zero
         estado => uc_estado,
         instrucao => uc_instrucao
     );
@@ -137,7 +139,8 @@ BEGIN
         '0'; -- Decode
 
     wr_en_reg_ULA <= '1' WHEN (uc_estado = "10" AND NOT -- Só escreve nos registradores da ULA quando não é branch
-        (opcode = "0111" AND (reg_instrucao_out(10 DOWNTO 8) = "001" OR reg_instrucao_out(10 DOWNTO 8) = "000"))) ELSE
+        (opcode = "1111" OR (opcode = "0111" AND (reg_instrucao_out(10 DOWNTO 8) = "010" OR reg_instrucao_out(10 DOWNTO 8) = "001" OR 
+        reg_instrucao_out(10 DOWNTO 8) = "000")))) ELSE
         '0'; -- Execute
 
     opcode <= reg_instrucao_out(14 DOWNTO 11); -- 4 MSB da instrução
@@ -164,7 +167,8 @@ BEGIN
     is_ram_operation <= '1' WHEN (opcode = "1110" OR opcode = "0010") ELSE
         '0'; -- LW or SW
 
-    ram_endereco <= data_out_acc(7 DOWNTO 0); -- Always the 7 LSB of accumulator
+    ram_endereco <= data_out_acc(7 DOWNTO 0) WHEN is_ram_operation = '1' ELSE
+        (OTHERS => '0'); -- Always the 7 LSB of accumulator
 
     -- RAM data input for SW operations
     ram_data_in <= data_out_reg; -- Data from register bank for SW operations

@@ -1,0 +1,10 @@
+-- VALIDACAO LAB 8
+    
+    --  INICIALIZAÇÂO --
+    B"",    -- LI R1, 1
+    B"",    -- MOV A, R1
+
+    -- INICIALIZAÇÃO DE MEMÓRIA --
+
+    B"",    --
+    

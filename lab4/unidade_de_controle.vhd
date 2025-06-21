@@ -7,6 +7,7 @@ ENTITY unidade_de_controle IS
     clk : IN STD_LOGIC;
     rst : IN STD_LOGIC;
     carry_flag : IN STD_LOGIC; -- sinal de carry
+    zero_flag : IN STD_LOGIC; -- sinal de zero
     estado : OUT unsigned(1 DOWNTO 0); -- estado da maquina de estados;
     instrucao : OUT UNSIGNED(14 DOWNTO 0) -- instrução a ser executada
   );
@@ -67,7 +68,8 @@ BEGIN
 
   -- jump_en: 00 = nenhum salto, 01 = salto absoluto, 10 = salto relativo
   jump_en <= "01" WHEN (opcode = "0111" AND func3 = "000") ELSE
-    "10" WHEN (opcode = "0111" AND func3 = "001" AND carry_flag = '0') ELSE
+    "10" WHEN ((opcode = "0111" AND func3 = "001" AND carry_flag = '0') OR  -- BCC
+    (opcode = "0111" AND func3 = "010" AND zero_flag = '0')) ELSE   -- BNE
     "00";
 
   constante <= instrucao_int(6 DOWNTO 0); -- 7 LSB

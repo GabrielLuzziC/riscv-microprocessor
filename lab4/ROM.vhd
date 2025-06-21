@@ -13,63 +13,33 @@ END ENTITY;
 ARCHITECTURE a_ROM OF ROM IS
     TYPE mem IS ARRAY (0 TO 127) OF UNSIGNED (14 DOWNTO 0);
     CONSTANT conteudo_rom : mem := (
-        -- SHORT RAM TEST - Updated for LW Rd, A and SW Rs, A format
-        -- Initialize with interesting values
-        B"0101_001_001_00101", -- 0: LI R1, 37    (prime number)
-        B"0101_010_001_01011", -- 1: LI R2, 75    (3 * 5^2)
-        B"0101_011_000_01101", -- 2: LI R3, 13    (another prime)
-
-        -- Store values at different memory addresses
-        B"0101_111_000_01010", -- 3: LI A, 10     (address 10)
-        B"0010_001_111_00000", -- 4: SW R1, A     (store R1 at address A)
-
-        B"0101_111_000_10101", -- 5: LI A, 21     (address 21)
-        B"0010_010_111_00000", -- 6: SW R2, A     (store R2 at address A)
-
-        -- Load values back and perform arithmetic
-        B"0101_111_000_01010", -- 7: LI A, 10     (address 10)
-        B"1110_100_111_00000", -- 8: LW R4, A     (load from address A into R4)
-
-        B"0101_111_000_10101", -- 9: LI A, 21     (address 21)
-        B"1110_101_111_00000", -- 10: LW R5, A    (load from address A into R5)
-
-        -- Add the loaded values (37 + 75 = 112)
-        B"0101_111_000_00000", -- 11: LI A, 0     (clear accumulator)
-        B"1000_111_100_00000", -- 12: ADD A, R4   (A = 37)
-        B"1000_111_101_00000", -- 13: ADD A, R5   (A = 112)
-
-        -- Store the result
-        B"1101_110_111_00000", -- 14: MOV R6, A   (R6 = A for backup)
-        B"0101_111_000_11111", -- 15: LI A, 31    (address 31)
-        B"0010_110_111_00000", -- 16: SW R6, A    (store R6 at address A)
-
-        -- Verify by loading the result back
-        B"1110_011_111_00000", -- 17: LW R3, A    (load from address A into R3)
-
-        -- Simple memory swap test
-        B"0101_111_000_01010", -- 18: LI A, 10    (address 10)
-        B"1110_001_111_00000", -- 19: LW R1, A    (load from address A into R1)
-        B"0101_111_000_10101", -- 20: LI A, 21    (address 21)
-        B"1110_010_111_00000", -- 21: LW R2, A    (load from address A into R2)
-
-        -- Swap them
-        B"0101_111_000_01010", -- 22: LI A, 10    (address 10)
-        B"0010_010_111_00000", -- 23: SW R2, A    (store R2 at address A)
-        B"0101_111_000_10101", -- 24: LI A, 21    (address 21)
-        B"0010_001_111_00000", -- 25: SW R1, A    (store R1 at address A)
-
-        -- Verify swap worked
-        B"0101_111_000_01010", -- 26: LI A, 10    (address 10)
-        B"1110_100_111_00000", -- 27: LW R4, A    (should now be 75)
-
-        -- Teste endereço inválido --
-        B"0101_011_101_11111", -- 5: LI R3, 191 -- Endereço inválido
-        B"0101_111_000_00000", -- 6: LI A, 0
-        B"1000_111_011_00000", -- 7: ADD A, R3
-        B"0010_011_111_00000", -- 8: SW R3, A   -- R3 no endereço A
-        B"1110_100_111_00000", -- 9: LW R4, A
-
-        -- Fill remaining with NOPs
+        -- TESTE 1: AND básico
+        B"0101_111_000_01111", -- 0: LI A, 15
+        B"0101_001_000_00111", -- 1: LI R1, 7
+        B"0011_111_001_00000", -- 2: AND A, R1
+        
+        -- TESTE 2: AND com zero
+        B"0101_111_111_11111", -- 3: LI A, 31
+        B"0101_001_000_00000", -- 4: LI R1, 0
+        B"0011_111_001_00000", -- 5: AND A, R1
+        
+        -- TESTE 3: AND alternado
+        B"0101_111_101_01010", -- 6: LI A, 21
+        B"0101_001_001_01010", -- 7: LI R1, 10
+        B"0011_111_001_00000", -- 8: AND A, R1
+        
+        -- TESTE 4: Máscara bits baixos
+        B"0101_111_101_11011", -- 9: LI A, 27
+        B"0101_001_000_01111", -- 10: LI R1, 15
+        B"0011_111_001_00000", -- 11: AND A, R1
+        
+        -- TESTE 5: AND consecutivos
+        B"0101_111_111_11111", -- 12: LI A, 31
+        B"0101_001_000_01110", -- 13: LI R1, 14
+        B"0011_111_001_00000", -- 14: AND A, R1
+        B"0101_010_000_01100", -- 15: LI R2, 12
+        B"0011_111_010_00000", -- 16: AND A, R2
+        
         OTHERS => "000000000000000"
     );
 BEGIN
@@ -80,6 +50,67 @@ BEGIN
         END IF;
     END PROCESS;
 END ARCHITECTURE;
+
+
+-- LAB 7
+-- CONSTANT conteudo_rom : mem := (
+-- SHORT RAM TEST - Updated for LW Rd, A and SW Rs, A format
+--        -- Initialize with interesting values
+--        B"0101_001_001_00101", -- 0: LI R1, 37    (prime number)
+--        B"0101_010_001_01011", -- 1: LI R2, 75    (3 * 5^2)
+--        B"0101_011_000_01101", -- 2: LI R3, 13    (another prime)
+--
+--        -- Store values at different memory addresses
+--        B"0101_111_000_01010", -- 3: LI A, 10     (address 10)
+--        B"0010_001_111_00000", -- 4: SW R1, A     (store R1 at address A)
+--
+--        B"0101_111_000_10101", -- 5: LI A, 21     (address 21)
+--        B"0010_010_111_00000", -- 6: SW R2, A     (store R2 at address A)
+--
+--        -- Load values back and perform arithmetic
+--        B"0101_111_000_01010", -- 7: LI A, 10     (address 10)
+--        B"1110_100_111_00000", -- 8: LW R4, A     (load from address A into R4)
+--
+--        B"0101_111_000_10101", -- 9: LI A, 21     (address 21)
+--        B"1110_101_111_00000", -- 10: LW R5, A    (load from address A into R5)
+--
+--        -- Add the loaded values (37 + 75 = 112)
+--        B"0101_111_000_00000", -- 11: LI A, 0     (clear accumulator)
+--        B"1000_111_100_00000", -- 12: ADD A, R4   (A = 37)
+--        B"1000_111_101_00000", -- 13: ADD A, R5   (A = 112)
+--
+--        -- Store the result
+--        B"1101_110_111_00000", -- 14: MOV R6, A   (R6 = A for backup)
+--        B"0101_111_000_11111", -- 15: LI A, 31    (address 31)
+--        B"0010_110_111_00000", -- 16: SW R6, A    (store R6 at address A)
+--
+--        -- Verify by loading the result back
+--        B"1110_011_111_00000", -- 17: LW R3, A    (load from address A into R3)
+--
+--        -- Simple memory swap test
+--        B"0101_111_000_01010", -- 18: LI A, 10    (address 10)
+--        B"1110_001_111_00000", -- 19: LW R1, A    (load from address A into R1)
+--        B"0101_111_000_10101", -- 20: LI A, 21    (address 21)
+--        B"1110_010_111_00000", -- 21: LW R2, A    (load from address A into R2)
+--
+--        -- Swap them
+--        B"0101_111_000_01010", -- 22: LI A, 10    (address 10)
+--        B"0010_010_111_00000", -- 23: SW R2, A    (store R2 at address A)
+--        B"0101_111_000_10101", -- 24: LI A, 21    (address 21)
+--        B"0010_001_111_00000", -- 25: SW R1, A    (store R1 at address A)
+--
+--        -- Verify swap worked
+--        B"0101_111_000_01010", -- 26: LI A, 10    (address 10)
+--        B"1110_100_111_00000", -- 27: LW R4, A    (should now be 75)
+--
+--        -- Teste endereço inválido --
+--        B"0101_011_101_11111", -- 5: LI R3, 191 -- Endereço inválido
+--        B"0101_111_000_00000", -- 6: LI A, 0
+--        B"1000_111_011_00000", -- 7: ADD A, R3
+--        B"0010_011_111_00000", -- 8: SW R3, A   -- R3 no endereço A
+--        B"1110_100_111_00000", -- 9: LW R4, A
+--
+--        -- Fill remaining with NOPs
 
 -- LAB 6
 
