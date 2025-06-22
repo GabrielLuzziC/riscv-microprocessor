@@ -1,0 +1,55 @@
+// PROGRAMA: Algoritmo do Crivo de Eratóstenes para encontrar números primos
+// Inicializa os valores na memória e encontra primos até 32
+
+// === INICIALIZAÇÃO ===
+LI R1, 1        // Carrega 1 no registrador R1 (contador inicial)
+MOV A, R1       // Move R1 para o acumulador A
+
+// === LOOP DE INICIALIZAÇÃO DA MEMÓRIA ===
+// Preenche posições de memória 1-32 com seus próprios índices
+loop_ini:   
+    SW A, R1        // Armazena valor do R1 no endereço do acumulador A na memória
+    LI A, 1         // Carrega 1 no acumulador
+    ADD A, R1       // Incrementa contador: A = A + R1
+    MOV R1, A       // Atualiza R1 com novo valor do contador
+    AND A, 32       // Verifica se ainda está dentro do limite (A & 32)
+    BCC loop_ini    // Se A < 32, continua o loop
+
+// === CRIVO DE ERATÓSTENES ===
+LI R6, 2        // Inicia com primeiro primo (2)
+MOV R1, R6      // R1 = número primo atual
+
+// === LOOP PRINCIPAL: MARCA MÚLTIPLOS COMO NÃO-PRIMOS ===
+loop_exclui:
+    MOV A, R6       // A = número primo atual
+    ADD A, R1       // A = próximo múltiplo (primo)
+    MOV R1, A       // R1 = múltiplo atual
+    SW A, 0         // Marca múltiplo como não-primo (armazena 0)
+    AND A, 32       // Verifica se ainda está dentro do limite (A & 32)
+    BNE loop_exclui // Se não chegou ao limite, continua marcando múltiplos
+    
+// === BUSCA PRÓXIMO PRIMO ===
+loop_primos:
+    LI A, 1         // Carrega 1 no acumulador
+    ADD A, R6       // Incrementa R6: A = R6 + 1
+    MOV R6, A       // R6 = próximo candidato a primo
+    LW A, R6        // Carrega valor da posição R6 da memória
+    SUB A, R6       // Subtrai R6 de A (verifica se é 0 = não-primo)
+    CMPI A, 0       // Compara com 0
+    BNE loop_primos // Se é 0, é primo válido, sai do loop
+    MOV A, R6       // Move candidato atual para A
+    CMPI A, 12      // Compara com limite 12
+    BCC loop_exclui // Se A < 12, volta para marcar múltiplos do novo primo
+
+// === LOOP DE LEITURA DOS RESULTADOS ===
+// Percorre a memória para ler os números primos encontrados
+LI R1, 1        // Reinicia contador em 1
+loop_leitura:
+    LI A, 1         // Carrega 1 no acumulador
+    ADD A, R1       // Incrementa contador: A = A + R1
+    MOV R1, A       // Atualiza R1 com novo valor
+    LW A, R6        // Carrega se o endereço A contém um primo e coloca em R6
+    AND A, 32       // Verifica limite (A & 32)
+    BNE loop_leitura // Se não chegou ao limite, continua lendo
+
+//BOTAR RAM NO ENDEREÇO 256

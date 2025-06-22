@@ -13,33 +13,65 @@ END ENTITY;
 ARCHITECTURE a_ROM OF ROM IS
     TYPE mem IS ARRAY (0 TO 127) OF UNSIGNED (14 DOWNTO 0);
     CONSTANT conteudo_rom : mem := (
-        -- TESTE 1: AND básico
-        B"0101_111_000_01111", -- 0: LI A, 15
-        B"0101_001_000_00111", -- 1: LI R1, 7
-        B"0011_111_001_00000", -- 2: AND A, R1
+        -- === INICIALIZAÇÃO ===
+        B"0101_001_000_00001", -- 0: LI R1, 1
+        B"1101_111_001_00000", -- 1: MOV A, R1
         
-        -- TESTE 2: AND com zero
-        B"0101_111_111_11111", -- 3: LI A, 31
-        B"0101_001_000_00000", -- 4: LI R1, 0
-        B"0011_111_001_00000", -- 5: AND A, R1
+        -- === LOOP DE INICIALIZAÇÃO ===
+        -- loop_ini:
+        B"0010_001_111_00000", -- 2: SW R1, A (endereço em A)
+        B"0101_111_000_00001", -- 3: LI A, 1
+        B"1000_111_001_00000", -- 4: ADD A, R1
+        B"1101_001_111_00000", -- 5: MOV R1, A
+        B"1111_000_001_00001", -- 6: CMPI A, 33 (32 = 100001)
+        B"0111_001_111_11010", -- 7: BCC -6 (volta para endereço 2)
+
+        -- === CRIVO DE ERATÓSTENES ===
+        B"0101_110_000_00010", -- 8: LI R6, 2
+        B"1101_111_110_00000", -- 9: MOV A, R6
+        B"1101_001_111_00000", -- 10: MOV R1, A
         
-        -- TESTE 3: AND alternado
-        B"0101_111_101_01010", -- 6: LI A, 21
-        B"0101_001_001_01010", -- 7: LI R1, 10
-        B"0011_111_001_00000", -- 8: AND A, R1
-        
-        -- TESTE 4: Máscara bits baixos
-        B"0101_111_101_11011", -- 9: LI A, 27
-        B"0101_001_000_01111", -- 10: LI R1, 15
-        B"0011_111_001_00000", -- 11: AND A, R1
-        
-        -- TESTE 5: AND consecutivos
-        B"0101_111_111_11111", -- 12: LI A, 31
-        B"0101_001_000_01110", -- 13: LI R1, 14
-        B"0011_111_001_00000", -- 14: AND A, R1
-        B"0101_010_000_01100", -- 15: LI R2, 12
-        B"0011_111_010_00000", -- 16: AND A, R2
-        
+        -- === LOOP PRINCIPAL: MARCA MÚLTIPLOS COMO NÃO-PRIMOS ===
+        -- loop_exclui:
+        B"1101_111_001_00000", -- 11: MOV A, R1
+        B"1000_111_110_00000", -- 12: ADD A, R6
+        B"1101_001_111_00000", -- 13: MOV R1, A
+        B"0101_010_000_00000", -- 14: LI R2, 0
+        B"0010_010_111_00000", -- 15: SW R2, A (armazena 0 no endereço A)
+        B"1111_111_001_00001", -- 16: CMPI A, 33 (verifica limite)
+        B"0111_001_111_11010", -- 17: BCC -6 (volta para loop_exclui)
+
+        -- === BUSCA PRÓXIMO PRIMO ===
+        -- loop_primos:
+        B"0101_111_000_00001", -- 18: LI A, 1
+        B"1000_111_110_00000", -- 19: ADD A, R6
+        B"1101_110_111_00000", -- 20: MOV R6, A
+        B"1110_010_111_00000", -- 21: LW R2, A (carrega da RAM endereço A para R2)
+        B"1101_111_010_00000", -- 22: MOV A, R2
+        B"1001_111_110_00000", -- 23: SUB A, R6
+        B"1111_000_000_00000", -- 24: CMPI A, 0
+        B"0111_010_111_11000", -- 25: BNE -8 (volta para loop_primos se ≠ 0)
+        B"1101_111_110_00000", -- 26: MOV A, R6
+        B"1101_001_111_00000", -- 27: MOV R1, A
+        B"1111_000_000_01100", -- 28: CMPI A, 12
+        B"0111_001_111_01111", -- 29: BCC -17 (volta para loop_exclui se A < 12) 
+
+        -- === LOOP DE LEITURA DOS RESULTADOS ===
+        B"0101_001_000_00000", -- 30: LI R1, 0
+        -- loop_leitura:
+        B"0101_111_000_00001", -- 31: LI A, 1
+        B"1000_111_001_00000", -- 32: ADD A, R1
+        B"1101_001_111_00000", -- 33: MOV R1, A
+        B"1110_110_111_00000", -- 34: LW R6, A (carrega da RAM endereço A para R6)
+        B"1111_111_001_00001", -- 35: CMPI A, 33 
+        B"0111_010_111_11011", -- 36: BNE -5 (volta para loop_leitura)
+
+        -- === ACESOO INVÁLIDO MEMÓRIA ===
+        B"0000_000_000_00000", -- 37: NOP
+        B"0000_000_000_00000", -- 38: NOP
+        B"0101_111_111_11111", -- 39: LI A, 255 -- Endereço inválido para teste
+        B"1110_110_111_00000", -- 40: LW R6, A  --Acesso inválido RAM (endereço 255)
+            
         OTHERS => "000000000000000"
     );
 BEGIN
@@ -70,7 +102,6 @@ END ARCHITECTURE;
 --        -- Load values back and perform arithmetic
 --        B"0101_111_000_01010", -- 7: LI A, 10     (address 10)
 --        B"1110_100_111_00000", -- 8: LW R4, A     (load from address A into R4)
---
 --        B"0101_111_000_10101", -- 9: LI A, 21     (address 21)
 --        B"1110_101_111_00000", -- 10: LW R5, A    (load from address A into R5)
 --

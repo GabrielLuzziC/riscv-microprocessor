@@ -35,7 +35,7 @@ BEGIN
 
   sim_time_proc : PROCESS
   BEGIN
-    WAIT FOR 100 us;
+    WAIT FOR 300 us;
     finished <= '1';
     WAIT;
   END PROCESS sim_time_proc;

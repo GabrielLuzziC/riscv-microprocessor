@@ -20,7 +20,7 @@ OR:     1110_ddd_sss_xxxxx
 
 -- LW e SW - é sempre o acumulador que guarda o endereço
 
-
+ 
 onde
 ddd identifica o registrador destino
 sss identifica o registrador fonte

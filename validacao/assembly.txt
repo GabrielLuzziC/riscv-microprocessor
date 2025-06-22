@@ -1,55 +1,60 @@
-// PROGRAMA: Algoritmo do Crivo de Eratóstenes para encontrar números primos
-// Inicializa os valores na memória e encontra primos até 32
-
 // === INICIALIZAÇÃO ===
-LI R1, 1        // Carrega 1 no registrador R1 (contador inicial)
-MOV A, R1       // Move R1 para o acumulador A
+0: LI R1, 1        // Carrega 1 no registrador R1
+1: MOV A, R1       // Move R1 para o acumulador A
 
-// === LOOP DE INICIALIZAÇÃO DA MEMÓRIA ===
-// Preenche posições de memória 1-32 com seus próprios índices
-loop_ini:   
-    SW A, R1        // Armazena valor do R1 no endereço do acumulador A na memória
-    LI A, 1         // Carrega 1 no acumulador
-    ADD A, R1       // Incrementa contador: A = A + R1
-    MOV R1, A       // Atualiza R1 com novo valor do contador
-    AND A, 32       // Verifica se ainda está dentro do limite (A & 32)
-    BCC loop_ini    // Se A < 32, continua o loop
+// === LOOP DE INICIALIZAÇÃO ===
+// loop_ini:
+2: SW R1, A        // Armazena R1 no endereço A da memória
+3: LI A, 1         // Carrega 1 no acumulador
+4: ADD A, R1       // Incrementa: A = A + R1
+5: MOV R1, A       // Atualiza R1 com novo valor
+6: CMPI A, 33      // Compara A com 33
+7: BCC -6          // Se A < 33, volta para endereço 2
 
 // === CRIVO DE ERATÓSTENES ===
-LI R6, 2        // Inicia com primeiro primo (2)
-MOV R1, R6      // R1 = número primo atual
+8: LI R6, 2        // Inicia com primeiro primo (2)
+9: MOV A, R6       // Move R6 para A
+10: MOV R1, A      // R1 = primo atual
 
 // === LOOP PRINCIPAL: MARCA MÚLTIPLOS COMO NÃO-PRIMOS ===
-loop_exclui:
-    MOV A, R6       // A = número primo atual
-    ADD A, R1       // A = próximo múltiplo (primo)
-    MOV R1, A       // R1 = múltiplo atual
-    SW A, 0         // Marca múltiplo como não-primo (armazena 0)
-    AND A, 32       // Verifica se ainda está dentro do limite (A & 32)
-    BNE loop_exclui // Se não chegou ao limite, continua marcando múltiplos
-    
+// loop_exclui:
+11: MOV A, R1      // A = múltiplo atual
+12: ADD A, R6      // A = múltiplo + primo
+13: MOV R1, A      // R1 = próximo múltiplo
+14: LI R2, 0       // Carrega 0 em R2
+15: SW R2, A       // Marca múltiplo como não-primo (armazena 0)
+16: CMPI A, 33     // Verifica limite
+17: BCC -6         // Volta para loop_exclui
+
 // === BUSCA PRÓXIMO PRIMO ===
-loop_primos:
-    LI A, 1         // Carrega 1 no acumulador
-    ADD A, R6       // Incrementa R6: A = R6 + 1
-    MOV R6, A       // R6 = próximo candidato a primo
-    LW A, R6        // Carrega valor da posição R6 da memória
-    SUB A, R6       // Subtrai R6 de A (verifica se é 0 = não-primo)
-    CMPI A, 0       // Compara com 0
-    BNE loop_primos // Se não é 0, é primo válido, sai do loop
-    MOV A, R6       // Move candidato atual para A
-    CMPI A, 12      // Compara com limite 12
-    BCC loop_exclui // Se A < 12, volta para marcar múltiplos do novo primo
+// loop_primos:
+18: LI A, 1        // Carrega 1 no acumulador
+19: ADD A, R6      // Incrementa R6: A = R6 + 1
+20: MOV R6, A      // R6 = próximo candidato a primo
+21: LW R2, A       // Carrega valor da memória endereço A para R2
+22: MOV A, R2      // Move valor carregado para A
+23: SUB A, R6      // Subtrai R6 de A
+24: CMPI A, 0      // Compara com 0
+25: BNE -8         // Se ≠ 0, volta para loop_primos
+26: MOV A, R6      // Move candidato atual para A
+27: MOV R1, A      // R1 = novo primo encontrado
+28: CMPI A, 12     // Compara com limite 12
+29: BCC -17        // Se A < 12, volta para loop_exclui
 
 // === LOOP DE LEITURA DOS RESULTADOS ===
-// Percorre a memória para ler os números primos encontrados
-LI R1, 1        // Reinicia contador em 1
-loop_leitura:
-    LI A, 1         // Carrega 1 no acumulador
-    ADD A, R1       // Incrementa contador: A = A + R1
-    MOV R1, A       // Atualiza R1 com novo valor
-    LW A, R6        // Carrega se o endereço A contém um primo e coloca em R6
-    AND A, 32       // Verifica limite (A & 32)
-    BNE loop_leitura // Se não chegou ao limite, continua lendo
+30: LI R1, 0       // Inicializa contador em 0
+// loop_leitura:
+31: LI A, 1        // Carrega 1 no acumulador
+32: ADD A, R1      // Incrementa contador: A = A + R1
+33: MOV R1, A      // Atualiza R1 com novo valor
+34: LW R6, A       // Carrega valor da memória endereço A para R6
+35: CMPI A, R1     // Compara A com R1
+36: BNE -5         // Volta para loop_leitura
 
-//BOTAR RAM NO ENDEREÇO 256
+-- === ACESOO INVÁLIDO MEMÓRIA ===
+37: NOP
+38: NOP
+39: LI A, 255 -- Endereço inválido para teste
+40: LW R6, A  --Acesso inválido RAM (endereço 255)
+
+-- === FIM DE PROGRAMA ===
