@@ -8,6 +8,7 @@ ENTITY unidade_de_controle IS
     rst : IN STD_LOGIC;
     carry_flag : IN STD_LOGIC; -- sinal de carry
     zero_flag : IN STD_LOGIC; -- sinal de zero
+    exception : IN STD_LOGIC; -- novo sinal de exceção
     estado : OUT unsigned(1 DOWNTO 0); -- estado da maquina de estados;
     instrucao : OUT UNSIGNED(14 DOWNTO 0) -- instrução a ser executada
   );
@@ -38,6 +39,7 @@ ARCHITECTURE a_unidade_de_controle OF unidade_de_controle IS
     PORT (
       clk : IN STD_LOGIC;
       rst : IN STD_LOGIC;
+      exception : IN STD_LOGIC; -- novo sinal de exceção
       estado : OUT unsigned(1 DOWNTO 0)
     );
   END COMPONENT;
@@ -56,11 +58,12 @@ BEGIN
   PORT MAP(
     clk => clk,
     rst => rst,
+    exception => exception,
     estado => estado_int
   );
 
   opcode <= instrucao_int(14 DOWNTO 11); -- 4 MSB
-  write_on_pc <= '1' WHEN estado_int = "10" ELSE
+  write_on_pc <= '1' WHEN (estado_int = "10" AND exception = '0') ELSE -- Don't advance PC on exception
     '0';
 
   func3 <= instrucao_int(10 DOWNTO 8) WHEN opcode = "0111" ELSE
@@ -68,8 +71,8 @@ BEGIN
 
   -- jump_en: 00 = nenhum salto, 01 = salto absoluto, 10 = salto relativo
   jump_en <= "01" WHEN (opcode = "0111" AND func3 = "000") ELSE
-    "10" WHEN ((opcode = "0111" AND func3 = "001" AND carry_flag = '0') OR  -- BCC
-    (opcode = "0111" AND func3 = "010" AND zero_flag = '0')) ELSE   -- BNE
+    "10" WHEN ((opcode = "0111" AND func3 = "001" AND carry_flag = '0') OR -- BCC
+    (opcode = "0111" AND func3 = "010" AND zero_flag = '0')) ELSE -- BNE
     "00";
 
   constante <= instrucao_int(6 DOWNTO 0); -- 7 LSB

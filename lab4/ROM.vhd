@@ -16,7 +16,7 @@ ARCHITECTURE a_ROM OF ROM IS
         -- === INICIALIZAÇÃO ===
         B"0101_001_000_00001", -- 0: LI R1, 1
         B"1101_111_001_00000", -- 1: MOV A, R1
-        
+
         -- === LOOP DE INICIALIZAÇÃO ===
         -- loop_ini:
         B"0010_001_111_00000", -- 2: SW R1, A (endereço em A)
@@ -30,7 +30,7 @@ ARCHITECTURE a_ROM OF ROM IS
         B"0101_110_000_00010", -- 8: LI R6, 2
         B"1101_111_110_00000", -- 9: MOV A, R6
         B"1101_001_111_00000", -- 10: MOV R1, A
-        
+
         -- === LOOP PRINCIPAL: MARCA MÚLTIPLOS COMO NÃO-PRIMOS ===
         -- loop_exclui:
         B"1101_111_001_00000", -- 11: MOV A, R1
@@ -71,7 +71,8 @@ ARCHITECTURE a_ROM OF ROM IS
         B"0000_000_000_00000", -- 38: NOP
         B"0101_111_111_11111", -- 39: LI A, 255 -- Endereço inválido para teste
         B"1110_110_111_00000", -- 40: LW R6, A  --Acesso inválido RAM (endereço 255)
-            
+        B"0000_000_000_00000", -- 41: NOP
+        B"0000_000_000_00000", -- 42: NOP
         OTHERS => "000000000000000"
     );
 BEGIN
@@ -82,8 +83,6 @@ BEGIN
         END IF;
     END PROCESS;
 END ARCHITECTURE;
-
-
 -- LAB 7
 -- CONSTANT conteudo_rom : mem := (
 -- SHORT RAM TEST - Updated for LW Rd, A and SW Rs, A format

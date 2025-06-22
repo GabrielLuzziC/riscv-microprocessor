@@ -23,6 +23,7 @@ ARCHITECTURE a_processador OF processador IS
             rst : IN STD_LOGIC;
             carry_flag : IN STD_LOGIC; -- Sinal de carry
             zero_flag : IN STD_LOGIC;
+            exception : IN STD_LOGIC; -- Novo sinal de exceção
             estado : OUT UNSIGNED(1 DOWNTO 0); -- Estado da máquina de estados
             instrucao : OUT UNSIGNED(14 DOWNTO 0) -- Instrução a ser executada
         );
@@ -86,6 +87,8 @@ ARCHITECTURE a_processador OF processador IS
 
     SIGNAL data_out_acc, data_out_reg : UNSIGNED(15 DOWNTO 0); -- Outputs for accumulator and register bank data
 
+    SIGNAL exception : STD_LOGIC;
+
 BEGIN
     uc : unidade_de_controle
     PORT MAP(
@@ -93,6 +96,7 @@ BEGIN
         rst => rst,
         carry_flag => carry_flag, -- Sinal de carry
         zero_flag => zero_flag, -- Sinal de zero
+        exception => exception, -- New exception input
         estado => uc_estado,
         instrucao => uc_instrucao
     );
@@ -139,7 +143,7 @@ BEGIN
         '0'; -- Decode
 
     wr_en_reg_ULA <= '1' WHEN (uc_estado = "10" AND NOT -- Só escreve nos registradores da ULA quando não é branch
-        (opcode = "1111" OR (opcode = "0111" AND (reg_instrucao_out(10 DOWNTO 8) = "010" OR reg_instrucao_out(10 DOWNTO 8) = "001" OR 
+        (opcode = "1111" OR (opcode = "0111" AND (reg_instrucao_out(10 DOWNTO 8) = "010" OR reg_instrucao_out(10 DOWNTO 8) = "001" OR
         reg_instrucao_out(10 DOWNTO 8) = "000")))) ELSE
         '0'; -- Execute
 
@@ -176,5 +180,9 @@ BEGIN
     -- RAM write enable for SW operations
     ram_wr_en <= '1' WHEN (opcode = "0010" AND uc_estado = "10") ELSE
         '0'; -- SW in execute stage
+
+    exception <= '1' WHEN (is_ram_operation = '1' AND uc_estado = "10" AND
+        data_out_acc > 127) ELSE
+        '0';
 
 END ARCHITECTURE;

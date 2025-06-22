@@ -23,10 +23,11 @@ BEGIN
         IF wr_en = '1' THEN
           conteudo_ram(to_integer(endereco)) <= dado_in;
         END IF;
-      ELSE 
-        REPORT "ERRO: Endereco de RAM invalido: " & integer'image(to_integer(endereco)) SEVERITY FAILURE;
+        -- ELSE
+        -- REPORT "ERRO: Endereco de RAM invalido: " & INTEGER'image(to_integer(endereco)) SEVERITY FAILURE;
       END IF;
     END IF;
   END PROCESS;
-  dado_out <= conteudo_ram(to_integer(endereco)) when (to_integer(endereco) >= 0 and to_integer(endereco) <= 127) else (others => 'U');
+  dado_out <= conteudo_ram(to_integer(endereco)) WHEN (to_integer(endereco) >= 0 AND to_integer(endereco) <= 127) ELSE
+    (OTHERS => '0'); -- Changed from 'U' to '0' for better simulation behavior
 END ARCHITECTURE;
